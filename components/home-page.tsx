@@ -8,11 +8,12 @@ import { CATEGORIES, FEATURED_SONGS, ALL_SONGS, SITE_NAME } from "@/components/c
 import { Category, Song, FeaturedSong } from "@/types/song";
 import Footer from '@/components/footer';
 import { useRouter } from 'next/navigation'
+import { useTheme } from '@/lib/theme-context'
 
 const HomePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchResults, setSearchResults] = React.useState<Song[]>([]);
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const router = useRouter()
 
   React.useEffect(() => {
@@ -55,8 +56,8 @@ const HomePage: React.FC = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={isDarkMode ? 'text-stone-300' : 'text-stone-600'}
+              onClick={toggleDarkMode}
+              className={isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
@@ -68,30 +69,40 @@ const HomePage: React.FC = () => {
         <div className="max-w-5xl mx-auto space-y-24">
           {/* Search section */}
           <div className="text-center">
-            <h2 className="text-5xl font-merriweather font-bold mb-8 text-stone-800 leading-tight">
+            <h2 className={`text-5xl font-merriweather font-bold mb-8 leading-tight ${
+              isDarkMode ? 'text-stone-100' : 'text-stone-800'
+            }`}>
               Encuentra tu canción favorita
             </h2>
             <div className="relative max-w-2xl mx-auto">
-              <div className="flex items-center shadow-xl rounded-full overflow-hidden bg-white border border-stone-200">
+              <div className={`flex items-center shadow-xl rounded-full overflow-hidden ${
+                isDarkMode ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'
+              } border`}>
                 <div className="relative flex-grow">
                   <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-stone-400" size={24} />
                   <Input
                     type="text"
                     placeholder="Buscar por título, autor, letra..."
-                    className="w-full pl-16 pr-4 py-6 text-lg border-none focus:ring-2 focus:ring-stone-300 rounded-l-full"
+                    className={`w-full pl-16 pr-4 py-6 text-lg border-none focus:ring-2 ${
+                      isDarkMode ? 'bg-stone-800 text-stone-100 focus:ring-stone-600' : 'bg-white text-stone-800 focus:ring-stone-300'
+                    } rounded-l-full`}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                   {searchTerm && (
                     <X
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-stone-400 cursor-pointer hover:text-stone-600"
+                      className={`absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer ${
+                        isDarkMode ? 'text-stone-400 hover:text-stone-200' : 'text-stone-400 hover:text-stone-600'
+                      }`}
                       size={20}
                       onClick={() => setSearchTerm('')}
                     />
                   )}
                 </div>
                 <Button 
-                  className="bg-stone-800 text-white hover:bg-stone-700 rounded-r-full px-10 py-6 text-lg font-semibold transition-colors duration-300"
+                  className={`${
+                    isDarkMode ? 'bg-stone-700 hover:bg-stone-600 text-stone-100' : 'bg-stone-800 hover:bg-stone-700 text-white'
+                  } rounded-r-full px-10 py-6 text-lg font-semibold transition-colors duration-300`}
                   onClick={() => {/* Implement search function */}}
                 >
                   Buscar
@@ -102,21 +113,29 @@ const HomePage: React.FC = () => {
 
           {/* Search results */}
           {searchResults.length > 0 && (
-            <div className="mt-8 space-y-2 bg-white rounded-2xl shadow-xl p-6 border border-stone-200">
+            <div className={`mt-8 space-y-2 rounded-2xl shadow-xl p-6 border ${
+              isDarkMode ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'
+            }`}>
               {searchResults.map((song, index) => (
                 <div 
                   key={index} 
-                  className="flex items-center space-x-6 p-4 hover:bg-stone-50 transition-all duration-300 cursor-pointer rounded-xl group"
+                  className={`flex items-center space-x-6 p-4 transition-all duration-300 cursor-pointer rounded-xl group ${
+                    isDarkMode ? 'hover:bg-stone-700' : 'hover:bg-stone-50'
+                  }`}
                   onClick={() => handleSongClick(song.id)}
                 >
-                  <div className="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center text-stone-700 font-semibold text-xl shadow-inner group-hover:bg-stone-200 transition-colors">
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center font-semibold text-xl shadow-inner transition-colors ${
+                    isDarkMode ? 'bg-stone-700 text-stone-200 group-hover:bg-stone-600' : 'bg-stone-100 text-stone-700 group-hover:bg-stone-200'
+                  }`}>
                     {song.code}
                   </div>
                   <div className="flex-grow">
-                    <p className="text-stone-800 font-semibold text-lg mb-1">{song.title}</p>
-                    <p className="text-stone-500 text-base">{song.author}</p>
+                    <p className={`font-semibold text-lg mb-1 ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>{song.title}</p>
+                    <p className={isDarkMode ? 'text-stone-400' : 'text-stone-500'}>{song.author}</p>
                   </div>
-                  <ChevronRight className="text-stone-400 group-hover:text-stone-600 transition-colors" size={24} />
+                  <ChevronRight className={`${
+                    isDarkMode ? 'text-stone-400 group-hover:text-stone-200' : 'text-stone-400 group-hover:text-stone-600'
+                  } transition-colors`} size={24} />
                 </div>
               ))}
             </div>
@@ -124,15 +143,17 @@ const HomePage: React.FC = () => {
 
           {/* Categories section */}
           <div>
-            <h2 className="text-4xl font-merriweather font-bold mb-6 text-stone-800">Categorías</h2>
-            <p className="text-stone-600 mb-8 leading-relaxed text-lg max-w-3xl">
+            <h2 className={`text-4xl font-merriweather font-bold mb-6 ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>Categorías</h2>
+            <p className={`mb-8 leading-relaxed text-lg max-w-3xl ${isDarkMode ? 'text-stone-300' : 'text-stone-600'}`}>
               El Tocho organiza sus canciones según los momentos de la misa, desde la entrada hasta la salida. Cada categoría está representada por una letra en orden cronológico de la ceremonia.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {CATEGORIES.map((category: Category) => (
-                <div key={category.letter} className="flex flex-col items-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-stone-200 hover:-translate-y-1 cursor-pointer">
-                  <span className="text-4xl font-bold mb-4 text-stone-700">{category.letter}</span>
-                  <p className="text-center text-sm text-stone-600">{category.description}</p>
+                <div key={category.letter} className={`flex flex-col items-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 cursor-pointer ${
+                  isDarkMode ? 'bg-stone-800 border-stone-700 hover:bg-stone-700' : 'bg-white border-stone-200 hover:bg-stone-50'
+                }`}>
+                  <span className={`text-4xl font-bold mb-4 ${isDarkMode ? 'text-stone-100' : 'text-stone-700'}`}>{category.letter}</span>
+                  <p className={`text-center text-sm ${isDarkMode ? 'text-stone-300' : 'text-stone-600'}`}>{category.description}</p>
                 </div>
               ))}
             </div>
@@ -140,22 +161,28 @@ const HomePage: React.FC = () => {
 
           {/* Featured songs section */}
           <div>
-            <h2 className="text-4xl font-merriweather font-bold mb-8 text-stone-800">Canciones Destacadas</h2>
+            <h2 className={`text-4xl font-merriweather font-bold mb-8 ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>Canciones Destacadas</h2>
             <div className="space-y-6">
               {FEATURED_SONGS.map((song: FeaturedSong) => (
                 <div 
                   key={song.id} 
-                  className="flex items-center space-x-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-stone-200 hover:-translate-y-1 group cursor-pointer"
+                  className={`flex items-center space-x-6 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 group cursor-pointer ${
+                    isDarkMode ? 'bg-stone-800 border-stone-700 hover:bg-stone-700' : 'bg-white border-stone-200 hover:bg-stone-50'
+                  }`}
                   onClick={() => handleSongClick(song.id)}
                 >
-                  <div className="w-20 h-20 bg-stone-100 rounded-xl flex items-center justify-center text-stone-700 font-bold text-2xl shadow-inner group-hover:bg-stone-200 transition-colors">
+                  <div className={`w-20 h-20 rounded-xl flex items-center justify-center font-bold text-2xl shadow-inner transition-colors ${
+                    isDarkMode ? 'bg-stone-700 text-stone-200 group-hover:bg-stone-600' : 'bg-stone-100 text-stone-700 group-hover:bg-stone-200'
+                  }`}>
                     {song.code}
                   </div>
                   <div className="flex-grow">
-                    <h3 className="font-semibold text-xl text-stone-800 mb-2">{song.title}</h3>
-                    <p className="text-stone-500 text-lg">{song.author}</p>
+                    <h3 className={`font-semibold text-xl mb-2 ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>{song.title}</h3>
+                    <p className={isDarkMode ? 'text-stone-400' : 'text-stone-500'}>{song.author}</p>
                   </div>
-                  <ChevronRight className="text-stone-400 group-hover:text-stone-600 transition-colors" size={24} />
+                  <ChevronRight className={`${
+                    isDarkMode ? 'text-stone-400 group-hover:text-stone-200' : 'text-stone-400 group-hover:text-stone-600'
+                  } transition-colors`} size={24} />
                 </div>
               ))}
             </div>

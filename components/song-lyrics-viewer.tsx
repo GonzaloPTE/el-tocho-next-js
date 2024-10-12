@@ -8,6 +8,7 @@ import { Waveform } from "@/components/ui/waveform"
 import Footer from '@/components/footer';
 import { SITE_NAME } from "@/components/constants"
 import { TransposeControl } from "@/components/ui/transpose-control"
+import { useTheme } from '@/lib/theme-context'
 
 // Example song lyrics
 const SONG_LYRICS = `
@@ -53,7 +54,7 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
   const [isPlaying, setIsPlaying] = React.useState(false)
   const [currentTime, setCurrentTime] = React.useState(0)
   const [duration] = React.useState(190) // 3:10 in seconds
-  const [isDarkMode, setIsDarkMode] = React.useState(false)
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   const isLongSong = SONG_LYRICS.split('\n').length > 20
 
@@ -95,8 +96,8 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className={isDarkMode ? 'text-stone-300' : 'text-stone-600'}
+              onClick={toggleDarkMode}
+              className={isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}
             >
               {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
             </Button>
