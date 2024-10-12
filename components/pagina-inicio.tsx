@@ -1,16 +1,16 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Search, X } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { CATEGORIAS, CANCIONES_DESTACADAS, TODAS_LAS_CANCIONES } from "@/components/constants"
 
-export function PaginaInicio() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<Array<{ codigo: string; titulo: string; autor: string }>>([]);
+const PaginaInicio: React.FC = () => {
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchResults, setSearchResults] = React.useState<Array<{ codigo: string; titulo: string; autor: string }>>([]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (searchTerm.length > 0) {
       const filteredResults = TODAS_LAS_CANCIONES.filter(cancion => 
         cancion.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -23,7 +23,7 @@ export function PaginaInicio() {
   }, [searchTerm]);
 
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 font-inter">
+    <div className="bg-stone-50 text-stone-800 font-inter">
       <header className="border-b border-stone-200 p-4">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-merriweather font-semibold text-stone-700">EL TOCHO</h1>
@@ -107,3 +107,5 @@ export function PaginaInicio() {
     </div>
   )
 }
+
+export default PaginaInicio

@@ -26,3 +26,5 @@ export const TODAS_LAS_CANCIONES = [
   { codigo: "C.56", titulo: "Canta alegre al Señor", autor: "Tradicional" },
   // ... add more songs here with their authors
 ];
+
+export const SITE_NAME = "El TOCHO.app";
