@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Search, X, ChevronRight, BookOpen } from "lucide-react"
+import { Search, X, ChevronRight, BookOpen, Moon, Sun } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { CATEGORIES, FEATURED_SONGS, ALL_SONGS, SITE_NAME } from "@/components/constants"
@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation'
 const HomePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchResults, setSearchResults] = React.useState<Song[]>([]);
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
   const router = useRouter()
 
   React.useEffect(() => {
@@ -31,16 +32,34 @@ const HomePage: React.FC = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-stone-50 via-stone-100 to-stone-200 text-stone-800 font-inter min-h-screen flex flex-col">
-      <header className="border-b border-stone-200 py-4 bg-white shadow-md sticky top-0 z-10 backdrop-blur-sm bg-white/90">
+    <div className={`min-h-screen flex flex-col ${
+      isDarkMode ? 'bg-stone-900 text-stone-100' : 'bg-gradient-to-br from-stone-50 via-stone-100 to-stone-200 text-stone-800'
+    } font-inter`}>
+      <header className={`border-b py-4 shadow-md sticky top-0 z-10 backdrop-blur-sm ${
+        isDarkMode ? 'bg-stone-800/90 border-stone-700' : 'bg-white/90 border-stone-200'
+      }`}>
         <div className="container mx-auto flex justify-between items-center px-4">
-          <h1 className="text-3xl font-merriweather font-bold text-stone-800 flex items-center">
-            <BookOpen className="mr-2 text-stone-600" size={28} /> {SITE_NAME}
+          <h1 className="text-3xl font-merriweather font-bold flex items-center">
+            <BookOpen className="mr-2" size={28} /> {SITE_NAME}
           </h1>
-          <nav className="space-x-8">
-            <a href="#" className="text-stone-600 hover:text-stone-800 transition-colors font-medium hover:underline decoration-2 underline-offset-8">Inicio</a>
-            <a href="#" className="text-stone-600 hover:text-stone-800 transition-colors font-medium hover:underline decoration-2 underline-offset-8">Buscar</a>
-            <a href="#" className="text-stone-600 hover:text-stone-800 transition-colors font-medium hover:underline decoration-2 underline-offset-8">Destacados</a>
+          <nav className="flex items-center space-x-8">
+            <a href="#" className={`transition-colors font-medium hover:underline decoration-2 underline-offset-8 ${
+              isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'
+            }`}>Inicio</a>
+            <a href="#" className={`transition-colors font-medium hover:underline decoration-2 underline-offset-8 ${
+              isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'
+            }`}>Buscar</a>
+            <a href="#" className={`transition-colors font-medium hover:underline decoration-2 underline-offset-8 ${
+              isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'
+            }`}>Destacados</a>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className={isDarkMode ? 'text-stone-300' : 'text-stone-600'}
+            >
+              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
           </nav>
         </div>
       </header>

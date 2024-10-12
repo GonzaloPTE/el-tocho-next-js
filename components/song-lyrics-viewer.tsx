@@ -1,10 +1,11 @@
 'use client'
 
 import React from 'react';
-import { ArrowLeft, Rewind, Play, FastForward, BookOpen } from "lucide-react"
+import { ArrowLeft, Rewind, Play, Pause, FastForward, BookOpen, SkipBack, SkipForward, Moon, Sun } from "lucide-react"
 import { useRouter } from 'next/navigation'
 import { CustomSlider } from "@/components/ui/custom-slider"
 import { Button } from "@/components/ui/button"
+import { Waveform } from "@/components/ui/waveform"
 import Footer from '@/components/footer';
 import { SITE_NAME } from "@/components/constants"
 
@@ -37,61 +38,152 @@ los caminos del amor,
         DO7          FA
 escuchemos su voz.
 
-// ... (rest of the lyrics)
 `
 
 interface SongLyricsViewerProps {
   songId: string
 }
 
+// Mock waveform data
+const MOCK_WAVEFORM_DATA = Array(100).fill(0).map(() => Math.random());
+
 export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
   const router = useRouter()
   const [transpose, setTranspose] = React.useState(0)
+  const [isPlaying, setIsPlaying] = React.useState(false)
+  const [currentTime, setCurrentTime] = React.useState(0)
+  const [duration] = React.useState(190) // 3:10 in seconds
+  const [isDarkMode, setIsDarkMode] = React.useState(false)
 
-  // Function to determine if the lyrics should be displayed in two columns
-  const shouldUseTwoColumns = (lyrics: string): boolean => {
-    const lineCount = lyrics.split('\n').length;
-    return lineCount > 20; // Adjust this threshold as needed
+  const isLongSong = SONG_LYRICS.split('\n').length > 20
+
+  const lyricsClassName = `whitespace-pre-wrap font-medium text-lg leading-relaxed ${
+    isLongSong ? 'columns-1 md:columns-2 gap-8' : ''
+  } ${isDarkMode ? 'text-stone-300' : 'text-stone-700'}`
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60)
+    const seconds = Math.floor(time % 60)
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
   }
 
-  const isLongSong = shouldUseTwoColumns(SONG_LYRICS)
-
-  const lyricsClassName = `whitespace-pre-wrap font-medium text-stone-700 text-lg leading-relaxed ${
-    isLongSong ? 'columns-1 md:columns-2 gap-8' : ''
-  }`
+  const handleWaveformClick = (time: number) => {
+    setCurrentTime(time);
+  };
 
   return (
-    <div className="bg-gradient-to-br from-stone-50 via-stone-100 to-stone-200 text-stone-800 font-inter min-h-screen flex flex-col">
-      <header className="border-b border-stone-200 py-4 bg-white shadow-md sticky top-0 z-10 backdrop-blur-sm bg-white/90">
+    <div className={`min-h-screen flex flex-col ${
+      isDarkMode ? 'bg-stone-900 text-stone-100' : 'bg-gradient-to-br from-stone-50 via-stone-100 to-stone-200 text-stone-800'
+    } font-inter`}>
+      <header className={`border-b py-4 shadow-md sticky top-0 z-10 backdrop-blur-sm ${
+        isDarkMode ? 'bg-stone-800/90 border-stone-700' : 'bg-white/90 border-stone-200'
+      }`}>
         <div className="container mx-auto flex justify-between items-center px-4">
-          <h1 className="text-3xl font-merriweather font-bold text-stone-800 flex items-center">
-            <BookOpen className="mr-2 text-stone-600" size={28} /> {SITE_NAME}
+          <h1 className="text-3xl font-merriweather font-bold flex items-center">
+            <BookOpen className="mr-2" size={28} /> {SITE_NAME}
           </h1>
-          <Button
-            variant="ghost"
-            className="text-stone-600 hover:text-stone-800 transition-colors font-medium"
-            onClick={() => router.back()}
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" /> Volver
-          </Button>
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className={isDarkMode ? 'text-stone-300' : 'text-stone-600'}
+            >
+              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </Button>
+            <Button
+              variant="ghost"
+              className={`font-medium ${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
+              onClick={() => router.back()}
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" /> Volver
+            </Button>
+          </div>
         </div>
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-16">
         <div className={`mx-auto space-y-12 ${isLongSong ? 'max-w-6xl' : 'max-w-3xl'}`}>
           <div className="flex items-center justify-center space-x-8">
-            <div className="w-24 h-24 bg-stone-800 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
+            <div className={`w-24 h-24 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
+              isDarkMode ? 'bg-stone-700' : 'bg-stone-800'
+            }`}>
               <span className="text-4xl">A2</span>
             </div>
             <div className="text-left">
-              <h2 className="text-4xl font-merriweather font-bold mb-2 text-stone-800">ABRE TU TIENDA AL SEÑOR</h2>
-              <h3 className="text-xl font-merriweather text-stone-600">Carmelo Erdozáin</h3>
+              <h2 className="text-4xl font-merriweather font-bold mb-2">ABRE TU TIENDA AL SEÑOR</h2>
+              <h3 className={`text-xl font-merriweather ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>Carmelo Erdozáin</h3>
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl shadow-xl p-8 border border-stone-200 space-y-8">
+          <div className={`rounded-2xl shadow-xl p-8 border space-y-8 ${
+            isDarkMode ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'
+          }`}>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <span className={`text-sm font-medium ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>
+                  {formatTime(currentTime)}
+                </span>
+                <span className={`text-sm font-medium ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>
+                  {formatTime(duration)}
+                </span>
+              </div>
+              <Waveform
+                currentTime={currentTime}
+                duration={duration}
+                waveformData={MOCK_WAVEFORM_DATA}
+                onClick={handleWaveformClick}
+                isDarkMode={isDarkMode}
+              />
+            </div>
+
+            <div className="flex justify-center items-center space-x-6">
+              <Button
+                variant="ghost"
+                size="icon"
+                className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
+                onClick={() => router.push(`/song/${parseInt(songId) - 1}`)}
+              >
+                <SkipBack className="h-6 w-6" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
+                onClick={() => setCurrentTime(Math.max(0, currentTime - 10))}
+              >
+                <Rewind className="h-6 w-6" />
+              </Button>
+              <Button
+                variant="default"
+                size="icon"
+                className={`w-16 h-16 rounded-full ${isDarkMode ? 'bg-stone-700 hover:bg-stone-600' : 'bg-stone-800 hover:bg-stone-700'} text-white`}
+                onClick={() => setIsPlaying(!isPlaying)}
+              >
+                {isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
+                onClick={() => setCurrentTime(Math.min(duration, currentTime + 10))}
+              >
+                <FastForward className="h-6 w-6" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
+                onClick={() => router.push(`/song/${parseInt(songId) + 1}`)}
+              >
+                <SkipForward className="h-6 w-6" />
+              </Button>
+            </div>
+
             <div className="flex items-center space-x-4">
-              <label htmlFor="transpose" className="text-sm font-medium text-stone-600 whitespace-nowrap">
+              <label htmlFor="transpose" className={`text-sm font-medium whitespace-nowrap ${
+                isDarkMode ? 'text-stone-400' : 'text-stone-600'
+              }`}>
                 Transponer:
               </label>
               <div className="flex-grow">
@@ -103,24 +195,11 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
                   step={1}
                 />
               </div>
-              <span className="text-sm font-medium text-stone-600 whitespace-nowrap">
+              <span className={`text-sm font-medium whitespace-nowrap ${
+                isDarkMode ? 'text-stone-400' : 'text-stone-600'
+              }`}>
                 {transpose} semitonos
               </span>
-            </div>
-
-            <div className="flex justify-center space-x-6">
-              {['Rewind', 'Play', 'FastForward'].map((action) => (
-                <Button
-                  key={action}
-                  variant="outline"
-                  size="icon"
-                  className="w-14 h-14 rounded-full bg-stone-100 hover:bg-stone-200 transition-colors shadow-md hover:shadow-lg"
-                >
-                  {action === 'Rewind' && <Rewind className="h-6 w-6 text-stone-700" />}
-                  {action === 'Play' && <Play className="h-6 w-6 text-stone-700" />}
-                  {action === 'FastForward' && <FastForward className="h-6 w-6 text-stone-700" />}
-                </Button>
-              ))}
             </div>
             
             <div className={lyricsClassName}>
