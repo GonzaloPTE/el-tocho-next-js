@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button"
 import { CATEGORIES, FEATURED_SONGS, ALL_SONGS, SITE_NAME } from "@/components/constants"
 import { Category, Song, FeaturedSong } from "@/types/song";
 import Footer from '@/components/footer';
+import { useRouter } from 'next/navigation'
 
 const HomePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchResults, setSearchResults] = React.useState<Song[]>([]);
+  const router = useRouter()
 
   React.useEffect(() => {
     if (searchTerm.length > 0) {
@@ -23,6 +25,10 @@ const HomePage: React.FC = () => {
       setSearchResults([]);
     }
   }, [searchTerm]);
+
+  const handleSongClick = (songId: string) => {
+    router.push(`/song/${songId}`)
+  }
 
   return (
     <div className="bg-gradient-to-br from-stone-50 via-stone-100 to-stone-200 text-stone-800 font-inter min-h-screen flex flex-col">
@@ -79,7 +85,11 @@ const HomePage: React.FC = () => {
           {searchResults.length > 0 && (
             <div className="mt-8 space-y-2 bg-white rounded-2xl shadow-xl p-6 border border-stone-200">
               {searchResults.map((song, index) => (
-                <div key={index} className="flex items-center space-x-6 p-4 hover:bg-stone-50 transition-all duration-300 cursor-pointer rounded-xl group">
+                <div 
+                  key={index} 
+                  className="flex items-center space-x-6 p-4 hover:bg-stone-50 transition-all duration-300 cursor-pointer rounded-xl group"
+                  onClick={() => handleSongClick(song.id)}
+                >
                   <div className="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center text-stone-700 font-semibold text-xl shadow-inner group-hover:bg-stone-200 transition-colors">
                     {song.code}
                   </div>
@@ -113,14 +123,18 @@ const HomePage: React.FC = () => {
           <div>
             <h2 className="text-4xl font-merriweather font-bold mb-8 text-stone-800">Canciones Destacadas</h2>
             <div className="space-y-6">
-              {FEATURED_SONGS.map((song: FeaturedSong, index: number) => (
-                <div key={index} className="flex items-center space-x-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-stone-200 hover:-translate-y-1 group cursor-pointer">
+              {FEATURED_SONGS.map((song: FeaturedSong) => (
+                <div 
+                  key={song.id} 
+                  className="flex items-center space-x-6 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-stone-200 hover:-translate-y-1 group cursor-pointer"
+                  onClick={() => handleSongClick(song.id)}
+                >
                   <div className="w-20 h-20 bg-stone-100 rounded-xl flex items-center justify-center text-stone-700 font-bold text-2xl shadow-inner group-hover:bg-stone-200 transition-colors">
                     {song.code}
                   </div>
                   <div className="flex-grow">
                     <h3 className="font-semibold text-xl text-stone-800 mb-2">{song.title}</h3>
-                    <p className="text-stone-500 text-lg">{song.artist}</p>
+                    <p className="text-stone-500 text-lg">{song.author}</p>
                   </div>
                   <ChevronRight className="text-stone-400 group-hover:text-stone-600 transition-colors" size={24} />
                 </div>

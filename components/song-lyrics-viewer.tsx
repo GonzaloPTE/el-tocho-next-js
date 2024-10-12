@@ -1,16 +1,54 @@
 'use client'
 
-import { ArrowLeft, Play, Rewind, FastForward } from "lucide-react"
-import { Slider } from "@/components/ui/slider"
-import { SONG_LYRICS } from "./constants"
+import { ArrowLeft, Rewind, Play, FastForward } from "lucide-react"
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { CustomSlider } from "@/components/ui/custom-slider"
 
-export function SongLyricsViewer() {
+// Ejemplo de letra de canción
+const SONG_LYRICS = `FA            DO                  re
+ABRE TU TIENDA AL SEÑOR, 
+    SIb       FA
+RECÍBELE DENTRO, 
+DO
+ESCUCHA SU VOZ.
+FA           DO                   re
+ABRE TU TIENDA AL SEÑOR,
+    SIb            FA
+PREPARA TU FUEGO
+    DO7            FA
+QUE LLEGA EL AMOR.
+
+                    re
+El adviento es esperanza,
+            SIb            FA
+la esperanza salvación;
+                        DO
+ya se acerca el Señor.
+        FA                re
+Preparemos los caminos,
+        SIb             FA
+los caminos del amor,
+        DO7          FA
+escuchemos su voz.`
+
+interface SongLyricsViewerProps {
+  songId: string
+}
+
+export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
+  const router = useRouter()
+  const [transpose, setTranspose] = useState(0)
+
   return (
-    <div className="min-h-screen bg-stone-50 text-stone-800 flex flex-col font-inter">
+    <div className="min-h-screen bg-white text-stone-800 flex flex-col font-inter">
       <header className="border-b border-stone-200 p-4">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-xl font-merriweather font-medium text-stone-600">Letras de Canciones</h1>
-          <button className="text-stone-400 hover:text-stone-600 transition-colors">
+          <button 
+            className="text-stone-400 hover:text-stone-600 transition-colors"
+            onClick={() => router.back()}
+          >
             <ArrowLeft className="w-5 h-5" />
           </button>
         </div>
@@ -23,31 +61,30 @@ export function SongLyricsViewer() {
           
           <div className="mb-6">
             <label htmlFor="transpose" className="block text-sm font-medium text-stone-600 mb-2">
-              Transponer: 0 semitonos
+              Transponer: {transpose} semitonos
             </label>
-            <Slider
-              id="transpose"
+            <CustomSlider
+              value={transpose}
+              onChange={setTranspose}
               min={-12}
               max={12}
               step={1}
-              defaultValue={[0]}
-              className="w-full"
             />
           </div>
 
           <div className="flex justify-center space-x-4 mb-8">
-            <button className="p-2 rounded-full bg-stone-200 hover:bg-stone-300 transition-colors">
+            <button className="p-3 rounded-full bg-stone-100 hover:bg-stone-200 transition-colors">
               <Rewind className="w-6 h-6 text-stone-600" />
             </button>
-            <button className="p-2 rounded-full bg-stone-200 hover:bg-stone-300 transition-colors">
+            <button className="p-3 rounded-full bg-stone-100 hover:bg-stone-200 transition-colors">
               <Play className="w-6 h-6 text-stone-600" />
             </button>
-            <button className="p-2 rounded-full bg-stone-200 hover:bg-stone-300 transition-colors">
+            <button className="p-3 rounded-full bg-stone-100 hover:bg-stone-200 transition-colors">
               <FastForward className="w-6 h-6 text-stone-600" />
             </button>
           </div>
           
-          <div className="whitespace-pre-wrap font-medium text-stone-700 bg-white p-6 rounded-lg shadow-sm">
+          <div className="whitespace-pre-wrap font-medium text-stone-700 bg-white p-6 rounded-lg shadow-sm border border-stone-200">
             {SONG_LYRICS}
           </div>
         </div>
