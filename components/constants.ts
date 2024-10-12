@@ -19,3 +19,10 @@ export const CANCIONES_DESTACADAS = [
   { codigo: 'K.12', titulo: "Hoy el Señor resucitó", artista: "Tradicional" },
   { codigo: 'J.56', titulo: "Cantemos al amor de los amores", artista: "Tradicional" }
 ]
+
+export const TODAS_LAS_CANCIONES = [
+  { codigo: "A.34", titulo: "Abre tu tienda al Señor", autor: "Carmelo Erdozáin" },
+  { codigo: "B.12", titulo: "Bendito sea el Señor", autor: "Juan A. Espinosa" },
+  { codigo: "C.56", titulo: "Canta alegre al Señor", autor: "Tradicional" },
+  // ... add more songs here with their authors
+];
