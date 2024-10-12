@@ -56,8 +56,42 @@ const config: Config = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		}
-  	}
+  	},
+  	backgroundImage: {
+  		'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+  		'gradient-conic':
+  			'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+  	},
+  	keyframes: {
+  		fadeIn: {
+  			'0%': { opacity: '0' },
+  			'100%': { opacity: '1' },
+  		},
+  		slideInFromRight: {
+  			'0%': { transform: 'translateX(100%)' },
+  			'100%': { transform: 'translateX(0)' },
+  		},
+  		slideInFromLeft: {
+  			'0%': { transform: 'translateX(-100%)' },
+  			'100%': { transform: 'translateX(0)' },
+  		},
+  		slideInFromTop: {
+  			'0%': { transform: 'translateY(-100%)' },
+  			'100%': { transform: 'translateY(0)' },
+  		},
+  		slideInFromBottom: {
+  			'0%': { transform: 'translateY(100%)' },
+  			'100%': { transform: 'translateY(0)' },
+  		},
+  	},
+  	animation: {
+  		fadeIn: 'fadeIn 0.5s ease-in-out',
+  		slideInFromRight: 'slideInFromRight 0.5s ease-in-out',
+  		slideInFromLeft: 'slideInFromLeft 0.5s ease-in-out',
+  		slideInFromTop: 'slideInFromTop 0.5s ease-in-out',
+  		slideInFromBottom: 'slideInFromBottom 0.5s ease-in-out',
+  	},
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [],
 };
 export default config;
