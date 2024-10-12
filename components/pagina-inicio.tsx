@@ -1,3 +1,6 @@
+"use client"
+
+import React from 'react';
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -35,16 +38,13 @@ export function PaginaInicio() {
 
           <div>
             <h2 className="text-xl font-merriweather font-semibold mb-4 text-stone-700">Categorías</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {CATEGORIAS.map((categoria: { letra: string; descripcion: string }) => (
-                <Button
-                  key={categoria.letra}
-                  variant="outline"
-                  className="bg-white text-stone-700 border-stone-300 hover:bg-stone-100 flex items-center justify-start space-x-2 py-2 px-3"
-                >
-                  <span className="font-semibold text-lg">{categoria.letra}</span>
-                  <span>{categoria.descripcion}</span>
-                </Button>
+                <div key={categoria.letra} className="flex flex-col items-center p-4 h-full bg-white rounded-lg shadow-sm transition-all duration-300 hover:bg-stone-100">
+                  <span className="text-2xl font-semibold">{categoria.letra}</span>
+                  <span className="w-8 h-0.5 bg-stone-400 my-2"></span>
+                  <p className="text-center">{categoria.descripcion}</p>
+                </div>
               ))}
             </div>
           </div>
