@@ -8,6 +8,8 @@ export interface Song {
   code: string;
   title: string;
   author: string;
+  category: string;
+  hasAudio: boolean;
   lyrics: string;
 }
 

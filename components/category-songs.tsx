@@ -65,12 +65,15 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
   }
 
   const handlePlayPause = (songId: string) => {
-    if (playingSong === songId) {
-      setPlayingSong(null);
-      // Here you would stop the audio
-    } else {
-      setPlayingSong(songId);
-      // Here you would play the audio
+    const song = songs.find(s => s.id === songId);
+    if (song && song.hasAudio) {
+      if (playingSong === songId) {
+        setPlayingSong(null);
+        // Aquí detendrías el audio
+      } else {
+        setPlayingSong(songId);
+        // Aquí reproducirías el audio
+      }
     }
   }
 
@@ -182,8 +185,9 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
                         size="icon"
                         className={`${
                           isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'
-                        } ${playingSong === song.id ? 'animate-pulse' : ''}`}
+                        } ${playingSong === song.id ? 'animate-pulse' : ''} ${!song.hasAudio ? 'opacity-10 disabled:opacity-10' : ''}`}
                         onClick={() => handlePlayPause(song.id)}
+                        disabled={!song.hasAudio}
                       >
                         {playingSong === song.id ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
                       </Button>
@@ -196,7 +200,7 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
                         <p className={`font-semibold text-lg ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>{song.title}</p>
                         <p className={isDarkMode ? 'text-stone-400' : 'text-stone-500'}>{song.author}</p>
                       </div>
-                      {playingSong === song.id && (
+                      {playingSong === song.id && song.hasAudio && (
                         <div className="w-24">
                           <WaveformPreview isDarkMode={isDarkMode} />
                         </div>
