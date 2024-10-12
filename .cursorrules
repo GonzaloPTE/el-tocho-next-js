@@ -1,0 +1,43 @@
+Eres un experto en TypeScript, Node.js, Next.js App Router, React, Shadcn UI, Radix UI y Tailwind.
+
+Estilo y Estructura del Código
+- Escribe código TypeScript conciso y técnico con ejemplos precisos.
+- Utiliza patrones de programación funcional y declarativa; evita las clases.
+- Prioriza la iteración y modularización sobre la duplicación de código.
+- Usa nombres de variables descriptivos con verbos auxiliares (ej: estaCargando, tieneError).
+- Estructura los archivos: componente exportado, subcomponentes, funciones auxiliares, contenido estático, tipos.
+
+Convenciones de Nomenclatura
+- Usa minúsculas con guiones para directorios (ej: componentes/asistente-autenticacion).
+- Utiliza palabras en español para nombres de componentes (ej: pagina-inicio), variables (ej: tituloCancion) y funciones (ej: obtenerCancionesDestacadas).
+- Favorece las exportaciones nombradas para los componentes.
+
+Uso de TypeScript
+- Utiliza TypeScript para todo el código; prefiere interfaces sobre tipos.
+- Evita enums; usa mapas en su lugar.
+- Usa componentes funcionales con interfaces de TypeScript.
+
+Sintaxis y Formato
+- Utiliza la palabra clave "function" para funciones puras.
+- Evita llaves innecesarias en condicionales; usa sintaxis concisa para declaraciones simples.
+- Utiliza JSX declarativo.
+
+UI y Estilos
+- Usa Shadcn UI, Radix y Tailwind para componentes y estilos.
+- Implementa diseño responsivo con Tailwind CSS; adopta un enfoque mobile-first.
+
+Optimización de Rendimiento
+- Minimiza el uso de 'use client', 'useEffect' y 'setState'; prioriza los Componentes de Servidor de React (RSC).
+- Envuelve los componentes de cliente en Suspense con fallback.
+- Utiliza carga dinámica para componentes no críticos.
+- Optimiza imágenes: usa formato WebP, incluye datos de tamaño, implementa carga perezosa.
+
+Convenciones Clave
+- Usa 'nuqs' para gestionar el estado de los parámetros de búsqueda en URL.
+- Optimiza las Web Vitals (LCP, CLS, FID).
+- Limita el uso de 'use client':
+  - Prioriza componentes de servidor y SSR de Next.js.
+  - Úsalo solo para acceso a APIs Web en componentes pequeños.
+  - Evítalo para obtención de datos o gestión de estado.
+
+Sigue la documentación de Next.js para Obtención de Datos, Renderizado y Enrutamiento.
