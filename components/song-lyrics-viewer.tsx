@@ -3,12 +3,10 @@
 import React from 'react';
 import { ArrowLeft, Rewind, Play, Pause, FastForward, BookOpen, SkipBack, SkipForward, Moon, Sun, Plus, Minus, Music } from "lucide-react"
 import { useRouter } from 'next/navigation'
-import { CustomSlider } from "@/components/ui/custom-slider"
 import { Button } from "@/components/ui/button"
 import { Waveform } from "@/components/ui/waveform"
 import Footer from '@/components/footer';
 import { SITE_NAME } from "@/components/constants"
-import { CircularDial } from "@/components/ui/circular-dial"
 import { TransposeControl } from "@/components/ui/transpose-control"
 
 // Example song lyrics
