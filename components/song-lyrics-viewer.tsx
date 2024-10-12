@@ -113,49 +113,62 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto px-4 py-16">
-        <div className={`mx-auto space-y-12 ${isLongSong ? 'max-w-6xl' : 'max-w-3xl'}`}>
-          <div className="flex items-center justify-center space-x-8">
-            <div className={`w-24 h-24 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
-              isDarkMode ? 'bg-stone-700' : 'bg-stone-800'
-            }`}>
-              <span className="text-4xl">A2</span>
-            </div>
-            <div className="text-left">
-              <h2 className="text-4xl font-merriweather font-bold mb-2">ABRE TU TIENDA AL SEÑOR</h2>
-              <h3 className={`text-xl font-merriweather ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>Carmelo Erdozáin</h3>
-            </div>
-          </div>
-          
-          <div className={`rounded-2xl shadow-xl p-8 border space-y-8 ${
+      <main className="flex-grow container mx-auto px-4 py-8">
+        <div className={`mx-auto space-y-6 ${isLongSong ? 'max-w-6xl' : 'max-w-3xl'}`}>
+          <div className={`rounded-2xl shadow-xl p-4 sm:p-6 md:p-8 border space-y-6 ${
             isDarkMode ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'
           }`}>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className={`text-sm font-medium ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>
-                  {formatTime(currentTime)}
-                </span>
-                <span className={`text-sm font-medium ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>
-                  {formatTime(duration)}
-                </span>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0 sm:space-x-4">
+              <div className="flex items-center space-x-4">
+                <div className={`w-16 h-16 flex-shrink-0 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
+                  isDarkMode ? 'bg-stone-700' : 'bg-stone-800'
+                }`}>
+                  <span className="text-2xl">A2</span>
+                </div>
+                <div className="text-left">
+                  <h2 className="text-2xl font-merriweather font-bold leading-tight">ABRE TU TIENDA AL SEÑOR</h2>
+                  <h3 className={`text-lg font-merriweather ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>Carmelo Erdozáin</h3>
+                </div>
               </div>
-              <Waveform
-                currentTime={currentTime}
-                duration={duration}
-                waveformData={MOCK_WAVEFORM_DATA}
-                onClick={handleWaveformClick}
-                isDarkMode={isDarkMode}
-              />
+              <div className="flex justify-end sm:justify-start">
+                <TransposeControl
+                  value={transpose}
+                  onChange={setTranspose}
+                  min={-11}
+                  max={11}
+                  isDarkMode={isDarkMode}
+                />
+              </div>
             </div>
 
-            <div className="flex justify-center items-center space-x-6">
+            <div className="space-y-2 px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12">
+              <div className="relative">
+                <Waveform
+                  currentTime={currentTime}
+                  duration={duration}
+                  waveformData={MOCK_WAVEFORM_DATA}
+                  onClick={handleWaveformClick}
+                  isDarkMode={isDarkMode}
+                />
+                <div className="absolute bottom-0 left-0 right-0 flex justify-between text-sm font-medium">
+                  <span className={`${isDarkMode ? 'text-stone-400' : 'text-stone-600'} absolute left-0 sm:left-2 md:left-4 lg:left-6 xl:left-10 bottom-[-1.5rem]`}>
+                    {formatTime(currentTime)}
+                  </span>
+                  <span className={`${isDarkMode ? 'text-stone-400' : 'text-stone-600'} absolute right-0 sm:right-2 md:right-4 lg:right-6 xl:right-10 bottom-[-1.5rem]`}>
+                    {formatTime(duration)}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className={`flex justify-center items-center space-x-4`}>
               <Button
                 variant="ghost"
                 size="icon"
                 className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
                 onClick={() => router.push(`/song/${parseInt(songId) - 1}`)}
               >
-                <SkipBack className="h-6 w-6" />
+                <SkipBack className="h-5 w-5" />
               </Button>
               <Button
                 variant="ghost"
@@ -163,15 +176,15 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
                 className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
                 onClick={() => setCurrentTime(Math.max(0, currentTime - 10))}
               >
-                <Rewind className="h-6 w-6" />
+                <Rewind className="h-5 w-5" />
               </Button>
               <Button
                 variant="default"
                 size="icon"
-                className={`w-16 h-16 rounded-full ${isDarkMode ? 'bg-stone-700 hover:bg-stone-600' : 'bg-stone-800 hover:bg-stone-700'} text-white`}
+                className={`w-12 h-12 rounded-full ${isDarkMode ? 'bg-stone-700 hover:bg-stone-600' : 'bg-stone-800 hover:bg-stone-700'} text-white`}
                 onClick={() => setIsPlaying(!isPlaying)}
               >
-                {isPlaying ? <Pause className="h-8 w-8" /> : <Play className="h-8 w-8" />}
+                {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
               </Button>
               <Button
                 variant="ghost"
@@ -179,7 +192,7 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
                 className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
                 onClick={() => setCurrentTime(Math.min(duration, currentTime + 10))}
               >
-                <FastForward className="h-6 w-6" />
+                <FastForward className="h-5 w-5" />
               </Button>
               <Button
                 variant="ghost"
@@ -187,21 +200,11 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
                 className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
                 onClick={() => router.push(`/song/${parseInt(songId) + 1}`)}
               >
-                <SkipForward className="h-6 w-6" />
+                <SkipForward className="h-5 w-5" />
               </Button>
             </div>
-
-            <div className="flex justify-center">
-              <TransposeControl
-                value={transpose}
-                onChange={setTranspose}
-                min={-11}
-                max={11}
-                isDarkMode={isDarkMode}
-              />
-            </div>
             
-            <div className={lyricsClassName}>
+            <div className={`${lyricsClassName} mt-6 px-2 sm:px-4 md:px-6 lg:px-8`}>
               {SONG_LYRICS}
             </div>
           </div>
