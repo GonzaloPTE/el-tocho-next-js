@@ -176,7 +176,7 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
-                      className={`flex items-center space-x-4 p-4 rounded-xl transition-all duration-300 ${
+                      className={`flex items-center space-x-2 sm:space-x-4 p-2 sm:p-4 rounded-xl transition-all duration-300 ${
                         isDarkMode ? 'hover:bg-stone-700' : 'hover:bg-stone-50'
                       }`}
                     >
@@ -189,19 +189,19 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
                         onClick={() => handlePlayPause(song.id)}
                         disabled={!song.hasAudio}
                       >
-                        {playingSong === song.id ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
+                        {playingSong === song.id ? <Pause className="h-4 w-4 sm:h-6 sm:w-6" /> : <Play className="h-4 w-4 sm:h-6 sm:w-6" />}
                       </Button>
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold text-lg shadow-inner transition-colors ${
+                      <div className={`w-8 h-8 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-semibold text-sm sm:text-lg shadow-inner transition-colors ${
                         isDarkMode ? 'bg-stone-700 text-stone-200 group-hover:bg-stone-600' : 'bg-stone-100 text-stone-700 group-hover:bg-stone-200'
                       }`}>
                         {song.code}
                       </div>
                       <div className="flex-grow cursor-pointer" onClick={() => handleSongClick(song.id)}>
-                        <p className={`font-semibold text-lg ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>{song.title}</p>
-                        <p className={isDarkMode ? 'text-stone-400' : 'text-stone-500'}>{song.author}</p>
+                        <p className={`font-semibold text-sm sm:text-lg ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>{song.title}</p>
+                        <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-stone-400' : 'text-stone-500'}`}>{song.author}</p>
                       </div>
                       {playingSong === song.id && song.hasAudio && (
-                        <div className="w-24">
+                        <div className="w-16 sm:w-24">
                           <WaveformPreview isDarkMode={isDarkMode} />
                         </div>
                       )}
@@ -213,13 +213,13 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
                           isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'
                         } ${favorites.has(song.id) ? 'text-red-500' : ''}`}
                       >
-                        <Heart className={`h-5 w-5 ${favorites.has(song.id) ? 'fill-current' : ''}`} />
+                        <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${favorites.has(song.id) ? 'fill-current' : ''}`} />
                       </Button>
                       <ChevronRight 
                         className={`${
                           isDarkMode ? 'text-stone-400 group-hover:text-stone-200' : 'text-stone-400 group-hover:text-stone-600'
                         } transition-colors cursor-pointer`} 
-                        size={24} 
+                        size={20} 
                         onClick={() => handleSongClick(song.id)}
                       />
                     </motion.div>
