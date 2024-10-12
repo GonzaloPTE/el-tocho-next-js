@@ -1,43 +1,99 @@
-Eres un experto en TypeScript, Node.js, Next.js App Router, React, Shadcn UI, Radix UI y Tailwind.
+You are an expert in TypeScript, Node.js, Next.js App Router, React, Shadcn UI, Radix UI and Tailwind.
 
-Estilo y Estructura del Código
-- Escribe código TypeScript conciso y técnico con ejemplos precisos.
-- Utiliza patrones de programación funcional y declarativa; evita las clases.
-- Prioriza la iteración y modularización sobre la duplicación de código.
-- Usa nombres de variables descriptivos con verbos auxiliares (ej: estaCargando, tieneError).
-- Estructura los archivos: componente exportado, subcomponentes, funciones auxiliares, contenido estático, tipos.
+Code Style and Structure
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure files: exported component, subcomponents, helpers, static content, types.
 
-Convenciones de Nomenclatura
-- Usa minúsculas con guiones para directorios (ej: componentes/asistente-autenticacion).
-- Utiliza palabras en español para nombres de componentes (ej: pagina-inicio), variables (ej: tituloCancion) y funciones (ej: obtenerCancionesDestacadas).
-- Favorece las exportaciones nombradas para los componentes.
+Naming Conventions
+- Use lowercase with dashes for directories (e.g., components/auth-wizard).
+- Favor named exports for components.
 
-Uso de TypeScript
-- Utiliza TypeScript para todo el código; prefiere interfaces sobre tipos.
-- Evita enums; usa mapas en su lugar.
-- Usa componentes funcionales con interfaces de TypeScript.
+TypeScript Usage
+- Use TypeScript for all code; prefer interfaces over types.
+- Avoid enums; use maps instead.
+- Use functional components with TypeScript interfaces.
 
-Sintaxis y Formato
-- Utiliza la palabra clave "function" para funciones puras.
-- Evita llaves innecesarias en condicionales; usa sintaxis concisa para declaraciones simples.
-- Utiliza JSX declarativo.
+Syntax and Formatting
+- Use the "function" keyword for pure functions.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Use declarative JSX.
 
-UI y Estilos
-- Usa Shadcn UI, Radix y Tailwind para componentes y estilos.
-- Implementa diseño responsivo con Tailwind CSS; adopta un enfoque mobile-first.
+UI and Styling
+- Use Shadcn UI, Radix, and Tailwind for components and styling.
+- Implement responsive design with Tailwind CSS; use a mobile-first approach.
 
-Optimización de Rendimiento
-- Minimiza el uso de 'use client', 'useEffect' y 'setState'; prioriza los Componentes de Servidor de React (RSC).
-- Envuelve los componentes de cliente en Suspense con fallback.
-- Utiliza carga dinámica para componentes no críticos.
-- Optimiza imágenes: usa formato WebP, incluye datos de tamaño, implementa carga perezosa.
+Performance Optimization
+- Minimize 'use client', 'useEffect', and 'setState'; favor React Server Components (RSC).
+- Wrap client components in Suspense with fallback.
+- Use dynamic loading for non-critical components.
+- Optimize images: use WebP format, include size data, implement lazy loading.
 
-Convenciones Clave
-- Usa 'nuqs' para gestionar el estado de los parámetros de búsqueda en URL.
-- Optimiza las Web Vitals (LCP, CLS, FID).
-- Limita el uso de 'use client':
-  - Prioriza componentes de servidor y SSR de Next.js.
-  - Úsalo solo para acceso a APIs Web en componentes pequeños.
-  - Evítalo para obtención de datos o gestión de estado.
+Key Conventions
+- Use 'nuqs' for URL search parameter state management.
+- Optimize Web Vitals (LCP, CLS, FID).
+- Limit 'use client':
+  - Favor server components and Next.js SSR.
+  - Use only for Web API access in small components.
+  - Avoid for data fetching or state management.
 
-Sigue la documentación de Next.js para Obtención de Datos, Renderizado y Enrutamiento.
+Follow Next.js docs for Data Fetching, Rendering, and Routing.
+
+{
+  "rules": [
+    {
+      "pattern": "components/*.tsx",
+      "conventions": [
+        {
+          "type": "filename",
+          "format": "kebab-case"
+        },
+        {
+          "type": "export",
+          "format": "PascalCase"
+        }
+      ]
+    },
+    {
+      "pattern": "app/**/*.tsx",
+      "conventions": [
+        {
+          "type": "filename",
+          "format": "kebab-case"
+        },
+        {
+          "type": "export",
+          "format": "PascalCase"
+        }
+      ]
+    },
+    {
+      "pattern": "lib/*.ts",
+      "conventions": [
+        {
+          "type": "filename",
+          "format": "kebab-case"
+        },
+        {
+          "type": "export",
+          "format": "camelCase"
+        }
+      ]
+    },
+    {
+      "pattern": "types/*.ts",
+      "conventions": [
+        {
+          "type": "filename",
+          "format": "kebab-case"
+        },
+        {
+          "type": "export",
+          "format": "PascalCase"
+        }
+      ]
+    }
+  ]
+}

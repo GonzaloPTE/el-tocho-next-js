@@ -1,30 +1,28 @@
-export const CATEGORIAS = [
-  { letra: 'A', descripcion: 'Entrada' },
-  { letra: 'B', descripcion: 'Perdón' },
-  { letra: 'C', descripcion: 'Gloria' },
-  { letra: 'D', descripcion: 'Salmo' },
-  { letra: 'E', descripcion: 'Aleluya' },
-  { letra: 'F', descripcion: 'Ofertorio' },
-  { letra: 'G', descripcion: 'Santo' },
-  { letra: 'H', descripcion: 'Padrenuestro' },
-  { letra: 'I', descripcion: 'Paz' },
-  { letra: 'J', descripcion: 'Comunión' },
-  { letra: 'K', descripcion: 'Salida' },
-  { letra: 'M', descripcion: 'María' },
-  { letra: 'V', descripcion: 'Villancicos' }
-]
+export const CATEGORIES = [
+  { letter: 'E', description: 'Entrada' },
+  { letter: 'K', description: 'Kyrie' },
+  { letter: 'G', description: 'Gloria' },
+  { letter: 'S', description: 'Salmo' },
+  { letter: 'A', description: 'Aleluya' },
+  { letter: 'O', description: 'Ofertorio' },
+  { letter: 'N', description: 'Santo' },
+  { letter: 'P', description: 'Padre Nuestro' },
+  { letter: 'C', description: 'Comunión' },
+  { letter: 'F', description: 'Final' }
+];
 
-export const CANCIONES_DESTACADAS = [
-  { codigo: 'A.34', titulo: "Dios está aquí", artista: "María del Carmen Ramos" },
-  { codigo: 'K.12', titulo: "Hoy el Señor resucitó", artista: "Tradicional" },
-  { codigo: 'J.56', titulo: "Cantemos al amor de los amores", artista: "Tradicional" }
-]
+export const FEATURED_SONGS = [
+  { code: 'E15', title: 'Juntos como hermanos', artist: 'Cesáreo Gabaráin' },
+  { code: 'C45', title: 'El Señor es mi pastor', artist: 'Tradicional' },
+  { code: 'F23', title: 'Santa María del Camino', artist: 'Juan Antonio Espinosa' },
+  // Add more featured songs as needed
+];
 
-export const TODAS_LAS_CANCIONES = [
-  { codigo: "A.34", titulo: "Abre tu tienda al Señor", autor: "Carmelo Erdozáin" },
-  { codigo: "B.12", titulo: "Bendito sea el Señor", autor: "Juan A. Espinosa" },
-  { codigo: "C.56", titulo: "Canta alegre al Señor", autor: "Tradicional" },
-  // ... add more songs here with their authors
+export const ALL_SONGS = [
+  { code: 'E15', title: 'Juntos como hermanos', author: 'Cesáreo Gabaráin' },
+  { code: 'C45', title: 'El Señor es mi pastor', author: 'Tradicional' },
+  { code: 'F23', title: 'Santa María del Camino', author: 'Juan Antonio Espinosa' },
+  // Add more songs to the complete list
 ];
 
 export const SITE_NAME = "El TOCHO.app";
