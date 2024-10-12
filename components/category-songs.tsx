@@ -124,7 +124,7 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
           }`}>
             <div className="flex items-center space-x-6 mb-8">
               <div className={`w-24 h-24 flex-shrink-0 rounded-full flex items-center justify-center text-white font-bold shadow-lg ${
-                isDarkMode ? 'bg-stone-700' : 'bg-stone-800'
+                isDarkMode ? 'bg-stone-600' : 'bg-stone-800'
               }`}>
                 <span className="text-4xl">{category.letter}</span>
               </div>
