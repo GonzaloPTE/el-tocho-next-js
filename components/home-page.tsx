@@ -32,6 +32,10 @@ const HomePage: React.FC = () => {
     router.push(`/song/${songId}`)
   }
 
+  const handleCategoryClick = (categoryLetter: string) => {
+    router.push(`/category/${categoryLetter}`)
+  }
+
   return (
     <div className={`min-h-screen flex flex-col ${
       isDarkMode ? 'bg-stone-900 text-stone-100' : 'bg-gradient-to-br from-stone-50 via-stone-100 to-stone-200 text-stone-800'
@@ -149,9 +153,13 @@ const HomePage: React.FC = () => {
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {CATEGORIES.map((category: Category) => (
-                <div key={category.letter} className={`flex flex-col items-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 cursor-pointer ${
-                  isDarkMode ? 'bg-stone-800 border-stone-700 hover:bg-stone-700' : 'bg-white border-stone-200 hover:bg-stone-50'
-                }`}>
+                <div 
+                  key={category.letter} 
+                  className={`flex flex-col items-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 cursor-pointer ${
+                    isDarkMode ? 'bg-stone-800 border-stone-700 hover:bg-stone-700' : 'bg-white border-stone-200 hover:bg-stone-50'
+                  }`}
+                  onClick={() => handleCategoryClick(category.letter)}
+                >
                   <span className={`text-4xl font-bold mb-4 ${isDarkMode ? 'text-stone-100' : 'text-stone-700'}`}>{category.letter}</span>
                   <p className={`text-center text-sm ${isDarkMode ? 'text-stone-300' : 'text-stone-600'}`}>{category.description}</p>
                 </div>
