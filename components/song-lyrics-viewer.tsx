@@ -1,13 +1,15 @@
 'use client'
 
 import React from 'react';
-import { ArrowLeft, Rewind, Play, Pause, FastForward, BookOpen, SkipBack, SkipForward, Moon, Sun } from "lucide-react"
+import { ArrowLeft, Rewind, Play, Pause, FastForward, BookOpen, SkipBack, SkipForward, Moon, Sun, Plus, Minus, Music } from "lucide-react"
 import { useRouter } from 'next/navigation'
 import { CustomSlider } from "@/components/ui/custom-slider"
 import { Button } from "@/components/ui/button"
 import { Waveform } from "@/components/ui/waveform"
 import Footer from '@/components/footer';
 import { SITE_NAME } from "@/components/constants"
+import { CircularDial } from "@/components/ui/circular-dial"
+import { TransposeControl } from "@/components/ui/transpose-control"
 
 // Example song lyrics
 const SONG_LYRICS = `
@@ -69,6 +71,15 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
 
   const handleWaveformClick = (time: number) => {
     setCurrentTime(time);
+  };
+
+  const handleTranspose = (newValue: number) => {
+    setTranspose(newValue);
+  };
+
+  const getNoteFromSemitones = (semitones: number) => {
+    const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    return notes[(semitones + 12) % 12];
   };
 
   return (
@@ -180,26 +191,14 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
               </Button>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <label htmlFor="transpose" className={`text-sm font-medium whitespace-nowrap ${
-                isDarkMode ? 'text-stone-400' : 'text-stone-600'
-              }`}>
-                Transponer:
-              </label>
-              <div className="flex-grow">
-                <CustomSlider
-                  value={transpose}
-                  onChange={setTranspose}
-                  min={-12}
-                  max={12}
-                  step={1}
-                />
-              </div>
-              <span className={`text-sm font-medium whitespace-nowrap ${
-                isDarkMode ? 'text-stone-400' : 'text-stone-600'
-              }`}>
-                {transpose} semitonos
-              </span>
+            <div className="flex justify-center">
+              <TransposeControl
+                value={transpose}
+                onChange={setTranspose}
+                min={-11}
+                max={11}
+                isDarkMode={isDarkMode}
+              />
             </div>
             
             <div className={lyricsClassName}>
