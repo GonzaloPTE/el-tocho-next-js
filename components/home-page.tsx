@@ -4,7 +4,7 @@ import React from 'react';
 import { Search, X, ChevronRight, BookOpen, Moon, Sun } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { categories, featuredSongs, allSongs } from "@/lib/data/songs";
+import { categories, getFeaturedSongs, allSongs } from "@/lib/data/songs";
 import { siteName } from "@/lib/config/site";
 import { Category, Song } from "@/types/song";
 import Footer from '@/components/Footer';
@@ -14,8 +14,13 @@ import { useTheme } from '@/lib/theme-context'
 const HomePage: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchResults, setSearchResults] = React.useState<Song[]>([]);
+  const [featuredSongs, setFeaturedSongs] = React.useState<Song[]>([]);
   const { isDarkMode, toggleDarkMode } = useTheme();
   const router = useRouter()
+
+  React.useEffect(() => {
+    setFeaturedSongs(getFeaturedSongs());
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   React.useEffect(() => {
     if (searchTerm.length > 0) {

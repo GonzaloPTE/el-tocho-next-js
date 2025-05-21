@@ -13,12 +13,6 @@ export const categories: Category[] = [
   { letter: 'F', description: 'Final' }
 ];
 
-export const featuredSongs: Song[] = [
-  { id: 'E15', code: 'E15', title: 'Juntos como hermanos', author: 'Cesáreo Gabaráin', lyrics: '...lyrics here...', category: 'E', hasAudio: false },
-  { id: 'C45', code: 'C45', title: 'El Señor es mi pastor', author: 'Tradicional', lyrics: '...lyrics here...', category: 'C', hasAudio: false },
-  { id: 'F23', code: 'F23', title: 'Santa María del Camino', author: 'Juan Antonio Espinosa', lyrics: '...lyrics here...', category: 'F', hasAudio: false },
-];
-
 export const allSongs: Song[] = [
   {
     id: "1",
@@ -56,5 +50,22 @@ export const allSongs: Song[] = [
     hasAudio: false,
     lyrics: '...'
   },
-  // ... Añade más canciones según sea necesario, asegurándote de que algunas tengan hasAudio: true y otras hasAudio: false
+  // Example placeholder songs to ensure we have at least 3 for shuffling
+  { id: 'E16', code: 'E16', title: 'Song Placeholder 1', author: 'Author 1', lyrics: '...', category: 'E', hasAudio: false },
+  { id: 'C46', code: 'C46', title: 'Song Placeholder 2', author: 'Author 2', lyrics: '...', category: 'C', hasAudio: true },
+  { id: 'F24', code: 'F24', title: 'Song Placeholder 3', author: 'Author 3', lyrics: '...', category: 'F', hasAudio: false },
 ]; 
+
+export function getFeaturedSongs(): Song[] {
+  // Create a copy of allSongs to avoid mutating the original array
+  const shuffledSongs = [...allSongs];
+
+  // Fisher-Yates (aka Knuth) Shuffle algorithm
+  for (let i = shuffledSongs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledSongs[i], shuffledSongs[j]] = [shuffledSongs[j], shuffledSongs[i]];
+  }
+
+  // Return the first 3 songs, or fewer if not enough songs are available
+  return shuffledSongs.slice(0, 3);
+} 
