@@ -17,9 +17,11 @@ export function SongItemControls({ song }: SongItemControlsProps) {
   const [isPlayingPreview, setIsPlayingPreview] = React.useState(false);
   const [isFavorite, setIsFavorite] = React.useState(false); // Replace with global state/localStorage if needed
 
+  const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
+
   const handlePlayPausePreview = (event: React.MouseEvent) => {
     event.stopPropagation(); // Prevent click from bubbling to the Link navigation
-    if (song.hasAudio) {
+    if (canPlayAudio) {
       setIsPlayingPreview(!isPlayingPreview);
       // TODO: Implement actual audio play/pause for preview
       if (!isPlayingPreview) {
@@ -39,7 +41,7 @@ export function SongItemControls({ song }: SongItemControlsProps) {
 
   return (
     <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0"> {/* Added flex-shrink-0 */}
-      {song.hasAudio && (
+      {canPlayAudio && (
         <Button
           variant="ghost"
           size="icon"
@@ -52,7 +54,7 @@ export function SongItemControls({ song }: SongItemControlsProps) {
           {isPlayingPreview ? <Pause className="h-4 w-4 sm:h-5 sm:w-5" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5" />}
         </Button>
       )}
-      {isPlayingPreview && song.hasAudio && (
+      {isPlayingPreview && canPlayAudio && (
         <div className="w-12 sm:w-16 h-8 flex items-center">
           <WaveformPreview isDarkMode={isDarkMode} />
         </div>

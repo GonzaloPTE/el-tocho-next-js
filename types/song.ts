@@ -11,7 +11,8 @@ export interface Song {
   author: string;
   category: string;
   slug: string;
-  hasAudio: boolean;
   lyrics: string;
+  audioUrl?: string;
+  videoUrl?: string;
   duration?: number;
 }

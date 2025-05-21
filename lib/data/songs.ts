@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { Song, Category } from "@/types/song";
 import { slugifyText } from "@/lib/utils";
 
@@ -14,82 +16,34 @@ export const categories: Category[] = [
   { letter: 'F', description: 'Final', slug: slugifyText('Final') }
 ];
 
-const MOCK_LYRICS = `
-FA            DO                  re
-ABRE TU TIENDA AL SEÑOR, 
-    SIb       FA
-RECÍBELE DENTRO, 
-DO
-ESCUCHA SU VOZ.
-FA           DO                   re
-ABRE TU TIENDA AL SEÑOR,
-    SIb            FA
-PREPARA TU FUEGO
-    DO7            FA
-QUE LLEGA EL AMOR.
+// Function to read and parse cantoral.jsonl
+function loadSongs(): Song[] {
+  try {
+    const filePath = path.resolve(process.cwd(), 'lib/data/cantoral.jsonl');
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const lines = fileContent.trim().split('\n');
+    return lines.map(line => JSON.parse(line) as Song);
+  } catch (error) {
+    console.error("Error loading songs from cantoral.jsonl:", error);
+    // Return a default empty array or a minimal set of songs in case of an error
+    // This prevents the application from crashing during build or runtime if the file is missing or corrupt
+    return [
+      {
+        id: "error-song",
+        code: "E00",
+        title: "Error: Could not load songs",
+        author: "System",
+        category: "X",
+        slug: "error-loading-songs",
+        lyrics: "There was an issue loading the song data. Please check the server logs.",
+        audioUrl: undefined,
+        videoUrl: undefined,
+      }
+    ];
+  }
+}
 
-
-                    re
-El adviento es esperanza,
-            SIb            FA
-la esperanza salvación;
-                        DO
-ya se acerca el Señor.
-        FA                re
-Preparemos los caminos,
-        SIb             FA
-los caminos del amor,
-        DO7          FA
-escuchemos su voz.
-
-`;
-
-export const allSongs: Song[] = [
-  {
-    id: "1",
-    code: "E1",
-    title: "Vamos cantando al Señor",
-    author: "Cesáreo Gabaráin",
-    category: "E",
-    slug: slugifyText("Vamos cantando al Señor Cesáreo Gabaráin"),
-    hasAudio: true,
-    lyrics: MOCK_LYRICS
-  },
-  {
-    id: "2",
-    code: "E2",
-    title: "Alegre la mañana",
-    author: "Juan Antonio Espinosa",
-    category: "E",
-    slug: slugifyText("Alegre la mañana Juan Antonio Espinosa"),
-    hasAudio: false,
-    lyrics: MOCK_LYRICS
-  },
-  {
-    id: "3",
-    code: "E3",
-    title: "Iglesia peregrina",
-    author: "Cesáreo Gabaráin",
-    category: "E",
-    slug: slugifyText("Iglesia peregrina Cesáreo Gabaráin"),
-    hasAudio: true,
-    lyrics: MOCK_LYRICS
-  },
-  {
-    id: "4",
-    code: "E15",
-    title: "Juntos como hermanos",
-    author: "Cesáreo Gabaráin",
-    category: "E",
-    slug: slugifyText("Juntos como hermanos Cesáreo Gabaráin"),
-    hasAudio: false,
-    lyrics: MOCK_LYRICS
-  },
-  // Example placeholder songs to ensure we have at least 3 for shuffling
-  { id: 'E16', code: 'E16', title: 'Song Placeholder 1', author: 'Author 1', lyrics: MOCK_LYRICS, category: 'E', slug: slugifyText('Song Placeholder 1 Author 1'), hasAudio: false },
-  { id: 'C46', code: 'C46', title: 'Song Placeholder 2', author: 'Author 2', lyrics: MOCK_LYRICS, category: 'C', slug: slugifyText('Song Placeholder 2 Author 2'), hasAudio: true },
-  { id: 'F24', code: 'F24', title: 'Song Placeholder 3', author: 'Author 3', lyrics: MOCK_LYRICS, category: 'F', slug: slugifyText('Song Placeholder 3 Author 3'), hasAudio: false },
-]; 
+export const allSongs: Song[] = loadSongs();
 
 export function getFeaturedSongs(): Song[] {
   // Create a copy of allSongs to avoid mutating the original array

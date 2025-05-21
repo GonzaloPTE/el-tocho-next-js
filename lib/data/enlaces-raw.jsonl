@@ -1,0 +1,2816 @@
+[
+  {
+    "id": 1,
+    "idCantoral": 2601,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/A%20d%C3%B3nde%20vas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 2,
+    "idCantoral": 2927,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/A%20Ti%20levanto%20mis%20ojos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 3,
+    "idCantoral": 2677,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/A%20ti%20que%20est%C3%A1s%20sentado.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 4,
+    "idCantoral": 111,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/A%20todos%20los%20pueblos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 5,
+    "idCantoral": 111,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/A%20todos%20los%20pueblos%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 6,
+    "idCantoral": 132,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Abre%20mis%20labios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 7,
+    "idCantoral": 5,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Abre%20tu%20tienda%20al%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 8,
+    "idCantoral": 133,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Abrid%20de%20par%20en%20par.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 9,
+    "idCantoral": 136,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ac%C3%B3geme%2C%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 10,
+    "idCantoral": 136,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ac%C3%B3geme%2C%20Dios%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 12,
+    "idCantoral": 447,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Adelante%20(Naiara).mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=h3w58a_mWJ0"
+  },
+  {
+    "id": 13,
+    "idCantoral": 406,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Adeste%20fideles.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 14,
+    "idCantoral": 174,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Adoramus%20te%20Domine.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 15,
+    "idCantoral": 541,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Agnus%20Dei%20-%20Dona%20Nobis.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 19,
+    "idCantoral": 522,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Al%20amor%20m%C3%A1s%20sincero.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 20,
+    "idCantoral": 2675,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Alab%C3%A1ndote.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 21,
+    "idCantoral": 2638,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Alabar%C3%A9%20a%20mi%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 22,
+    "idCantoral": 29,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Alabo%20tu%20bondad%20(Gloria).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 23,
+    "idCantoral": 2591,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Alegr%C3%ADa%2C%20alegr%C3%ADa%2C%20alegr%C3%ADa.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 24,
+    "idCantoral": 297,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%20(Africano).mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=m8U14fITNDs"
+  },
+  {
+    "id": 25,
+    "idCantoral": 2679,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%20Juan%20Luis%20Guerra.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=m8nstWe71Tc"
+  },
+  {
+    "id": 26,
+    "idCantoral": 299,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%20(Ni%C3%B1os).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 27,
+    "idCantoral": 303,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%20(Taiz%C3%A9).mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=6ZmT0EuDP3I"
+  },
+  {
+    "id": 28,
+    "idCantoral": 2673,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%20cantamos%20los%20hijos%20de%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 29,
+    "idCantoral": 301,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%20cantar%C3%A1.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 30,
+    "idCantoral": 2945,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%20de%20la%20Tierra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 31,
+    "idCantoral": 86,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aleluya%2C%20Gloria%20a%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 32,
+    "idCantoral": 2936,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Algo%20est%C3%A1%20descendiendo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 33,
+    "idCantoral": 2964,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/All%20you%20need%20is%20love%20(The%20Beatles).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 34,
+    "idCantoral": 3057,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Alma%20m%C3%ADa%20alaba%20al%20Se%C3%B1or%20(Consolaci%C3%B3n).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 35,
+    "idCantoral": 395,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Alma%20misionera.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=Ukw1NujR4SA"
+  },
+  {
+    "id": 36,
+    "idCantoral": 141,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Amad%20a%20vuestros%20enemigos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 37,
+    "idCantoral": 2965,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Amando%20hasta%20el%20extremo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 38,
+    "idCantoral": 63,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Amaos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 39,
+    "idCantoral": 63,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Amaos%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 40,
+    "idCantoral": 138,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Amar%C3%A1s%20al%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 41,
+    "idCantoral": 2879,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aqu%C3%AD%20estoy%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 42,
+    "idCantoral": 2657,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aqu%C3%AD%20estoy%20yo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 43,
+    "idCantoral": 2657,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Aqu%C3%AD%20estoy%20yo%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 44,
+    "idCantoral": 2443,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Arre%20borriquito.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 45,
+    "idCantoral": 460,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Atraed.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 46,
+    "idCantoral": 460,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Atraed%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 47,
+    "idCantoral": 2407,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ave%20Maria%2C%20gratia%20plena.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 48,
+    "idCantoral": 2968,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ave%20Mar%C3%ADa%2C%20Perpetuo%20Socorro.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 49,
+    "idCantoral": 139,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ay%C3%BAdame%20a%20mirar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 50,
+    "idCantoral": 36,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bendecid%20al%20Se%C3%B1or%20(Canon).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 51,
+    "idCantoral": 525,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bendecid%20al%20Se%C3%B1or%20(Hebrea).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 52,
+    "idCantoral": 15,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bendecid%20al%20Se%C3%B1or%20(Taiz%C3%A9).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 53,
+    "idCantoral": 17,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bendigamos%20al%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 54,
+    "idCantoral": 461,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bendito%20seas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 55,
+    "idCantoral": 61,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bienaventurados.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 56,
+    "idCantoral": 2493,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bienaventuranzas%202.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 57,
+    "idCantoral": 2592,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Blanca%20Navidad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 58,
+    "idCantoral": 127,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Bonum%20est%20confidere.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 59,
+    "idCantoral": 190,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Busca%20el%20silencio.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 60,
+    "idCantoral": 358,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Busca%20la%20paz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 61,
+    "idCantoral": 358,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Busca%20la%20paz%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 62,
+    "idCantoral": 113,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Caminar%C3%A9%20en%20presencia%20del%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 63,
+    "idCantoral": 2667,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Caminaremos.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=jSeS-xXcC7I"
+  },
+  {
+    "id": 64,
+    "idCantoral": 2447,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Campana%20sobre%20campana.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 65,
+    "idCantoral": 2644,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Canci%C3%B3n%20a%20Mar%C3%ADa.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 66,
+    "idCantoral": 29,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Canci%C3%B3n%20para%20una%20vocaci%C3%B3n.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 68,
+    "idCantoral": 306,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Canta%20Aleluya.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 69,
+    "idCantoral": 2562,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Canta%20Alfonso.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 70,
+    "idCantoral": 204,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Canta%20mi%20alma%20a%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 71,
+    "idCantoral": 204,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Canta%20mi%20alma%20a%20Dios%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 72,
+    "idCantoral": 2508,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Canta%2C%20r%C3%ADe%2C%20bebe.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 73,
+    "idCantoral": 307,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cantad%20al%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 74,
+    "idCantoral": 3066,
+    "audioURL": "https://www.dropbox.com/s/n5nhu14ausqqfso/Cantemos%20al%20amor%20de%20los%20amores.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 75,
+    "idCantoral": 2491,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cantos%20de%20alabanza.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 76,
+    "idCantoral": 389,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cerca%20del%20hogar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 77,
+    "idCantoral": 2446,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Chiquirrit%C3%ADn.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 78,
+    "idCantoral": 448,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Color%20esperanza%20(Diego%20Torres).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 79,
+    "idCantoral": 2623,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Comentarios%20(180%C2%BA).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 80,
+    "idCantoral": 3058,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Como%20sal%20y%20luz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 81,
+    "idCantoral": 2892,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/C%C3%B3mo%20te%20podr%C3%A9%20pagar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 82,
+    "idCantoral": 2892,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/C%C3%B3mo%20te%20podr%C3%A9%20pagar%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 83,
+    "idCantoral": 323,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Con%20el%20vino%20y%20con%20el%20pan.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 84,
+    "idCantoral": 2495,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Conf%C3%ADo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 85,
+    "idCantoral": 2495,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Conf%C3%ADo%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 86,
+    "idCantoral": 149,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Conf%C3%ADo%20en%20Ti.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 87,
+    "idCantoral": 309,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Confitemini%20Domino.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 88,
+    "idCantoral": 2858,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Consagraci%C3%B3n%20al%20Esp%C3%ADritu%20Santo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 89,
+    "idCantoral": 2616,
+    "audioURL": "https://www.dropbox.com/s/mgpgn2sa7rkd3oo/Consolad.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 90,
+    "idCantoral": 466,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cosas%20de%20locos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 91,
+    "idCantoral": 466,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cosas%20de%20locos%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 92,
+    "idCantoral": 234,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Crea%20en%20m%C3%AD%2C%20oh%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 93,
+    "idCantoral": 234,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Crea%20en%20m%C3%AD%2C%20oh%20Dios%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 94,
+    "idCantoral": 2918,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Credo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 95,
+    "idCantoral": 2646,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Crezca%20en%20Ti%20mi%20fe.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 96,
+    "idCantoral": 83,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cristo%20ha%20resucitado.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 97,
+    "idCantoral": 2963,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cristo%20Jes%C3%BAs%2C%20mi%20luz%20interior.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 98,
+    "idCantoral": 2563,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Cristo%20vive.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 99,
+    "idCantoral": 359,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Da%20pacem%20Domine.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 100,
+    "idCantoral": 470,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dame%20fe.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 101,
+    "idCantoral": 470,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dame%20fe%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 102,
+    "idCantoral": 193,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dame%2C%20Se%C3%B1or%2C%20un%20coraz%C3%B3n%20feliz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 103,
+    "idCantoral": 360,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dame%20tu%20mano.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 104,
+    "idCantoral": 2565,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dame%20tus%20ojos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 105,
+    "idCantoral": 208,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dame%20un%20gu%C3%ADa.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 106,
+    "idCantoral": 52,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dame%20Vida.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 107,
+    "idCantoral": 2972,
+    "audioURL": "https://www.dropbox.com/s/z4y16rj3ciaynvh/Danos%20la%20luz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 108,
+    "idCantoral": 2663,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Danos%20Paz%20(Emuali).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 109,
+    "idCantoral": 362,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Danos%2C%20Se%C3%B1or%2C%20tu%20paz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 110,
+    "idCantoral": 44,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dar%20la%20cara.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 111,
+    "idCantoral": 165,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/De%20noche%20iremos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 112,
+    "idCantoral": 2672,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/De%20tu%20agua%20ll%C3%A9name.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 113,
+    "idCantoral": 198,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/D%C3%A9jame%20o%C3%ADr%20tu%20voz.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=-unAcy12uGk"
+  },
+  {
+    "id": 114,
+    "idCantoral": 198,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/D%C3%A9jame%20o%C3%ADr%20tu%20voz%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 115,
+    "idCantoral": 2893,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dejarme%20hacer.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 116,
+    "idCantoral": 2891,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dejo%20en%20tu%20cruz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 117,
+    "idCantoral": 3049,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Desbordo%20de%20gozo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 118,
+    "idCantoral": 408,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Desciendes%20de%20la%20altura.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 119,
+    "idCantoral": 3064,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Desde%20el%20alba%20hasta%20el%20ocaso.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 120,
+    "idCantoral": 473,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dichosos%20(Bienaventuranzas).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 121,
+    "idCantoral": 2973,
+    "audioURL": "https://www.dropbox.com/s/0fhoaeghno6301k/Dime%20como%20puedo%20amar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 122,
+    "idCantoral": 2445,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dime%20ni%C3%B1o.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 123,
+    "idCantoral": 2567,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dios%20de%20la%20vida.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 124,
+    "idCantoral": 69,
+    "audioURL": "https://www.dropbox.com/s/z8s3bhekj06zihc/Dios%20es%20fiel.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 125,
+    "idCantoral": 2344,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dios%20est%C3%A1%20aqu%C3%AD.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 126,
+    "idCantoral": 475,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dios%20os%20bendice.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 127,
+    "idCantoral": 292,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dios%20precisa%20de%20ti.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 128,
+    "idCantoral": 2489,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dios%20sigue%20llamando.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 130,
+    "idCantoral": 2566,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dona%20la%20vida%20entera.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 131,
+    "idCantoral": 3024,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dona%20nobis%20pacem%20(Canon).MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 132,
+    "idCantoral": 3045,
+    "audioURL": "https://www.dropbox.com/s/i9tc89svxmrg0n8/Donde%20hay%20caridad%20y%20amor.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 133,
+    "idCantoral": 432,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Dulce%20Patrona.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 134,
+    "idCantoral": 445,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20agua%20que%20me%20das.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 135,
+    "idCantoral": 2913,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20diario%20de%20Mar%C3%ADa.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 136,
+    "idCantoral": 2913,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20diario%20de%20Mar%C3%ADa%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 137,
+    "idCantoral": 95,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Esp%C3%ADritu%20del%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 138,
+    "idCantoral": 95,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Esp%C3%ADritu%20del%20Se%C3%B1or%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 139,
+    "idCantoral": 2559,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20loco.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 140,
+    "idCantoral": 2949,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20que%20muere%20por%20m%C3%AD.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 141,
+    "idCantoral": 380,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20Dios%20nos%20am%C3%B3.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 142,
+    "idCantoral": 130,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20es%20mi%20luz%20(Sal%2026).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 143,
+    "idCantoral": 476,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20es%20mi%20Pastor%20(Hna.%20Glenda).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 144,
+    "idCantoral": 195,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20es%20toda%20mi%20fuerza.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 145,
+    "idCantoral": 195,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20es%20toda%20mi%20fuerza%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 146,
+    "idCantoral": 200,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20est%C3%A1%20aqu%C3%AD.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 147,
+    "idCantoral": 22,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20nos%20ha%20reunido.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 148,
+    "idCantoral": 272,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20Se%C3%B1or%20te%20bendiga.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 149,
+    "idCantoral": 2449,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/El%20tamborilero.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 150,
+    "idCantoral": 2974,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/%C3%89l%20vendr%C3%A1%20y%20te%20salvar%C3%A1.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 151,
+    "idCantoral": 2504,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Emmanuel.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 152,
+    "idCantoral": 2905,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/En%20el%20%C3%BAltimo%20momento.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 153,
+    "idCantoral": 331,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/En%20las%20alturas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 154,
+    "idCantoral": 477,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/En%20mi%20debilidad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 155,
+    "idCantoral": 2946,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Getseman%C3%AD.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=uqWB26K8XBE"
+  },
+  {
+    "id": 156,
+    "idCantoral": 2613,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/En%20Navidad%20(Rosana).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 157,
+    "idCantoral": 238,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/En%20Ti%2C%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 158,
+    "idCantoral": 126,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/En%20todo%20amar%20y%20servir.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 159,
+    "idCantoral": 71,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/En%20tu%20Cruz%20sigues%20hoy.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 160,
+    "idCantoral": 539,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Enciende%20una%20luz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 161,
+    "idCantoral": 2928,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ens%C3%A9%C3%B1ame.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 162,
+    "idCantoral": 2928,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ens%C3%A9%C3%B1ame%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 163,
+    "idCantoral": 528,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ens%C3%A9%C3%B1anos%20a%20orar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 164,
+    "idCantoral": 2920,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Entra%20en%20mi%20noche.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 165,
+    "idCantoral": 66,
+    "audioURL": "https://www.dropbox.com/s/m4qwowgz67g3igo/Entre%20tus%20manos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 166,
+    "idCantoral": 2527,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Env%C3%ADa%2C%20Se%C3%B1or%2C%20tu%20Esp%C3%ADritu.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 167,
+    "idCantoral": 402,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Env%C3%ADame%20(S.%20T%C3%A1mez).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 168,
+    "idCantoral": 2612,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Env%C3%ADame%20(Brotes%20de%20Olivo).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 169,
+    "idCantoral": 402,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Env%C3%ADame%20(S.%20T%C3%A1mez)%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 170,
+    "idCantoral": 2626,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Era%20una%20mujer%20sencilla.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 171,
+    "idCantoral": 213,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Escuchad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 172,
+    "idCantoral": 147,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Espera%20en%20el%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 173,
+    "idCantoral": 423,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Esperarte.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 174,
+    "idCantoral": 91,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Esp%C3%ADritu%20de%20Dios%20(Venezolano).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 175,
+    "idCantoral": 97,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Esp%C3%ADritu%20fuego%20de%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 176,
+    "idCantoral": 2346,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Estamos%20viendo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 177,
+    "idCantoral": 115,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Este%20es%20el%20d%C3%ADa%20en%20que%20actu%C3%B3%20el%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 178,
+    "idCantoral": 3054,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Esto%20que%20soy%2C%20eso%20te%20doy.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 179,
+    "idCantoral": 324,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Esto%20que%20te%20doy.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 180,
+    "idCantoral": 2336,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Estoy%20alegre.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 181,
+    "idCantoral": 479,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Famien%20Nga.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 182,
+    "idCantoral": 60,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Felices%20(bienaventuranzas).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 183,
+    "idCantoral": 60,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Felices%20(Bienaventuranzas)%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 184,
+    "idCantoral": 2680,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20Juan%20Luis%20Guerra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 185,
+    "idCantoral": 2872,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20a%20Dios%20en%20las%20alturas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 186,
+    "idCantoral": 2490,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20a%20Dios%20en%20lo%20alto%20del%20cielo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 187,
+    "idCantoral": 2975,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20a%20Dios%20Santo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 188,
+    "idCantoral": 3048,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%2C%20Gloria%20a%20Dios%20en%20el%20cielo%20(Consolaci%C3%B3n).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 189,
+    "idCantoral": 2464,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20et%20in%20terra%20pax%20(Canon).MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 190,
+    "idCantoral": 2473,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20hondure%C3%B1o.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=QlDqID2JfPM"
+  },
+  {
+    "id": 191,
+    "idCantoral": 2593,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20in%20excelsis.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 192,
+    "idCantoral": 2872,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20jarocho.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 193,
+    "idCantoral": 106,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gloria%20Patri%20et%20Filio.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 194,
+    "idCantoral": 480,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gratis.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 195,
+    "idCantoral": 3032,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Gustad%20y%20ved.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 196,
+    "idCantoral": 410,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ha%20nacido%20el%20Salvador%20(Aleluya).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 197,
+    "idCantoral": 129,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Habla%2C%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 198,
+    "idCantoral": 2522,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/H%C3%A1blame.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 199,
+    "idCantoral": 2451,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hacia%20Bel%C3%A9n%20va%20una%20burra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 200,
+    "idCantoral": 2422,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/H%C3%A1gase%2C%20Se%C3%B1or.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 201,
+    "idCantoral": 2906,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hallelujah.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=L4oaPTi1tvE"
+  },
+  {
+    "id": 202,
+    "idCantoral": 2465,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hay%20que%20mojarse%20(Vicente%20Alexandre).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 203,
+    "idCantoral": 424,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hazme%20otro%20interior.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 204,
+    "idCantoral": 82,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hoy%20el%20Se%C3%B1or%20resucit%C3%B3.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 205,
+    "idCantoral": 151,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hoy%20empieza%20una%20nueva%20era.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 206,
+    "idCantoral": 413,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hoy%20en%20la%20tierra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 207,
+    "idCantoral": 2649,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hoy%20es%20el%20d%C3%ADa.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 208,
+    "idCantoral": 530,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hoy%20Se%C3%B1or%20te%20dar%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 209,
+    "idCantoral": 2503,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hoy%20Se%C3%B1or%20te%20dar%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 210,
+    "idCantoral": 381,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hoy%20s%C3%B3lo%20vengo%20a%20decir.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 211,
+    "idCantoral": 396,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Id%20y%20anunciad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 212,
+    "idCantoral": 397,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Iglesia%20joven.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 213,
+    "idCantoral": 313,
+    "audioURL": "https://www.dropbox.com/s/e0bc194csj5auwf/Iubilate%20Coeli.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 214,
+    "idCantoral": 2305,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Iubilate%20Deo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 215,
+    "idCantoral": 20,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Jerusal%C3%A9n.%20Jerusal%C3%A9n.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 216,
+    "idCantoral": 3065,
+    "audioURL": "https://www.dropbox.com/s/dlgi0qdlux5qs3j/Jesus%20amigo.MP3?dl=1",
+    "videoURL": "https://youtu.be/642TkbWovPg"
+  },
+  {
+    "id": 217,
+    "idCantoral": 73,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Jes%C3%BAs%20buen%20amigo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 218,
+    "idCantoral": 230,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Jes%C3%BAs%20es%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 219,
+    "idCantoral": 2457,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Junto%20a%20ti%2C%20Mar%C3%ADa.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 221,
+    "idCantoral": 251,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Kyrie%20Eleison%201.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 222,
+    "idCantoral": 253,
+    "audioURL": "https://www.dropbox.com/s/br7rdvbm4k9c3uc/Kyrie%2C%20Christe.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 223,
+    "idCantoral": 135,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20bondad%20y%20el%20amor.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 224,
+    "idCantoral": 135,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20bondad%20y%20el%20amor%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 225,
+    "idCantoral": 125,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20luz%20del%20mundo.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 226,
+    "idCantoral": 2513,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20marimorena.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 227,
+    "idCantoral": 246,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20misericordia%20(Taiz%C3%A9).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 228,
+    "idCantoral": 2605,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20misericordia%20del%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 229,
+    "idCantoral": 414,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20mula.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 230,
+    "idCantoral": 128,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20palabra%20del%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 231,
+    "idCantoral": 128,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20palabra%20del%20Se%C3%B1or%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 232,
+    "idCantoral": 2917,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20paz%20te%20doy.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 233,
+    "idCantoral": 2424,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20Virgen%20sue%C3%B1a%20caminos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 234,
+    "idCantoral": 487,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/La%20voz%20que%20clama.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 235,
+    "idCantoral": 2903,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/L%C3%A1mpara%20es%20tu%20palabra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 236,
+    "idCantoral": 319,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Laudate%20omnes%20gentes.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 237,
+    "idCantoral": 2942,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Letan%C3%ADas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 238,
+    "idCantoral": 28,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Lev%C3%A1ntate%20caminante.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 239,
+    "idCantoral": 173,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Llama%20de%20amor%20viva.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 240,
+    "idCantoral": 173,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Llama%20de%20amor%20viva%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 241,
+    "idCantoral": 399,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Llevad%20la%20Buena%20Noticia.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 242,
+    "idCantoral": 2450,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Los%20peces%20en%20el%20r%C3%ADo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 243,
+    "idCantoral": 394,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Los%20peque%C3%B1os%20de%20la%20tierra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 245,
+    "idCantoral": 2979,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Madre.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 246,
+    "idCantoral": 2620,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Magia%20(Rosana).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 247,
+    "idCantoral": 131,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Magnificat.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 248,
+    "idCantoral": 131,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Magnificat%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 250,
+    "idCantoral": 2452,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Manos%20vac%C3%ADas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 251,
+    "idCantoral": 218,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mar%20adentro.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 252,
+    "idCantoral": 6,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Maranatha.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 253,
+    "idCantoral": 2622,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Maranatha%2C%20ven%20Se%C3%B1or%20Jes%C3%BAs.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 254,
+    "idCantoral": 2622,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Maranatha%2C%20ven%20Se%C3%B1or%20Jes%C3%BAs%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 255,
+    "idCantoral": 436,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mar%C3%ADa%2C%20la%20madre%20buena.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 256,
+    "idCantoral": 2934,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/M%C3%A1s%20all%C3%A1%20(Getseman%C3%AD).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 257,
+    "idCantoral": 2934,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/M%C3%A1s%20all%C3%A1%20(Getseman%C3%AD)%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 259,
+    "idCantoral": 243,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Me%20levantar%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 260,
+    "idCantoral": 243,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Me%20levantar%C3%A9%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 261,
+    "idCantoral": 489,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Me%20llamar%C3%A1s.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 262,
+    "idCantoral": 489,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Me%20llamar%C3%A1s%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 263,
+    "idCantoral": 117,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Me%20refugio%20en%20Ti.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 264,
+    "idCantoral": 3042,
+    "audioURL": "https://www.dropbox.com/s/4rd4qzyovvlvo3u/Me%20siento%20perdonado%20%28IXCIS%29.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 265,
+    "idCantoral": 3046,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Me%20sostendr%C3%A1s%20(You%20raise%20me%20up).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 266,
+    "idCantoral": 146,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Me%20volver%C3%A9%20a%20Ti.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 267,
+    "idCantoral": 2931,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mi%20alma%20canta.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 268,
+    "idCantoral": 99,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mi%20Dios%20est%C3%A1%20vivo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 269,
+    "idCantoral": 400,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mi%20Dios%20gitano.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 270,
+    "idCantoral": 2643,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mi%20escudo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 271,
+    "idCantoral": 2678,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mi%20padre%20me%20ama.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 272,
+    "idCantoral": 2669,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mi%20pan%2C%20mi%20luz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 273,
+    "idCantoral": 2935,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mi%20roca.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 275,
+    "idCantoral": 2897,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Mu%C3%A9veme.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 276,
+    "idCantoral": 382,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nacer%C3%A1.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 277,
+    "idCantoral": 58,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nacer%C3%A1%20una%20nueva%20hermandad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 278,
+    "idCantoral": 2658,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nada%20es%20imposible%20para%20Ti.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 279,
+    "idCantoral": 2664,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nada%20me%20falta%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 280,
+    "idCantoral": 180,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nada%20nos%20separar%C3%A1.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 281,
+    "idCantoral": 2314,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nada%20te%20turbe.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 282,
+    "idCantoral": 383,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nadie%20te%20ama%20como%20yo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 283,
+    "idCantoral": 383,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nadie%20te%20ama%20como%20yo%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 284,
+    "idCantoral": 417,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Navidad%20es%20Navidad%20(Jos%C3%A9%20Luis%20Perales).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 285,
+    "idCantoral": 384,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/No%20ador%C3%A9is%20a%20nadie.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 286,
+    "idCantoral": 377,
+    "audioURL": "https://www.dropbox.com/s/jq78lqnrrv6thyb/No%20amarrar%2C%20si%20pudrir.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 287,
+    "idCantoral": 534,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/No%20os%20pido%20m%C3%A1s%20que%20le%20mir%C3%A9is.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 288,
+    "idCantoral": 35,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/No%20s%C3%A9%20c%C3%B3mo%20alabarte.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 289,
+    "idCantoral": 494,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/No%20s%C3%B3lo%20de%20pan.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 290,
+    "idCantoral": 2924,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/No%20temas.mp3?dl=1",
+    "videoURL": "www.youtube.com/watch?v=40d9SChP0hQ"
+  },
+  {
+    "id": 291,
+    "idCantoral": 3067,
+    "audioURL": "https://www.dropbox.com/s/cm6iiy57ypoxgda/No%20tengas%20miedo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 292,
+    "idCantoral": 2444,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Noche%20de%20paz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 293,
+    "idCantoral": 535,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Noche%20oscura.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 295,
+    "idCantoral": 2930,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nuestra%20hora.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 296,
+    "idCantoral": 199,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nunc%20dimitis.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 297,
+    "idCantoral": 495,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Nunc%20dimitis%20(180%C2%BA).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 298,
+    "idCantoral": 155,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oh%20Dios%2C%20por%20qu%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 299,
+    "idCantoral": 155,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oh%20Dios%2C%20por%20qu%C3%A9%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 300,
+    "idCantoral": 3043,
+    "audioURL": "https://www.dropbox.com/s/4pge7ryuugxsloj/Oh%20luz%20gozosa.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 301,
+    "idCantoral": 2662,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oh%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=6sRlLMOXHqc"
+  },
+  {
+    "id": 302,
+    "idCantoral": 2932,
+    "audioURL": "https://www.dropbox.com/s/7q5l8nwe5twsf2a/Oh%20happy%20day.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 303,
+    "idCantoral": 197,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oigo%20en%20mi%20coraz%C3%B3n.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 304,
+    "idCantoral": 197,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oigo%20en%20mi%20coraz%C3%B3n%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 305,
+    "idCantoral": 65,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oraci%C3%B3n%20de%20la%20sencillez.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 306,
+    "idCantoral": 65,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oraci%C3%B3n%20de%20la%20sencillez%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 307,
+    "idCantoral": 102,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Oraci%C3%B3n%20del%20pobre.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 308,
+    "idCantoral": 428,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Padre%20me%20pongo%20en%20tus%20manos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 309,
+    "idCantoral": 167,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Padre%2C%20si%20es%20posible.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 310,
+    "idCantoral": 350,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Padrenuestro%20(Simon%20%26%20Garfunkel).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 311,
+    "idCantoral": 352,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Padrenuestro%20de%20la%20Vida.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 312,
+    "idCantoral": 357,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Padrenuestro%20Gallego.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 313,
+    "idCantoral": 2640,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Padrenuestro%20Guadalupano.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 314,
+    "idCantoral": 386,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Pan%20compartido.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 315,
+    "idCantoral": 536,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Pange%20lingua.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 316,
+    "idCantoral": 536,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Pange%20lingua%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 317,
+    "idCantoral": 2518,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Pastores%20venid.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 318,
+    "idCantoral": 370,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Paz%20en%20la%20tierra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 319,
+    "idCantoral": 371,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Paz%20es%20paz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 320,
+    "idCantoral": 2659,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Paz%2C%20os%20doy%20la%20paz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 321,
+    "idCantoral": 2659,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Paz%2C%20os%20doy%20la%20paz%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 322,
+    "idCantoral": 372,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Paz%2C%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 323,
+    "idCantoral": 162,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Per%20crucem.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 324,
+    "idCantoral": 162,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Per%20crucem%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 325,
+    "idCantoral": 101,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Perd%C3%B3n.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 326,
+    "idCantoral": 250,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Perd%C3%B3nanos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 327,
+    "idCantoral": 2558,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Pondr%C3%A9%20mi%20fuego%20en%20tu%20boca.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 328,
+    "idCantoral": 2558,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Pondr%C3%A9%20mi%20fuego%20en%20tu%20boca%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 329,
+    "idCantoral": 3060,
+    "audioURL": "https://www.dropbox.com/s/il44ywrfme088wt/Pongo%20mi%20vida%20en%20tus%20manos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 330,
+    "idCantoral": 442,
+    "audioURL": "https://www.dropbox.com/s/w0yor3gq1ui5ojl/Por%20qu%C3%A9%20son%20tus%20ojos%20as%C3%AD.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 331,
+    "idCantoral": 2926,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Prepara%20tu%20coraz%C3%B3n.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 332,
+    "idCantoral": 320,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Preparad%20el%20camino%20(Aleluya).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 333,
+    "idCantoral": 320,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Preparad%20el%20camino%20(Aleluya)%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 334,
+    "idCantoral": 8,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Preparad%20el%20camino.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 335,
+    "idCantoral": 2999,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Qu%C3%A9%20suerte%20(Siempre%20as%C3%AD).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 336,
+    "idCantoral": 325,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Qu%C3%A9%20te%20puedo%20dar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 337,
+    "idCantoral": 168,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Quedaos%20aqu%C3%AD.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 338,
+    "idCantoral": 154,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Qu%C3%A9date%20Se%C3%B1or%20junto%20a%20m%C3%AD.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 339,
+    "idCantoral": 2576,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Qui%C3%A9n%20nos%20separar%C3%A1.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 340,
+    "idCantoral": 59,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Quien%20tiende%20las%20manos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 342,
+    "idCantoral": 537,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Quiero%20alabarte.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 343,
+    "idCantoral": 2577,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Quiero%20amarte.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 344,
+    "idCantoral": 170,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Quiero%20estar%20a%20los%20pies%20de%20tu%20cruz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 345,
+    "idCantoral": 170,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Quiero%20estar%20a%20los%20pies%20de%20la%20cruz%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 346,
+    "idCantoral": 2889,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Rec%C3%ADbeme.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 347,
+    "idCantoral": 2889,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Rec%C3%ADbeme%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 348,
+    "idCantoral": 498,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Renacer%20en%20libertad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 349,
+    "idCantoral": 3062,
+    "audioURL": "https://www.dropbox.com/s/2gkymjzayu3qt6w/Reunidos%20en%20el%20nombre%20del%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 351,
+    "idCantoral": 2611,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Saberme%20y%20sentirme%20en%20tus%20manos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 352,
+    "idCantoral": 2501,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Saeta%20gitana.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 353,
+    "idCantoral": 2552,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Salid%20al%20encuentro%20del%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 354,
+    "idCantoral": 2850,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Salva%20a%20tu%20pueblo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 355,
+    "idCantoral": 2984,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Salve%20a%20la%20Virgen%20de%20El%20Espino.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 356,
+    "idCantoral": 2997,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Salve%20Regina.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=DVJc0FRbiJQ"
+  },
+  {
+    "id": 357,
+    "idCantoral": 441,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Salve%20rociera.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 358,
+    "idCantoral": 335,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Beatles).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 359,
+    "idCantoral": 342,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Carism%C3%A1tico).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 360,
+    "idCantoral": 345,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Chicos%20y%20chicas).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 361,
+    "idCantoral": 3047,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Consolaci%C3%B3n).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 362,
+    "idCantoral": 2470,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(del%20aire).mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=KIlcdY1KFmc"
+  },
+  {
+    "id": 363,
+    "idCantoral": 336,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(H%C3%A4endel).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 364,
+    "idCantoral": 2652,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Hillsong).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 365,
+    "idCantoral": 2986,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Marinera).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 366,
+    "idCantoral": 2587,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Mocedades).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 367,
+    "idCantoral": 341,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(TSNC).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 368,
+    "idCantoral": 346,
+    "audioURL": "https://www.dropbox.com/s/ab1izzgh2ek8ki1/Santo%20%28Zaire%C3%B1o%29.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 369,
+    "idCantoral": 2639,
+    "audioURL": "https://www.dropbox.com/s/82d3gu8hx1uigv2/Santo%20Amena.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 370,
+    "idCantoral": 2848,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20Casillas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 371,
+    "idCantoral": 2529,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20de%20las%20Islas%20Canarias.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 372,
+    "idCantoral": 2929,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20es%20tu%20amor.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 373,
+    "idCantoral": 337,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Santo%20(Hosanna).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 374,
+    "idCantoral": 2915,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/S%C3%A9%20fiel.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 375,
+    "idCantoral": 2454,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/S%C3%A9%20mi%20luz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 376,
+    "idCantoral": 2865,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Sed%20de%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 378,
+    "idCantoral": 2399,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Sentir%20(Luz%20Casal).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 379,
+    "idCantoral": 291,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%2C%20Jes%C3%BAs.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 380,
+    "idCantoral": 279,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%20m%C3%ADo%20y%20Dios%20m%C3%ADo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 381,
+    "idCantoral": 121,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%20qui%C3%A9n%20puede.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 382,
+    "idCantoral": 2660,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%20Santo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 383,
+    "idCantoral": 538,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%2C%20cond%C3%BAceme.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 384,
+    "idCantoral": 210,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%2C%20ens%C3%A9%C3%B1anos%20a%20orar%20(Brotes).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 385,
+    "idCantoral": 210,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%2C%20ens%C3%A9%C3%B1anos%20a%20orar%20(Brotes%20de%20Olivo)%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 386,
+    "idCantoral": 2668,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Se%C3%B1or%2C%20ten%20piedad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 387,
+    "idCantoral": 2524,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Shalom%20Haberim.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 388,
+    "idCantoral": 144,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Shema%20Israel.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 389,
+    "idCantoral": 144,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Shema%20Israel%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 390,
+    "idCantoral": 2497,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Si%20conocieras%20c%C3%B3mo%20te%20amo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 391,
+    "idCantoral": 3017,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Si%20consideraseis.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 392,
+    "idCantoral": 26,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Si%20despierta%20el%20coraz%C3%B3n.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 393,
+    "idCantoral": 2987,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Si%20hubiera%20estado%20all%C3%AD.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 394,
+    "idCantoral": 2987,
+    "audioURL": "https://www.dropbox.com/s/xvi6kr9qqrg7h1s/Si%20hubiera%20estado%20alli.mp3?dl=1",
+    "videoURL": "https://youtu.be/0Ttz0osDf3k"
+  },
+  {
+    "id": 395,
+    "idCantoral": 2498,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Si%20no%20tengo%20amor.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 396,
+    "idCantoral": 2617,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Si%20te%20quiero.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 397,
+    "idCantoral": 2533,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Si%20tienes%20fe.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 398,
+    "idCantoral": 502,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Siente%20como%20llora%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 399,
+    "idCantoral": 2864,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Sigue%20mi%20huella.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 400,
+    "idCantoral": 2351,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Sois%20la%20sal%20y%20la%20luz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 401,
+    "idCantoral": 2666,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Solidaridad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 402,
+    "idCantoral": 176,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/S%C3%B3lo%20Dios%20basta.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 403,
+    "idCantoral": 176,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Solo%20Dios%20Basta%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 404,
+    "idCantoral": 64,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/S%C3%B3lo%20el%20amor.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 405,
+    "idCantoral": 2895,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/S%C3%B3lo%20el%20amor%20(IXCIS).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 406,
+    "idCantoral": 2544,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/S%C3%B3lo%20le%20pido%20a%20Dios%20(Ana%20Bel%C3%A9n).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 408,
+    "idCantoral": 2654,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Soy%20yo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 409,
+    "idCantoral": 2654,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Soy%20yo%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 410,
+    "idCantoral": 2933,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Sue%C3%B1a%20(BSO%20El%20Jorobado%20de%20Notre-Dame).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 411,
+    "idCantoral": 321,
+    "audioURL": "https://www.dropbox.com/s/4ily8r6lr6eckvc/Surrexit%20Christus.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 412,
+    "idCantoral": 2898,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tambi%C3%A9n%20somos%20Iglesia.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 413,
+    "idCantoral": 189,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20adoro.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 414,
+    "idCantoral": 327,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20alabamos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 415,
+    "idCantoral": 328,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20alabar%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 416,
+    "idCantoral": 328,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20alabar%C3%A9%20(ORACI%C3%93N).MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 417,
+    "idCantoral": 140,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20amo%2C%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=ESqGxNZOceY"
+  },
+  {
+    "id": 418,
+    "idCantoral": 140,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20amo%2C%20Se%C3%B1or%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 419,
+    "idCantoral": 508,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20busco.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 420,
+    "idCantoral": 215,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20dar%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 421,
+    "idCantoral": 2900,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Te%20seguir%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 422,
+    "idCantoral": 269,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tengo%20fe.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 423,
+    "idCantoral": 401,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tengo%20que%20gritar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 424,
+    "idCantoral": 72,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tentaciones.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 425,
+    "idCantoral": 510,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Testamento%20del%20p%C3%A1jaro%20solitario.mp3?dl=1",
+    "videoURL": "http://youtu.be/nda8QINpoy8"
+  },
+  {
+    "id": 426,
+    "idCantoral": 2625,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tiempo%20(180%C2%BA).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 427,
+    "idCantoral": 430,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tierra%20firme.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 428,
+    "idCantoral": 3061,
+    "audioURL": "https://www.dropbox.com/s/unmzqjbabtl4xks/Tocad%20para%20Dios.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 429,
+    "idCantoral": 240,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Todo%20lo%20puedo%20en%20Ti.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 430,
+    "idCantoral": 240,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Todo%20lo%20puedo%20en%20Ti%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 431,
+    "idCantoral": 3053,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Todo%20lo%20que%20tengo%20(Consolaci%C3%B3n).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 432,
+    "idCantoral": 514,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Todo%20mi%20querer.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 433,
+    "idCantoral": 2528,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Todos%20los%20dones.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 434,
+    "idCantoral": 2467,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Toma%20nuestro%20pan.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 435,
+    "idCantoral": 2467,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Toma%20nuestro%20pan%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 436,
+    "idCantoral": 2991,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tomad%20Se%C3%B1or.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 437,
+    "idCantoral": 2992,
+    "audioURL": "https://www.dropbox.com/s/f6vr6ko7minliny/Tomad%20comed.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 438,
+    "idCantoral": 212,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Transforma%20mi%20mente.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 439,
+    "idCantoral": 209,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/T%C3%BA%20eres%20mi%20camino.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 440,
+    "idCantoral": 209,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/T%C3%BA%20eres%20mi%20camino%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 441,
+    "idCantoral": 206,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/T%C3%BA%20eres%20mi%20Dios.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 442,
+    "idCantoral": 2922,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/T%C3%BA%20eres%20mi%20Dios%20(TSNC).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 443,
+    "idCantoral": 3056,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/T%C3%BA%20eres%20mi%20fuerza.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 444,
+    "idCantoral": 2674,
+    "audioURL": "https://www.dropbox.com/s/8z1l64vxggvqybg/T%C3%BA%20eres%20mi%20luz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 445,
+    "idCantoral": 2606,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/T%C3%BA%20est%C3%A1s%20aqu%C3%AD.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 446,
+    "idCantoral": 217,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tu%20fidelidad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 447,
+    "idCantoral": 120,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tu%20palabra.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 448,
+    "idCantoral": 3022,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tu%20palabra%20me%20da%20vida.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 449,
+    "idCantoral": 268,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Tui%20amoris%20ignem.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 450,
+    "idCantoral": 159,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ubi%20caritas.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 451,
+    "idCantoral": 159,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ubi%20caritas%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 452,
+    "idCantoral": 388,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Un%20instrumento.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 453,
+    "idCantoral": 388,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Un%20instrumento%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 454,
+    "idCantoral": 516,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Un%20nuevo%20sitio%20disponed.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 455,
+    "idCantoral": 374,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Unidos%20en%20mi%20amor.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 456,
+    "idCantoral": 374,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Unidos%20en%20mi%20amor%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 457,
+    "idCantoral": 2448,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Veinticinco%20de%20diciembre.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 458,
+    "idCantoral": 19,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ven%20a%20celebrar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 459,
+    "idCantoral": 2994,
+    "audioURL": "https://www.dropbox.com/s/jjywj5i9ob5q8q0/Ven%20a%20nuestras%20vidas.MP3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 460,
+    "idCantoral": 262,
+    "audioURL": "https://www.dropbox.com/s/ww3h4qxpeeib1bg/Ven%20Esp%C3%ADritu%20de%20Dios%20II.MP3?dl=1",
+    "videoURL": "https://youtu.be/9H61exUez6Q"
+  },
+  {
+    "id": 461,
+    "idCantoral": 283,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ven%20Se%C3%B1or%2C%20l%C3%ADbranos.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 462,
+    "idCantoral": 375,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ven%20y%20danos%20la%20paz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 463,
+    "idCantoral": 3055,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ven%20y%20descansa%20en%20%C3%89l.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 464,
+    "idCantoral": 287,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ven%2C%20Salvador.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 465,
+    "idCantoral": 284,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ven%2C%20Se%C3%B1or%20Jes%C3%BAs.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 466,
+    "idCantoral": 2604,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ven%2C%20te%20necesito.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 467,
+    "idCantoral": 517,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Vende%20lo%20que%20tienes.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 468,
+    "idCantoral": 517,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Vende%20lo%20que%20tienes%20(ORACI%C3%93N).mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 469,
+    "idCantoral": 376,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Venga%20la%20paz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 470,
+    "idCantoral": 30,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Vengo%20aqu%C3%AD%2C%20mi%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 471,
+    "idCantoral": 30,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Vengo%20aqu%C3%AD%20mi%20Se%C3%B1or.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 472,
+    "idCantoral": 481,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Hazme%20ver%20con%20claridad.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 473,
+    "idCantoral": 2923,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Verbum%20panis.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 474,
+    "idCantoral": 2661,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Virgen%20India.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 475,
+    "idCantoral": 3037,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Vivir%20en%20el%20amor.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 476,
+    "idCantoral": 2608,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Vivir%C3%A9%20alab%C3%A1ndote.mp3?dl=1",
+    "videoURL": "http://www.youtube.com/watch?v=SwnO09tEuY4"
+  },
+  {
+    "id": 478,
+    "idCantoral": 2502,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Volar.mp3?dl=1",
+    "videoURL": "https://youtu.be/X1c1rJnZ4rU"
+  },
+  {
+    "id": 479,
+    "idCantoral": 393,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Vosotros%20ser%C3%A9is%20mi%20pueblo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 480,
+    "idCantoral": 16,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ya%20de%20ma%C3%B1ana%20oyes%20mi%20voz.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 481,
+    "idCantoral": 540,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ya%20no%20soy%20sin%20tu%20mirar.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 482,
+    "idCantoral": 2520,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Ya%20viene%20la%20vieja.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 483,
+    "idCantoral": 3059,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Yendo%20contigo.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 484,
+    "idCantoral": 18,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Yo%20celebrar%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 485,
+    "idCantoral": 403,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Yo%20ser%C3%A9.mp3?dl=1",
+    "videoURL": ""
+  },
+  {
+    "id": 486,
+    "idCantoral": 2476,
+    "audioURL": "https://dl.dropboxusercontent.com/u/218078125/Canciones%20MP3/Yo%20soy%20(TSNC3).mp3?dl=1",
+    "videoURL": ""
+  }
+]

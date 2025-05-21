@@ -29,6 +29,8 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
   // Duration might come from song.duration if available, otherwise use a mock or calculate
   const duration = song.duration || MOCK_DURATION; 
 
+  const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
+
   const isLongSong = song.lyrics.split('\n').length > 20;
 
   const lyricsClassName = `whitespace-pre-wrap font-mono text-sm sm:text-base md:text-lg leading-relaxed select-text ${
@@ -58,12 +60,12 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
   // Better to pass nextSongId/prevSongId as props if this feature is desired.
   const handleNextSong = () => {
     const currentId = parseInt(song.id);
-    if (!isNaN(currentId)) router.push(`/song/${currentId + 1}`);
+    if (!isNaN(currentId)) router.push(`/canciones/${currentId + 1}`);
   };
 
   const handlePrevSong = () => {
     const currentId = parseInt(song.id);
-    if (!isNaN(currentId) && currentId > 1) router.push(`/song/${currentId - 1}`);
+    if (!isNaN(currentId) && currentId > 1) router.push(`/canciones/${currentId - 1}`);
   };
 
   return (
@@ -93,7 +95,7 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
         </div>
       </div>
 
-      {song.hasAudio && (
+      {canPlayAudio && (
         <>
           <div className="space-y-2 px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12">
             <div className="relative">
@@ -103,6 +105,7 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
                 waveformData={MOCK_WAVEFORM_DATA} // Use actual or mock waveform data
                 onClick={handleWaveformClick}
                 isDarkMode={isDarkMode}
+                // audioSrc={song.audioUrl} // Pass audioUrl to Waveform if it handles playback
               />
               <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs sm:text-sm font-medium">
                 <span className={`${isDarkMode ? 'text-stone-400' : 'text-stone-600'} absolute left-0 sm:left-1 bottom-[-1.25rem] sm:bottom-[-1.5rem]`}>

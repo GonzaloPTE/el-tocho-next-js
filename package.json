@@ -11,7 +11,8 @@
     "sass": "sass --no-source-map src/assets/scss:public/css",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload"
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "transform:songs": "tsx scripts/transform-songs.ts"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.2",
@@ -42,6 +43,7 @@
     "postcss": "^8",
     "sass": "^1.69.5",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.19.4",
     "typescript": "^5",
     "typescript-eslint": "^8.32.1"
   }
