@@ -45,7 +45,7 @@ export default async function HomePage() {
           {/* Featured songs section - static title, client component for navigation */}
           <div>
             <h2 className="text-4xl font-merriweather font-bold mb-8 text-stone-800 dark:text-stone-100">
-              Canciones Destacadas
+              Canciones Favoritas
             </h2>
             {/* Pass allSongs to FeaturedSongNavigation */}
             <FeaturedSongNavigation allSongs={songs} />

@@ -2,7 +2,6 @@ import fs from 'fs/promises';
 import path from 'path';
 import { mp3SlugMap } from '../lib/data/mp3-slug-map';
 import { allSongs } from '../lib/data/cantoral'; // Corrected import
-import type { Song } from '../types/song';
 
 async function readMp3Filenames(filePath: string): Promise<string[]> {
   try {

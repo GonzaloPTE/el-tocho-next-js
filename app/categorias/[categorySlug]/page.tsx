@@ -1,11 +1,7 @@
-import { BookOpen } from "lucide-react";
 // Update to use getCategoryBySlug and getSongsByCategory
 import { getCategoryBySlug, getSongsByCategory } from "@/lib/data/songs"; 
-import { siteName } from "@/lib/config/site";
 import Footer from "@/components/Footer";
-import { HeaderClientActions } from "@/components/client/header-client-actions";
 import { CategorySongList } from "@/components/category-song-list";
-import Link from "next/link";
 import { notFound } from 'next/navigation';
 import { PageHeader } from "@/components/page-header";
 
