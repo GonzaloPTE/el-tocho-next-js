@@ -18,6 +18,7 @@ export function SongItemControls({ song }: SongItemControlsProps) {
   const [isFavorite, setIsFavorite] = React.useState(false); // Replace with global state/localStorage if needed
 
   const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
+  const audioFileUrl = canPlayAudio ? `https://pub-a1473118cf2c45b097a18cad83351e4f.r2.dev/${song.slug}.mp3` : '';
 
   const handlePlayPausePreview = (event: React.MouseEvent) => {
     event.stopPropagation(); // Prevent click from bubbling to the Link navigation
@@ -25,7 +26,7 @@ export function SongItemControls({ song }: SongItemControlsProps) {
       setIsPlayingPreview(!isPlayingPreview);
       // TODO: Implement actual audio play/pause for preview
       if (!isPlayingPreview) {
-        console.log(`Playing preview for ${song.title}`);
+        console.log(`Playing preview for ${song.title} from ${audioFileUrl}`);
       } else {
         console.log(`Pausing preview for ${song.title}`);
       }

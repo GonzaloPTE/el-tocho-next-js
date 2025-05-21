@@ -8,10 +8,15 @@ import { Waveform } from "@/components/ui/waveform";
 import { TransposeControl } from "@/components/ui/transpose-control";
 import { useTheme } from '@/lib/theme-context';
 import { Song } from '@/types/song';
+import { transposeFullLyrics } from '@/lib/utils';
 
 // Mock waveform data - in a real app, this might come from the song object or be generated
 const MOCK_WAVEFORM_DATA = Array(100).fill(0).map(() => Math.random());
-const MOCK_DURATION = 190; // 3:10 in seconds, example duration
+// const MOCK_DURATION = 190; // 3:10 in seconds, example duration - We'll use actual duration if available or from audio element
+
+// --- Transposition Logic --- (This will be removed)
+// const SHARP_NOTES = ... (and other helpers)
+// --- End Transposition Logic ---
 
 interface LyricsViewerInteractiveProps {
   song: Song;
@@ -26,12 +31,95 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
   const [transpose, setTranspose] = React.useState(0);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
-  // Duration might come from song.duration if available, otherwise use a mock or calculate
-  const duration = song.duration || MOCK_DURATION; 
+  const [duration, setDuration] = React.useState(song.duration || 0); // Initialize with song.duration or 0
+
+  const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
+  const audioFileUrl = canPlayAudio ? `https://pub-a1473118cf2c45b097a18cad83351e4f.r2.dev/${song.slug}.mp3` : '';
 
-  const isLongSong = song.lyrics.split('\n').length > 20;
+  React.useEffect(() => {
+    if (canPlayAudio && audioFileUrl) {
+      if (!audioRef.current) {
+        audioRef.current = new Audio(audioFileUrl);
+      } else {
+        audioRef.current.src = audioFileUrl;
+      }
+      audioRef.current.load(); // Ensure the new source is loaded
+
+      const audioElement = audioRef.current;
+
+      const handleLoadedMetadata = () => {
+        if (audioElement) {
+          setDuration(audioElement.duration);
+        }
+      };
+      const handleTimeUpdate = () => {
+        if (audioElement) {
+          setCurrentTime(audioElement.currentTime);
+        }
+      };
+      const handleEnded = () => {
+        setIsPlaying(false);
+        setCurrentTime(0); // Reset to beginning or full duration based on preference
+      };
+
+      audioElement.addEventListener('loadedmetadata', handleLoadedMetadata);
+      audioElement.addEventListener('timeupdate', handleTimeUpdate);
+      audioElement.addEventListener('ended', handleEnded);
+
+      // Set initial state if song.duration is not provided
+      if (!song.duration && audioElement.readyState >= 1) { // HAVE_METADATA
+         setDuration(audioElement.duration);
+      }
+
+
+      return () => {
+        audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        audioElement.removeEventListener('timeupdate', handleTimeUpdate);
+        audioElement.removeEventListener('ended', handleEnded);
+        // Optional: Pause and reset src when component unmounts or song changes
+        // audioElement.pause();
+        // audioElement.src = ''; // This might be too aggressive if reusing the element
+      };
+    } else if (audioRef.current) {
+      // If audio is not available or URL is missing, pause and reset
+      audioRef.current.pause();
+      setIsPlaying(false);
+      setCurrentTime(0);
+      if (!song.duration) setDuration(0); // Reset duration if it was from audio
+    }
+  }, [song.slug, audioFileUrl, canPlayAudio, song.duration]);
+
+
+  const handlePlayPause = () => {
+    if (audioRef.current && canPlayAudio) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(error => console.error("Error playing audio:", error));
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleSeek = (newTime: number) => {
+    if (audioRef.current && canPlayAudio) {
+      audioRef.current.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
+  };
+  
+  const handleRewind = () => {
+    handleSeek(Math.max(0, currentTime - 10));
+  };
+
+  const handleFastForward = () => {
+    handleSeek(Math.min(duration, currentTime + 10));
+  };
+
+
+  const isLongSong = song.lyrics.split('\\n').length > 20;
 
   const lyricsClassName = `whitespace-pre-wrap font-mono text-sm sm:text-base md:text-lg leading-relaxed select-text ${
     isLongSong ? 'columns-1 md:columns-2 gap-x-8 md:gap-x-12 lg:gap-x-16' : ''
@@ -44,15 +132,13 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
   };
 
   const handleWaveformClick = (time: number) => {
-    setCurrentTime(time);
-    // TODO: Add audio seek logic here
+    // The Waveform component gives time as a fraction of duration, convert to seconds
+    const seekTime = time * duration; 
+    handleSeek(seekTime);
   };
 
-  // TODO: Implement actual chord transposition logic
   const displayLyrics = React.useMemo(() => {
-    // Placeholder for transposition logic. For now, just returns original lyrics.
-    // This function should parse lyrics and apply transposition based on `transpose` value.
-    return song.lyrics;
+    return transposeFullLyrics(song.lyrics, transpose);
   }, [song.lyrics, transpose]);
 
   // Placeholder for next/prev song navigation. 
@@ -103,9 +189,9 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
                 currentTime={currentTime}
                 duration={duration} // Use actual or mock duration
                 waveformData={MOCK_WAVEFORM_DATA} // Use actual or mock waveform data
-                onClick={handleWaveformClick}
+                onClick={handleWaveformClick} // Already takes a fraction, will be multiplied by duration
                 isDarkMode={isDarkMode}
-                // audioSrc={song.audioUrl} // Pass audioUrl to Waveform if it handles playback
+                // audioSrc={audioFileUrl} // Pass audioFileUrl if Waveform needs it directly (e.g. for internal generation)
               />
               <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs sm:text-sm font-medium">
                 <span className={`${isDarkMode ? 'text-stone-400' : 'text-stone-600'} absolute left-0 sm:left-1 bottom-[-1.25rem] sm:bottom-[-1.5rem]`}>
@@ -133,7 +219,7 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
               variant="ghost"
               size="icon"
               className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
-              onClick={() => setCurrentTime(Math.max(0, currentTime - 10))} // TODO: Add audio rewind logic
+              onClick={handleRewind}
               aria-label="Retroceder 10 segundos"
             >
               <Rewind className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -142,7 +228,7 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
               variant="default"
               size="icon"
               className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full ${isDarkMode ? 'bg-stone-700 hover:bg-stone-600' : 'bg-stone-800 hover:bg-stone-700'} text-white`}
-              onClick={() => setIsPlaying(!isPlaying)} // TODO: Add audio play/pause logic
+              onClick={handlePlayPause}
               aria-label={isPlaying ? "Pausar" : "Reproducir"}
             >
               {isPlaying ? <Pause className="h-5 w-5 sm:h-6 sm:w-6" /> : <Play className="h-5 w-5 sm:h-6 sm:w-6" />}
@@ -151,7 +237,7 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
               variant="ghost"
               size="icon"
               className={`${isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'}`}
-              onClick={() => setCurrentTime(Math.min(duration, currentTime + 10))} // TODO: Add audio fast-forward logic
+              onClick={handleFastForward}
               aria-label="Avanzar 10 segundos"
             >
               <FastForward className="h-4 w-4 sm:h-5 sm:w-5" />
