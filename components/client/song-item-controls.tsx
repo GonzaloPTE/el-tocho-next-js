@@ -1,12 +1,17 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Play, Pause, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { WaveformPreview } from "@/components/ui/waveform-preview";
 import { useTheme } from '@/lib/theme-context';
 import { Song } from '@/types/song';
 import { useSongPreview } from '@/components/client/song-preview-context';
+import { 
+  getFavoriteSongIdsFromStorage,
+  addSongIdToFavoritesStorage,
+  removeSongIdFromFavoritesStorage
+} from '@/lib/client-utils';
 
 interface SongItemControlsProps {
   song: Song;
@@ -15,10 +20,15 @@ interface SongItemControlsProps {
 export function SongItemControls({ song }: SongItemControlsProps) {
   const { isDarkMode } = useTheme();
   const { activePreviewSongId, togglePreview } = useSongPreview();
-  const [isFavorite, setIsFavorite] = React.useState(false);
-  const audioPreviewRef = React.useRef<HTMLAudioElement | null>(null);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const audioPreviewRef = useRef<HTMLAudioElement | null>(null);
 
   const isPreviewPlayingThisSong = song.id === activePreviewSongId;
+
+  useEffect(() => {
+    const favoriteIds = getFavoriteSongIdsFromStorage();
+    setIsFavorite(favoriteIds.includes(song.id));
+  }, [song.id]);
 
   const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
   const audioFileUrl = canPlayAudio ? `https://pub-a1473118cf2c45b097a18cad83351e4f.r2.dev/${song.slug}.mp3` : '';
@@ -74,11 +84,17 @@ export function SongItemControls({ song }: SongItemControlsProps) {
     togglePreview(song.id);
   };
 
-  const toggleFavorite = (event: React.MouseEvent) => {
+  const toggleFavoriteHandler = (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    setIsFavorite(!isFavorite);
-    console.log(`Toggled favorite for ${song.title} to ${!isFavorite}`);
+    const currentFavorites = getFavoriteSongIdsFromStorage();
+    if (currentFavorites.includes(song.id)) {
+      removeSongIdFromFavoritesStorage(song.id);
+      setIsFavorite(false);
+    } else {
+      addSongIdToFavoritesStorage(song.id);
+      setIsFavorite(true);
+    }
   };
 
   return (
@@ -104,7 +120,7 @@ export function SongItemControls({ song }: SongItemControlsProps) {
       <Button
         variant="ghost"
         size="icon"
-        onClick={toggleFavorite}
+        onClick={toggleFavoriteHandler}
         className={`p-1 h-8 w-8 sm:h-9 sm:w-9 ${
           isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'
         } ${isFavorite ? (isDarkMode ? 'text-red-400' : 'text-red-500') : ''}`}

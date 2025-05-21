@@ -1,4 +1,4 @@
-import { allSongs, categories, getFeaturedSongs } from "@/lib/data/songs";
+import { allSongs, categories } from "@/lib/data/songs";
 import Footer from "@/components/Footer";
 import { SearchBar } from "@/components/client/search-bar";
 import { CategoryNavigation } from "@/components/category-navigation";
@@ -14,7 +14,6 @@ import { PageHeader } from "@/components/page-header";
 export default async function HomePage() {
   // Fetch data on the server
   const songs = allSongs; // Assuming allSongs is already the data, not a function to call
-  const featuredSongs = getFeaturedSongs(); // This is a function call
 
   return (
     // The main div's theme-dependent classes will be handled by ThemeProvider in layout.tsx
@@ -48,8 +47,8 @@ export default async function HomePage() {
             <h2 className="text-4xl font-merriweather font-bold mb-8 text-stone-800 dark:text-stone-100">
               Canciones Destacadas
             </h2>
-            {/* FeaturedSongNavigation is a client component */}
-            <FeaturedSongNavigation featuredSongs={featuredSongs} />
+            {/* Pass allSongs to FeaturedSongNavigation */}
+            <FeaturedSongNavigation allSongs={songs} />
           </div>
         </div>
       </main>

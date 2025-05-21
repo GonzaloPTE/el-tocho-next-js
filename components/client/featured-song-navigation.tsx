@@ -1,41 +1,76 @@
 "use client";
 
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import { ChevronRight } from "lucide-react";
-import { Song } from "@/types/song";
-import { useTheme } from "@/lib/theme-context";
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { HeartCrack, ChevronRight } from 'lucide-react';
+import { Song } from '@/types/song';
+import { useTheme } from '@/lib/theme-context';
+import { getFavoriteSongIdsFromStorage } from '@/lib/client-utils';
+import { SongItemControls } from '@/components/client/song-item-controls';
+import { SongPreviewProvider } from '@/components/client/song-preview-context';
 
 interface FeaturedSongNavigationProps {
-  featuredSongs: Song[];
+  allSongs: Song[];
 }
 
-export function FeaturedSongNavigation({ featuredSongs }: FeaturedSongNavigationProps) {
-  const router = useRouter();
+export function FeaturedSongNavigation({ allSongs }: FeaturedSongNavigationProps) {
   const { isDarkMode } = useTheme();
+  const [favoriteSongs, setFavoriteSongs] = useState<Song[]>([]);
 
-  const handleSongClick = (songSlug: string) => {
-    router.push(`/canciones/${songSlug}`);
-  };
+  useEffect(() => {
+    const favoriteIds = getFavoriteSongIdsFromStorage();
+    const newFavoriteSongs = allSongs.filter(song => favoriteIds.includes(song.id));
+    setFavoriteSongs(newFavoriteSongs);
+
+    const handleFavoritesChanged = () => {
+      const updatedFavoriteIds = getFavoriteSongIdsFromStorage();
+      const updatedNewFavoriteSongs = allSongs.filter(song => updatedFavoriteIds.includes(song.id));
+      setFavoriteSongs(updatedNewFavoriteSongs);
+    };
+    window.addEventListener('favoritesChanged', handleFavoritesChanged);
+    return () => {
+      window.removeEventListener('favoritesChanged', handleFavoritesChanged);
+    };
+  }, [allSongs]);
+
+  if (favoriteSongs.length === 0) {
+    return (
+      <div className={`p-6 rounded-2xl border flex flex-col items-center justify-center text-center space-y-3 min-h-[200px] ${isDarkMode ? 'bg-stone-800 border-stone-700' : 'bg-stone-50 border-stone-200'}`}>
+        <HeartCrack className={`w-12 h-12 ${isDarkMode ? 'text-stone-500' : 'text-stone-400'}`} />
+        <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-stone-300' : 'text-stone-700'}`}>No hay canciones favoritas</h3>
+        <p className={`${isDarkMode ? 'text-stone-400' : 'text-stone-500'} max-w-xs`}>
+          Marca tus canciones preferidas con el icono de corazón para verlas aquí.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-6">
-      {featuredSongs.map((song: Song) => (
-        <div 
-          key={song.id}
-          className={`flex items-center space-x-6 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 group cursor-pointer ${isDarkMode ? 'bg-stone-800 border-stone-700 hover:bg-stone-700' : 'bg-white border-stone-200 hover:bg-stone-50'}`}
-          onClick={() => handleSongClick(song.slug)}
-        >
-          <div className={`w-20 h-20 rounded-xl flex items-center justify-center font-bold text-2xl shadow-inner transition-colors ${isDarkMode ? 'bg-stone-700 text-stone-200 group-hover:bg-stone-600' : 'bg-stone-100 text-stone-700 group-hover:bg-stone-200'}`}>
-            {song.code}
-          </div>
-          <div className="flex-grow">
-            <h3 className={`font-semibold text-xl mb-2 ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>{song.title}</h3>
-            <p className={isDarkMode ? 'text-stone-400' : 'text-stone-500'}>{song.author}</p>
-          </div>
-          <ChevronRight className={`${isDarkMode ? 'text-stone-400 group-hover:text-stone-200' : 'text-stone-400 group-hover:text-stone-600'} transition-colors`} size={24} />
-        </div>
-      ))}
-    </div>
+    <SongPreviewProvider>
+      <div className="space-y-1">
+        {favoriteSongs.map((song) => (
+          <Link 
+            href={`/canciones/${song.slug}`}
+            key={song.id}
+            className="flex items-center space-x-2 sm:space-x-4 p-3 sm:p-4 rounded-xl transition-all duration-200 hover:bg-stone-50 dark:hover:bg-stone-700/60 group border border-transparent hover:border-stone-200 dark:hover:border-stone-700"
+          >
+            <div 
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex-shrink-0 flex items-center justify-center font-semibold text-sm sm:text-lg shadow-inner bg-stone-100 text-stone-700 dark:bg-stone-700 dark:text-stone-200 transition-colors"
+            >
+              {song.code}
+            </div>
+            <div className="flex-grow min-w-0">
+              <p className="font-semibold text-sm sm:text-lg truncate text-stone-800 dark:text-stone-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">{song.title}</p>
+              {song.author && <p className="text-xs sm:text-sm truncate text-stone-500 dark:text-stone-400">{song.author}</p>}
+            </div>
+            <SongItemControls song={song} />
+            <ChevronRight 
+              className="flex-shrink-0 text-stone-400 dark:text-stone-500 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-colors" 
+              size={20} 
+            />
+          </Link>
+        ))}
+      </div>
+    </SongPreviewProvider>
   );
 } 
