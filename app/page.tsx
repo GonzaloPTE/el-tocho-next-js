@@ -4,7 +4,7 @@ import { siteName } from "@/lib/config/site";
 import Footer from "@/components/Footer";
 import { HeaderClientActions } from "@/components/client/header-client-actions";
 import { SearchBar } from "@/components/client/search-bar";
-import { CategoryNavigation } from "@/components/client/category-navigation";
+import { CategoryNavigation } from "@/components/category-navigation";
 import { FeaturedSongNavigation } from "@/components/client/featured-song-navigation";
 
 // NOTE: ThemeProvider and useTheme are client-side.
