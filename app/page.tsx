@@ -1,6 +1,4 @@
-import { BookOpen } from "lucide-react";
 import { allSongs, categories, getFeaturedSongs } from "@/lib/data/songs";
-import { siteName } from "@/lib/config/site";
 import Footer from "@/components/Footer";
 import { SearchBar } from "@/components/client/search-bar";
 import { CategoryNavigation } from "@/components/category-navigation";

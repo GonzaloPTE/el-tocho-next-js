@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { WaveformPreview } from "@/components/ui/waveform-preview";
 import { useTheme } from '@/lib/theme-context';
 import { Song } from '@/types/song';
+import { useSongPreview } from '@/components/client/song-preview-context';
 
 interface SongItemControlsProps {
   song: Song;
@@ -13,49 +14,89 @@ interface SongItemControlsProps {
 
 export function SongItemControls({ song }: SongItemControlsProps) {
   const { isDarkMode } = useTheme();
-  // State for this specific song item
-  const [isPlayingPreview, setIsPlayingPreview] = React.useState(false);
-  const [isFavorite, setIsFavorite] = React.useState(false); // Replace with global state/localStorage if needed
+  const { activePreviewSongId, togglePreview } = useSongPreview();
+  const [isFavorite, setIsFavorite] = React.useState(false);
+  const audioPreviewRef = React.useRef<HTMLAudioElement | null>(null);
+
+  const isPreviewPlayingThisSong = song.id === activePreviewSongId;
 
   const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
   const audioFileUrl = canPlayAudio ? `https://pub-a1473118cf2c45b097a18cad83351e4f.r2.dev/${song.slug}.mp3` : '';
 
-  const handlePlayPausePreview = (event: React.MouseEvent) => {
-    event.stopPropagation(); // Prevent click from bubbling to the Link navigation
-    if (canPlayAudio) {
-      setIsPlayingPreview(!isPlayingPreview);
-      // TODO: Implement actual audio play/pause for preview
-      if (!isPlayingPreview) {
-        console.log(`Playing preview for ${song.title} from ${audioFileUrl}`);
-      } else {
-        console.log(`Pausing preview for ${song.title}`);
+  React.useEffect(() => {
+    if (!canPlayAudio || !audioFileUrl) {
+      if (audioPreviewRef.current) {
+        audioPreviewRef.current.pause();
+      }
+      return;
+    }
+
+    if (!audioPreviewRef.current) {
+      audioPreviewRef.current = new Audio(audioFileUrl);
+    } else {
+      if (audioPreviewRef.current.src !== audioFileUrl) {
+        audioPreviewRef.current.pause();
+        audioPreviewRef.current.src = audioFileUrl;
       }
     }
+
+    const audioElement = audioPreviewRef.current;
+    const handlePreviewEnded = () => {
+      if (song.id === activePreviewSongId) {
+        togglePreview(song.id);
+      }
+    };
+
+    audioElement.addEventListener('ended', handlePreviewEnded);
+
+    if (isPreviewPlayingThisSong) {
+      audioElement.currentTime = 0;
+      audioElement.play().catch(error => {
+        console.error("Error playing preview:", error);
+        if (song.id === activePreviewSongId) {
+          togglePreview(song.id);
+        }
+      });
+    } else {
+      audioElement.pause();
+    }
+
+    return () => {
+      audioElement.pause();
+      audioElement.removeEventListener('ended', handlePreviewEnded);
+    };
+  }, [audioFileUrl, canPlayAudio, song.id, song.slug, isPreviewPlayingThisSong, togglePreview, activePreviewSongId]);
+
+  const handlePlayPausePreview = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (!canPlayAudio) return;
+    togglePreview(song.id);
   };
 
   const toggleFavorite = (event: React.MouseEvent) => {
-    event.stopPropagation(); // Prevent click from bubbling to the Link navigation
+    event.preventDefault();
+    event.stopPropagation();
     setIsFavorite(!isFavorite);
-    // TODO: Implement actual favorite persistence (e.g., localStorage, API call)
     console.log(`Toggled favorite for ${song.title} to ${!isFavorite}`);
   };
 
   return (
-    <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0"> {/* Added flex-shrink-0 */}
+    <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
       {canPlayAudio && (
         <Button
           variant="ghost"
           size="icon"
           className={`p-1 h-8 w-8 sm:h-9 sm:w-9 ${
             isDarkMode ? 'text-stone-300 hover:text-stone-100' : 'text-stone-600 hover:text-stone-800'
-          } ${isPlayingPreview ? 'animate-pulse' : ''}`}
+          } ${isPreviewPlayingThisSong ? 'animate-pulse' : ''}`}
           onClick={handlePlayPausePreview}
-          aria-label={isPlayingPreview ? "Pausar previsualización" : "Reproducir previsualización"}
+          aria-label={isPreviewPlayingThisSong ? "Pausar previsualización" : "Reproducir previsualización"}
         >
-          {isPlayingPreview ? <Pause className="h-4 w-4 sm:h-5 sm:w-5" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5" />}
+          {isPreviewPlayingThisSong ? <Pause className="h-4 w-4 sm:h-5 sm:w-5" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5" />}
         </Button>
       )}
-      {isPlayingPreview && canPlayAudio && (
+      {isPreviewPlayingThisSong && canPlayAudio && (
         <div className="w-12 sm:w-16 h-8 flex items-center">
           <WaveformPreview isDarkMode={isDarkMode} />
         </div>

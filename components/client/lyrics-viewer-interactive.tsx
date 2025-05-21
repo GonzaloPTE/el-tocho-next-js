@@ -282,7 +282,7 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
         </>
       )}
       
-      <div className={`${lyricsClassName} mt-6 px-1 sm:px-2 md:px-4 lg:px-6`}>
+      <div className={`${lyricsClassName} mt-6 pt-12 px-1 sm:px-2 md:px-4 lg:px-6`}>
         {displayLyrics}
       </div>
     </div>
