@@ -1,5 +1,5 @@
 import { BookOpen } from "lucide-react";
-import { getSongById } from "@/lib/data/songs";
+import { getSongBySlug } from "@/lib/data/songs";
 import { siteName } from "@/lib/config/site";
 import Footer from "@/components/Footer";
 import { HeaderClientActions } from "@/components/client/header-client-actions";
@@ -8,19 +8,17 @@ import Link from "next/link";
 import { notFound } from 'next/navigation';
 
 interface SongPageProps {
-  params: { id: string };
+  params: { songSlug: string };
 }
 
 export default async function SongPage({ params }: SongPageProps) {
-  const { id } = params;
-  const song = getSongById(id);
+  const { songSlug } = params;
+  const song = getSongBySlug(songSlug);
 
   if (!song) {
     notFound();
   }
 
-  // Determine if the song lyrics are long to adjust layout in the server component
-  // This is purely for structural layout, text styling itself is within the client component
   const isLongSongLayout = song.lyrics.split('\n').length > 20;
 
   return (
@@ -35,7 +33,6 @@ export default async function SongPage({ params }: SongPageProps) {
       </header>
 
       <main className="flex-grow container mx-auto px-4 py-8">
-        {/* Adjust max-width based on lyrics length for better readability */}
         <div className={`mx-auto space-y-6 ${isLongSongLayout ? 'max-w-6xl' : 'max-w-4xl'}`}>
           <LyricsViewerInteractive song={song} />
         </div>
@@ -44,4 +41,4 @@ export default async function SongPage({ params }: SongPageProps) {
       <Footer />
     </div>
   );
-}
+} 

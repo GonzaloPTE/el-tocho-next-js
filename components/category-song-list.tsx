@@ -25,8 +25,8 @@ export function CategorySongList({ songs, categoryName, currentSearchTerm, baseP
         <div className="space-y-1">
           {songs.map((song) => (
             <Link 
-              href={`/song/${song.id}`}
-              key={song.id} 
+              href={`/canciones/${song.slug}`}
+              key={song.id}
               className="flex items-center space-x-2 sm:space-x-4 p-3 sm:p-4 rounded-xl transition-all duration-200 hover:bg-stone-50 dark:hover:bg-stone-700/60 group border border-transparent hover:border-stone-200 dark:hover:border-stone-700"
             >
               <div 

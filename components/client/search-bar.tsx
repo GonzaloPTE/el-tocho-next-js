@@ -30,8 +30,8 @@ export function SearchBar({ allSongs }: SearchBarProps) {
     }
   }, [searchTerm, allSongs]);
 
-  const handleSongClick = (songId: string) => {
-    router.push(`/song/${songId}`);
+  const handleSongClick = (songSlug: string) => {
+    router.push(`/canciones/${songSlug}`);
   };
 
   const handleSearchButtonClick = () => {
@@ -39,7 +39,7 @@ export function SearchBar({ allSongs }: SearchBarProps) {
     // or trigger a more explicit search action if desired.
     if (searchResults.length > 0) {
       // Example: navigate to the first result or a search results page
-      // router.push(`/song/${searchResults[0].id}`);
+      // router.push(`/canciones/${searchResults[0].slug}`);
     }
   };
 
@@ -82,9 +82,9 @@ export function SearchBar({ allSongs }: SearchBarProps) {
         <div className={`mt-8 space-y-2 rounded-2xl shadow-xl p-6 border text-left ${isDarkMode ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'}`}>
           {searchResults.map((song) => (
             <div 
-              key={song.id} 
+              key={song.id}
               className={`flex items-center space-x-6 p-4 transition-all duration-300 cursor-pointer rounded-xl group ${isDarkMode ? 'hover:bg-stone-700' : 'hover:bg-stone-50'}`}
-              onClick={() => handleSongClick(song.id)}
+              onClick={() => handleSongClick(song.slug)}
             >
               <div className={`w-16 h-16 rounded-full flex items-center justify-center font-semibold text-xl shadow-inner transition-colors ${isDarkMode ? 'bg-stone-700 text-stone-200 group-hover:bg-stone-600' : 'bg-stone-100 text-stone-700 group-hover:bg-stone-200'}`}>
                 {song.code}

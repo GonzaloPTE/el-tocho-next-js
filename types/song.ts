@@ -1,6 +1,7 @@
 export interface Category {
   letter: string;
   description: string;
+  slug: string;
 }
 
 export interface Song {
@@ -9,6 +10,7 @@ export interface Song {
   title: string;
   author: string;
   category: string;
+  slug: string;
   hasAudio: boolean;
   lyrics: string;
   duration?: number;

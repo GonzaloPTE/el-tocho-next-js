@@ -14,17 +14,17 @@ export function FeaturedSongNavigation({ featuredSongs }: FeaturedSongNavigation
   const router = useRouter();
   const { isDarkMode } = useTheme();
 
-  const handleSongClick = (songId: string) => {
-    router.push(`/song/${songId}`);
+  const handleSongClick = (songSlug: string) => {
+    router.push(`/canciones/${songSlug}`);
   };
 
   return (
     <div className="space-y-6">
       {featuredSongs.map((song: Song) => (
         <div 
-          key={song.id} 
+          key={song.id}
           className={`flex items-center space-x-6 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 group cursor-pointer ${isDarkMode ? 'bg-stone-800 border-stone-700 hover:bg-stone-700' : 'bg-white border-stone-200 hover:bg-stone-50'}`}
-          onClick={() => handleSongClick(song.id)}
+          onClick={() => handleSongClick(song.slug)}
         >
           <div className={`w-20 h-20 rounded-xl flex items-center justify-center font-bold text-2xl shadow-inner transition-colors ${isDarkMode ? 'bg-stone-700 text-stone-200 group-hover:bg-stone-600' : 'bg-stone-100 text-stone-700 group-hover:bg-stone-200'}`}>
             {song.code}
