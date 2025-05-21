@@ -6,7 +6,8 @@ import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Footer from '@/components/Footer';
-import { SITE_NAME, CATEGORIES, ALL_SONGS } from "@/components/constants"
+import { categories, allSongs } from "@/lib/data/songs";
+import { siteName } from "@/lib/config/site";
 import { useTheme } from '@/lib/theme-context'
 import { Song } from "@/types/song"
 import { motion, AnimatePresence } from "framer-motion"
@@ -25,8 +26,8 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
   const [favorites, setFavorites] = React.useState<Set<string>>(new Set());
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const category = CATEGORIES.find(cat => cat.letter === categoryLetter);
-  const songs = React.useMemo(() => ALL_SONGS.filter(song => song.category === categoryLetter), [categoryLetter]);
+  const category = categories.find(cat => cat.letter === categoryLetter);
+  const songs = React.useMemo(() => allSongs.filter(song => song.category === categoryLetter), [categoryLetter]);
 
   React.useEffect(() => {
     setFilteredSongs(songs);
@@ -97,7 +98,7 @@ export function CategorySongs({ categoryLetter }: CategorySongsProps) {
       }`}>
         <div className="container mx-auto flex justify-between items-center px-4">
           <h1 className="text-3xl font-merriweather font-bold flex items-center">
-            <BookOpen className="mr-2" size={28} /> {SITE_NAME}
+            <BookOpen className="mr-2" size={28} /> {siteName}
           </h1>
           <div className="flex items-center space-x-4">
             <Button

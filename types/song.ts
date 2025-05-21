@@ -12,7 +12,3 @@ export interface Song {
   hasAudio: boolean;
   lyrics: string;
 }
-
-export interface FeaturedSong extends Song {
-  // No additional fields needed for now
-}

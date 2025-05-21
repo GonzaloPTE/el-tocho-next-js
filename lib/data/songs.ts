@@ -1,6 +1,6 @@
-import { FeaturedSong, Song, Category } from "@/types/song";
+import { Song, Category } from "@/types/song";
 
-export const CATEGORIES: Category[] = [
+export const categories: Category[] = [
   { letter: 'E', description: 'Entrada' },
   { letter: 'K', description: 'Kyrie' },
   { letter: 'G', description: 'Gloria' },
@@ -13,13 +13,13 @@ export const CATEGORIES: Category[] = [
   { letter: 'F', description: 'Final' }
 ];
 
-export const FEATURED_SONGS: FeaturedSong[] = [
+export const featuredSongs: Song[] = [
   { id: 'E15', code: 'E15', title: 'Juntos como hermanos', author: 'Cesáreo Gabaráin', lyrics: '...lyrics here...', category: 'E', hasAudio: false },
   { id: 'C45', code: 'C45', title: 'El Señor es mi pastor', author: 'Tradicional', lyrics: '...lyrics here...', category: 'C', hasAudio: false },
   { id: 'F23', code: 'F23', title: 'Santa María del Camino', author: 'Juan Antonio Espinosa', lyrics: '...lyrics here...', category: 'F', hasAudio: false },
 ];
 
-export const ALL_SONGS: Song[] = [
+export const allSongs: Song[] = [
   {
     id: "1",
     code: "E1",
@@ -57,6 +57,4 @@ export const ALL_SONGS: Song[] = [
     lyrics: '...'
   },
   // ... Añade más canciones según sea necesario, asegurándote de que algunas tengan hasAudio: true y otras hasAudio: false
-];
-
-export const SITE_NAME = "El TOCHO.app";
+]; 

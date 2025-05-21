@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Waveform } from "@/components/ui/waveform"
 import Footer from '@/components/Footer';
-import { SITE_NAME } from "@/components/constants"
+import { siteName } from "@/lib/config/site";
 import { TransposeControl } from "@/components/ui/transpose-control"
 import { useTheme } from '@/lib/theme-context'
 
@@ -90,7 +90,7 @@ export function SongLyricsViewer({ songId }: SongLyricsViewerProps) {
       }`}>
         <div className="container mx-auto flex justify-between items-center px-4">
           <h1 className="text-3xl font-merriweather font-bold flex items-center">
-            <BookOpen className="mr-2" size={28} /> {SITE_NAME}
+            <BookOpen className="mr-2" size={28} /> {siteName}
           </h1>
           <div className="flex items-center space-x-4">
             <Button

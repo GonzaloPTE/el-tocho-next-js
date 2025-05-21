@@ -4,8 +4,9 @@ import React from 'react';
 import { Search, X, ChevronRight, BookOpen, Moon, Sun } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { CATEGORIES, FEATURED_SONGS, ALL_SONGS, SITE_NAME } from "@/components/constants"
-import { Category, Song, FeaturedSong } from "@/types/song";
+import { categories, featuredSongs, allSongs } from "@/lib/data/songs";
+import { siteName } from "@/lib/config/site";
+import { Category, Song } from "@/types/song";
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/navigation'
 import { useTheme } from '@/lib/theme-context'
@@ -18,7 +19,7 @@ const HomePage: React.FC = () => {
 
   React.useEffect(() => {
     if (searchTerm.length > 0) {
-      const filteredResults = ALL_SONGS.filter(song => 
+      const filteredResults = allSongs.filter(song => 
         song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         song.code.toLowerCase().includes(searchTerm.toLowerCase())
       ).slice(0, 5);
@@ -45,7 +46,7 @@ const HomePage: React.FC = () => {
       }`}>
         <div className="container mx-auto flex justify-between items-center px-4">
           <h1 className="text-3xl font-merriweather font-bold flex items-center">
-            <BookOpen className="mr-2" size={28} /> {SITE_NAME}
+            <BookOpen className="mr-2" size={28} /> {siteName}
           </h1>
           <nav className="flex items-center space-x-8">
             <a href="#" className={`transition-colors font-medium hover:underline decoration-2 underline-offset-8 ${
@@ -152,7 +153,7 @@ const HomePage: React.FC = () => {
               El Tocho organiza sus canciones según los momentos de la misa, desde la entrada hasta la salida. Cada categoría está representada por una letra en orden cronológico de la ceremonia.
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {CATEGORIES.map((category: Category) => (
+              {categories.map((category: Category) => (
                 <div 
                   key={category.letter} 
                   className={`flex flex-col items-center p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 cursor-pointer ${
@@ -171,7 +172,7 @@ const HomePage: React.FC = () => {
           <div>
             <h2 className={`text-4xl font-merriweather font-bold mb-8 ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>Canciones Destacadas</h2>
             <div className="space-y-6">
-              {FEATURED_SONGS.map((song: FeaturedSong) => (
+              {featuredSongs.map((song: Song) => (
                 <div 
                   key={song.id} 
                   className={`flex items-center space-x-6 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border hover:-translate-y-1 group cursor-pointer ${
