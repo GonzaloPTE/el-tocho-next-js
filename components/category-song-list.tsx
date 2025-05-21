@@ -1,29 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
-import { Search, ChevronRight } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { ChevronRight } from "lucide-react";
 import { Song } from "@/types/song";
 import { SongItemControls } from '@/components/client/song-item-controls';
+import { DebouncedCategorySearchInput } from '@/components/client/debounced-category-search-input';
 
 interface CategorySongListProps {
   songs: Song[];
   categoryName: string;
   currentSearchTerm?: string;
+  basePath: string;
 }
 
-export function CategorySongList({ songs, categoryName, currentSearchTerm }: CategorySongListProps) {
+export function CategorySongList({ songs, categoryName, currentSearchTerm, basePath }: CategorySongListProps) {
   return (
     <div>
-      <form method="GET" action="" className="mb-6 relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-stone-400 dark:text-stone-500" size={20} />
-        <Input
-          type="text"
-          name="search"
-          placeholder={`Buscar en ${categoryName}...`}
-          defaultValue={currentSearchTerm || ''}
-          className="w-full pl-10 pr-4 py-2 text-lg border bg-stone-100 border-stone-300 focus:ring-2 focus:ring-stone-400 dark:bg-stone-700 dark:border-stone-600 dark:text-stone-100 dark:focus:ring-stone-500 rounded-full"
-        />
-      </form>
+      <DebouncedCategorySearchInput 
+        initialSearchTerm={currentSearchTerm}
+        categoryName={categoryName}
+        basePath={basePath}
+      />
 
       {songs.length > 0 ? (
         <div className="space-y-1">

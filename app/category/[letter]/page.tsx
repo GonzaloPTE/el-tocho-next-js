@@ -21,6 +21,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     notFound();
   }
 
+  const basePath = `/category/${letter}`;
+
   let songsForCategory = getSongsByCategory(letter);
 
   if (searchTerm) {
@@ -66,6 +68,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               songs={songsForCategory}
               categoryName={category.description} 
               currentSearchTerm={searchTerm}
+              basePath={basePath}
             />
           </div>
         </div>
