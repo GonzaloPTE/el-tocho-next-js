@@ -11,4 +11,5 @@ export interface Song {
   category: string;
   hasAudio: boolean;
   lyrics: string;
+  duration?: number;
 }
