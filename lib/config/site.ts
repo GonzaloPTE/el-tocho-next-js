@@ -1,1 +1,1 @@
-export const siteName = "EL TOCHO.app"; 
+export const siteName = "EL TOCHO"; 

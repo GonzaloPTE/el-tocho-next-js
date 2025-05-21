@@ -2,6 +2,9 @@ import { Song, Category } from "@/types/song";
 import { slugifyText } from "@/lib/utils";
 import { allSongs } from './cantoral';
 
+// Re-export allSongs so it's available for other modules
+export { allSongs };
+
 export const categories: Category[] = [
   { letter: 'E', description: 'Entrada', slug: slugifyText('Entrada') },
   { letter: 'K', description: 'Kyrie', slug: slugifyText('Kyrie') },

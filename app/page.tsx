@@ -2,10 +2,10 @@ import { BookOpen } from "lucide-react";
 import { allSongs, categories, getFeaturedSongs } from "@/lib/data/songs";
 import { siteName } from "@/lib/config/site";
 import Footer from "@/components/Footer";
-import { HeaderClientActions } from "@/components/client/header-client-actions";
 import { SearchBar } from "@/components/client/search-bar";
 import { CategoryNavigation } from "@/components/category-navigation";
 import { FeaturedSongNavigation } from "@/components/client/featured-song-navigation";
+import { PageHeader } from "@/components/page-header";
 
 // NOTE: ThemeProvider and useTheme are client-side.
 // The root layout (app/layout.tsx) should wrap children in ThemeProvider.
@@ -25,15 +25,8 @@ export default async function HomePage() {
     // elements need to change based on theme *before* hydration, but that adds complexity.
     // For now, assuming ThemeProvider in layout.tsx handles the body/root styles.
     <div className="min-h-screen flex flex-col font-inter">
-      {/* Header is mostly static, client actions are in HeaderClientActions */}
-      <header className="border-b py-4 shadow-md sticky top-0 z-10 backdrop-blur-sm bg-white/90 border-stone-200 dark:bg-stone-800/90 dark:border-stone-700">
-        <div className="container mx-auto flex justify-between items-center px-4">
-          <div className="text-3xl font-merriweather font-bold flex items-center text-stone-800 dark:text-stone-100">
-            <BookOpen className="mr-2" size={28} /> {siteName}
-          </div>
-          <HeaderClientActions />
-        </div>
-      </header>
+      {/* Use the new PageHeader component */}
+      <PageHeader />
 
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-5xl mx-auto space-y-24">

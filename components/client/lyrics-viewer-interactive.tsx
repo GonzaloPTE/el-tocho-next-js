@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { Rewind, Play, Pause, FastForward, SkipBack, SkipForward } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Waveform } from "@/components/ui/waveform";
@@ -27,70 +27,97 @@ interface LyricsViewerInteractiveProps {
 
 export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const { isDarkMode } = useTheme();
   const [transpose, setTranspose] = React.useState(0);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
-  const [duration, setDuration] = React.useState(song.duration || 0); // Initialize with song.duration or 0
+  const [duration, setDuration] = React.useState(song.duration || 0);
 
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
   const audioFileUrl = canPlayAudio ? `https://pub-a1473118cf2c45b097a18cad83351e4f.r2.dev/${song.slug}.mp3` : '';
 
+  // Stable event handlers
+  const handleLoadedMetadata = React.useCallback(() => {
+    if (audioRef.current) {
+      setDuration(audioRef.current.duration);
+    }
+  }, [setDuration]);
+
+  const handleTimeUpdate = React.useCallback(() => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+    }
+  }, [setCurrentTime]);
+
+  const handleEnded = React.useCallback(() => {
+    setIsPlaying(false);
+    setCurrentTime(0);
+  }, [setIsPlaying, setCurrentTime]);
+
   React.useEffect(() => {
+    let audioElement: HTMLAudioElement | null = null;
+
     if (canPlayAudio && audioFileUrl) {
       if (!audioRef.current) {
         audioRef.current = new Audio(audioFileUrl);
       } else {
-        audioRef.current.src = audioFileUrl;
+        if (audioRef.current.src !== audioFileUrl) {
+          audioRef.current.pause();
+          setIsPlaying(false);
+          setCurrentTime(0);
+          audioRef.current.src = audioFileUrl;
+        }
       }
-      audioRef.current.load(); // Ensure the new source is loaded
-
-      const audioElement = audioRef.current;
-
-      const handleLoadedMetadata = () => {
-        if (audioElement) {
-          setDuration(audioElement.duration);
-        }
-      };
-      const handleTimeUpdate = () => {
-        if (audioElement) {
-          setCurrentTime(audioElement.currentTime);
-        }
-      };
-      const handleEnded = () => {
-        setIsPlaying(false);
-        setCurrentTime(0); // Reset to beginning or full duration based on preference
-      };
+      audioRef.current.load();
+      audioElement = audioRef.current;
 
       audioElement.addEventListener('loadedmetadata', handleLoadedMetadata);
       audioElement.addEventListener('timeupdate', handleTimeUpdate);
       audioElement.addEventListener('ended', handleEnded);
 
-      // Set initial state if song.duration is not provided
-      if (!song.duration && audioElement.readyState >= 1) { // HAVE_METADATA
+      if (!song.duration && audioElement.readyState >= HTMLMediaElement.HAVE_METADATA) {
          setDuration(audioElement.duration);
       }
 
-
-      return () => {
-        audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
-        audioElement.removeEventListener('timeupdate', handleTimeUpdate);
-        audioElement.removeEventListener('ended', handleEnded);
-        // Optional: Pause and reset src when component unmounts or song changes
-        // audioElement.pause();
-        // audioElement.src = ''; // This might be too aggressive if reusing the element
-      };
     } else if (audioRef.current) {
-      // If audio is not available or URL is missing, pause and reset
       audioRef.current.pause();
       setIsPlaying(false);
       setCurrentTime(0);
-      if (!song.duration) setDuration(0); // Reset duration if it was from audio
+      if (!song.duration) setDuration(0);
     }
-  }, [song.slug, audioFileUrl, canPlayAudio, song.duration]);
 
+    return () => {
+      if (audioElement) {
+        audioElement.pause();
+        setIsPlaying(false); // Ensure state reflects pause
+        audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
+        audioElement.removeEventListener('timeupdate', handleTimeUpdate);
+        audioElement.removeEventListener('ended', handleEnded);
+      }
+    };
+  }, [
+    song.slug, 
+    audioFileUrl, 
+    canPlayAudio, 
+    song.duration, 
+    handleLoadedMetadata, 
+    handleTimeUpdate, 
+    handleEnded,
+    setIsPlaying, // Direct usage in effect
+    setCurrentTime, // Direct usage in effect
+    setDuration // Direct usage in effect
+  ]);
+
+  React.useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement && !audioElement.paused) {
+      audioElement.pause();
+      setIsPlaying(false);
+    }
+  }, [pathname, setIsPlaying]); // Added setIsPlaying to dependency array
 
   const handlePlayPause = () => {
     if (audioRef.current && canPlayAudio) {

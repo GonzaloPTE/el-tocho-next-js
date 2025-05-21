@@ -7,6 +7,7 @@ import { HeaderClientActions } from "@/components/client/header-client-actions";
 import { CategorySongList } from "@/components/category-song-list";
 import Link from "next/link";
 import { notFound } from 'next/navigation';
+import { PageHeader } from "@/components/page-header";
 
 interface CategoryPageProps {
   // Update params to use categorySlug
@@ -41,16 +42,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
 
   return (
     <div className="min-h-screen flex flex-col font-inter">
-      <header className="border-b py-4 shadow-md sticky top-0 z-10 backdrop-blur-sm bg-white/90 border-stone-200 dark:bg-stone-800/90 dark:border-stone-700">
-        <div className="container mx-auto flex justify-between items-center px-4">
-          <Link href="/" className="text-3xl font-merriweather font-bold flex items-center text-stone-800 dark:text-stone-100">
-            <BookOpen className="mr-2" size={28} /> {siteName}
-          </Link>
-          <div className="flex items-center space-x-4">
-            <HeaderClientActions showBackButton={true} />
-          </div>
-        </div>
-      </header>
+      <PageHeader showBackButton={true} />
 
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
