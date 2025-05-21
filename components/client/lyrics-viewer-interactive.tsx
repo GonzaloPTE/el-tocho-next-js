@@ -158,10 +158,9 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  const handleWaveformClick = (time: number) => {
-    // The Waveform component gives time as a fraction of duration, convert to seconds
-    const seekTime = time * duration; 
-    handleSeek(seekTime);
+  const handleWaveformClick = (timeInSeconds: number) => {
+    // The Waveform component provides the clicked time directly in seconds.
+    handleSeek(timeInSeconds);
   };
 
   const displayLyrics = React.useMemo(() => {

@@ -143,6 +143,10 @@ export function transposeChord(originalFullChord: string, semitonos: number, isL
 // --- End Transposition Logic ---
 
 // --- Full Lyrics Transposition Function ---
+// Regex to identify a single complete chord iteratively. Uses a lookahead to correctly segment.
+// Captures: 1:Root, 2:Accidental, 3:Suffix. The whole match is match[0].
+const ITERATIVE_CHORD_REGEX = /^(DO|RE|MI|FA|SOL|LA|SI)([#bB]?)(.*?)(?=(?:DO|RE|MI|FA|SOL|LA|SI)(?:[#bB]?)|\/|$|\s|[\[(])/i;
+
 export function transposeFullLyrics(lyrics: string, semitonos: number): string {
   if (semitonos === 0) return lyrics;
 
@@ -150,57 +154,73 @@ export function transposeFullLyrics(lyrics: string, semitonos: number): string {
   const transposedLines = lines.map(line => {
     const lineType = _detectLineType(line);
     const isChordLine = lineType === 'chord';
-    const trimmedLine = line.trim(); // For the new condition
+    const trimmedLineOriginal = line.trim(); // For the lyric line condition
 
-    const parts = line.split(/(\s+)/);
-    const processedParts = parts.map(part => {
-      if (part.match(/^\s+$/) || part === '') {
-        return part;
-      }
-      const contentToProcess = part.trim();
-      if (contentToProcess === '') return part;
-
-      let prefix = '';
-      let suffix = '';
-      let potentialChord = contentToProcess;
-      let originalPartBeforeDelimiterStripping = part; // Keep original part for returning if not transposed
-
-      if ((contentToProcess.startsWith('[') && contentToProcess.endsWith(']')) ||
-          (contentToProcess.startsWith('(') && contentToProcess.endsWith(')'))) {
-        if (contentToProcess.length > 2) {
-          prefix = contentToProcess.charAt(0);
-          suffix = contentToProcess.charAt(contentToProcess.length - 1);
-          potentialChord = contentToProcess.substring(1, contentToProcess.length - 1);
+    if (isChordLine) {
+      let currentLineContent = line; // Process the whole line, including leading/trailing spaces initially handled by loop
+      let resultLine = '';
+      while (currentLineContent.length > 0) {
+        const match = ITERATIVE_CHORD_REGEX.exec(currentLineContent);
+        if (match && match.index === 0) { // Ensure match is at the beginning
+          const matchedChord = match[0];
+          const transposed = transposeChord(matchedChord, semitonos, true);
+          resultLine += transposed;
+          currentLineContent = currentLineContent.substring(matchedChord.length);
         } else {
-          return originalPartBeforeDelimiterStripping; // It's just "[]" or "()"
+          // Not a chord at the beginning, or no match. Append the first character and continue.
+          resultLine += currentLineContent.charAt(0);
+          currentLineContent = currentLineContent.substring(1);
         }
       }
-      
-      let transposedCoreChord = potentialChord;
-      let shouldAttemptTranspose = false;
+      return resultLine;
+    } else {
+      // Existing logic for lyric lines (splitting by space, handling [] () delimiters etc.)
+      const parts = line.split(/(\s+)/); // Split by whitespace, keeping spaces as parts
+      const processedParts = parts.map(part => {
+        if (part.match(/^\s+$/) || part === '') {
+          return part; // Preserve whitespace parts
+        }
+        // For non-whitespace parts, attempt to process as a potential chord with delimiters
+        const contentToProcess = part; // No trim here, keep original part from split
+        
+        let prefix = '';
+        let suffix = '';
+        let potentialChord = contentToProcess;
+        let originalPartForReturn = part; // Use this to return if not transposed
 
-      if (isChordLine) {
-        shouldAttemptTranspose = true;
-      } else {
-        // On a lyric line, only attempt to transpose if the *entire trimmed line* is this potential chord
-        // (after its own delimiters are stripped).
-        if (trimmedLine === (prefix + potentialChord + suffix)) {
+        if ((contentToProcess.startsWith('[') && contentToProcess.endsWith(']')) ||
+            (contentToProcess.startsWith('(') && contentToProcess.endsWith(')'))) {
+          if (contentToProcess.length > 2) {
+            prefix = contentToProcess.charAt(0);
+            suffix = contentToProcess.charAt(contentToProcess.length - 1);
+            potentialChord = contentToProcess.substring(1, contentToProcess.length - 1);
+          } else {
+            return originalPartForReturn; // It's just "[]" or "()"
+          }
+        }
+        
+        let transposedCoreChord = potentialChord;
+        let shouldAttemptTranspose = false;
+
+        // On a lyric line, only attempt to transpose if the *entire trimmed original line* 
+        // is this specific part (after its own delimiters are stripped and re-added for comparison).
+        // This prevents transposing words within lyrics unless the line *only* contains that word/chord.
+        if (trimmedLineOriginal === (prefix + potentialChord + suffix)) {
           shouldAttemptTranspose = true;
         }
-      }
 
-      if (shouldAttemptTranspose) {
-        transposedCoreChord = transposeChord(potentialChord, semitonos, isChordLine);
-      }
+        if (shouldAttemptTranspose) {
+          // For lyric lines, isLikelyChordLine is false for transposeChord's heuristic
+          transposedCoreChord = transposeChord(potentialChord, semitonos, false);
+        }
 
-      if (transposedCoreChord === potentialChord) {
-        // If no change, return the original part including its surrounding spaces and original delimiters
-        return originalPartBeforeDelimiterStripping; 
-      }
-      // If transposed, reconstruct with original prefix/suffix, but use the (trimmed) part's surrounding spaces implicitly via join('')
-      return prefix + transposedCoreChord + suffix;
-    });
-    return processedParts.join('');
+        if (transposedCoreChord === potentialChord) {
+          return originalPartForReturn; 
+        }
+        return prefix + transposedCoreChord + suffix;
+      });
+      return processedParts.join('');
+    }
   });
   return transposedLines.join('\n');
 }

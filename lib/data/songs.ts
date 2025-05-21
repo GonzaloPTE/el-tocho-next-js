@@ -6,16 +6,23 @@ import { allSongs } from './cantoral';
 export { allSongs };
 
 export const categories: Category[] = [
-  { letter: 'E', description: 'Entrada', slug: slugifyText('Entrada') },
-  { letter: 'K', description: 'Kyrie', slug: slugifyText('Kyrie') },
-  { letter: 'G', description: 'Gloria', slug: slugifyText('Gloria') },
-  { letter: 'S', description: 'Salmo', slug: slugifyText('Salmo') },
-  { letter: 'A', description: 'Aleluya', slug: slugifyText('Aleluya') },
-  { letter: 'O', description: 'Ofertorio', slug: slugifyText('Ofertorio') },
-  { letter: 'N', description: 'Santo', slug: slugifyText('Santo') },
-  { letter: 'P', description: 'Padre Nuestro', slug: slugifyText('Padre Nuestro') },
-  { letter: 'C', description: 'Comunión', slug: slugifyText('Comunión') },
-  { letter: 'F', description: 'Final', slug: slugifyText('Final') }
+  { letter: 'A', description: 'Entrada', slug: slugifyText('Entrada') },
+  //{ letter: 'K', description: 'Kyrie', slug: slugifyText('Kyrie') },
+  { letter: 'B', description: 'Perdón/Agua', slug: slugifyText('Perdón/Agua') },
+  { letter: 'C', description: 'Gloria', slug: slugifyText('Gloria') },
+  { letter: 'D', description: 'Antifona', slug: slugifyText('Antifona') },
+  { letter: 'E', description: 'Aleluya', slug: slugifyText('Aleluya') },
+  { letter: 'F', description: 'Ofertorio', slug: slugifyText('Ofertorio') },
+  { letter: 'G', description: 'Santo', slug: slugifyText('Santo') },
+  { letter: 'H', description: 'Padre Nuestro', slug: slugifyText('Padre Nuestro') },
+  { letter: 'I', description: 'Paz', slug: slugifyText('Paz') },
+  { letter: 'J', description: 'Comunión', slug: slugifyText('Comunión') },
+  { letter: 'K', description: 'Salida', slug: slugifyText('Salida') },
+  { letter: 'M', description: 'María', slug: slugifyText('María') },
+  { letter: 'V', description: 'Villancicos', slug: slugifyText('Villancicos') },
+  { letter: 'X', description: 'Campamento', slug: slugifyText('Campamento') },
+  { letter: 'Y', description: 'Internacional', slug: slugifyText('Internacional') },
+  { letter: 'Z', description: 'Especiales', slug: slugifyText('Especiales') }
 ];
 
 export function getFeaturedSongs(): Song[] {
