@@ -1,7 +1,6 @@
-import fs from 'fs';
-import path from 'path';
 import { Song, Category } from "@/types/song";
 import { slugifyText } from "@/lib/utils";
+import { allSongs } from './cantoral';
 
 export const categories: Category[] = [
   { letter: 'E', description: 'Entrada', slug: slugifyText('Entrada') },
@@ -15,35 +14,6 @@ export const categories: Category[] = [
   { letter: 'C', description: 'Comunión', slug: slugifyText('Comunión') },
   { letter: 'F', description: 'Final', slug: slugifyText('Final') }
 ];
-
-// Function to read and parse cantoral.jsonl
-function loadSongs(): Song[] {
-  try {
-    const filePath = path.resolve(process.cwd(), 'lib/data/cantoral.jsonl');
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const lines = fileContent.trim().split('\n');
-    return lines.map(line => JSON.parse(line) as Song);
-  } catch (error) {
-    console.error("Error loading songs from cantoral.jsonl:", error);
-    // Return a default empty array or a minimal set of songs in case of an error
-    // This prevents the application from crashing during build or runtime if the file is missing or corrupt
-    return [
-      {
-        id: "error-song",
-        code: "E00",
-        title: "Error: Could not load songs",
-        author: "System",
-        category: "X",
-        slug: "error-loading-songs",
-        lyrics: "There was an issue loading the song data. Please check the server logs.",
-        audioUrl: undefined,
-        videoUrl: undefined,
-      }
-    ];
-  }
-}
-
-export const allSongs: Song[] = loadSongs();
 
 export function getFeaturedSongs(): Song[] {
   // Create a copy of allSongs to avoid mutating the original array
