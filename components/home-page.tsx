@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { CATEGORIES, FEATURED_SONGS, ALL_SONGS, SITE_NAME } from "@/components/constants"
 import { Category, Song, FeaturedSong } from "@/types/song";
-import Footer from '@/components/footer';
+import Footer from '@/components/Footer';
 import { useRouter } from 'next/navigation'
 import { useTheme } from '@/lib/theme-context'
 

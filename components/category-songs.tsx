@@ -5,11 +5,10 @@ import { ArrowLeft, ChevronRight, BookOpen, Moon, Sun, Play, Pause, Search, Hear
 import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import Footer from '@/components/footer';
+import Footer from '@/components/Footer';
 import { SITE_NAME, CATEGORIES, ALL_SONGS } from "@/components/constants"
 import { useTheme } from '@/lib/theme-context'
-import { Song, Category } from "@/types/song"
-import { Waveform } from "@/components/ui/waveform"
+import { Song } from "@/types/song"
 import { motion, AnimatePresence } from "framer-motion"
 import { WaveformPreview } from "@/components/ui/waveform-preview"
 

@@ -14,9 +14,9 @@ export const CATEGORIES: Category[] = [
 ];
 
 export const FEATURED_SONGS: FeaturedSong[] = [
-  { id: 'E15', code: 'E15', title: 'Juntos como hermanos', author: 'Cesáreo Gabaráin', lyrics: '...lyrics here...', category: 'E' },
-  { id: 'C45', code: 'C45', title: 'El Señor es mi pastor', author: 'Tradicional', lyrics: '...lyrics here...', category: 'C' },
-  { id: 'F23', code: 'F23', title: 'Santa María del Camino', author: 'Juan Antonio Espinosa', lyrics: '...lyrics here...', category: 'F' },
+  { id: 'E15', code: 'E15', title: 'Juntos como hermanos', author: 'Cesáreo Gabaráin', lyrics: '...lyrics here...', category: 'E', hasAudio: false },
+  { id: 'C45', code: 'C45', title: 'El Señor es mi pastor', author: 'Tradicional', lyrics: '...lyrics here...', category: 'C', hasAudio: false },
+  { id: 'F23', code: 'F23', title: 'Santa María del Camino', author: 'Juan Antonio Espinosa', lyrics: '...lyrics here...', category: 'F', hasAudio: false },
 ];
 
 export const ALL_SONGS: Song[] = [
@@ -26,7 +26,8 @@ export const ALL_SONGS: Song[] = [
     title: "Vamos cantando al Señor",
     author: "Cesáreo Gabaráin",
     category: "E",
-    hasAudio: true
+    hasAudio: true,
+    lyrics: '...'
   },
   {
     id: "2",
@@ -34,7 +35,8 @@ export const ALL_SONGS: Song[] = [
     title: "Alegre la mañana",
     author: "Juan Antonio Espinosa",
     category: "E",
-    hasAudio: false
+    hasAudio: false,
+    lyrics: '...'
   },
   {
     id: "3",
@@ -42,7 +44,8 @@ export const ALL_SONGS: Song[] = [
     title: "Iglesia peregrina",
     author: "Cesáreo Gabaráin",
     category: "E",
-    hasAudio: true
+    hasAudio: true,
+    lyrics: '...'
   },
   {
     id: "4",
@@ -50,7 +53,8 @@ export const ALL_SONGS: Song[] = [
     title: "Juntos como hermanos",
     author: "Cesáreo Gabaráin",
     category: "E",
-    hasAudio: false
+    hasAudio: false,
+    lyrics: '...'
   },
   // ... Añade más canciones según sea necesario, asegurándote de que algunas tengan hasAudio: true y otras hasAudio: false
 ];

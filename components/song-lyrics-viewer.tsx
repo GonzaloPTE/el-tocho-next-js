@@ -1,11 +1,11 @@
 'use client'
 
 import React from 'react';
-import { ArrowLeft, Rewind, Play, Pause, FastForward, BookOpen, SkipBack, SkipForward, Moon, Sun, Plus, Minus, Music } from "lucide-react"
+import { ArrowLeft, Rewind, Play, Pause, FastForward, BookOpen, SkipBack, SkipForward, Moon, Sun } from "lucide-react"
 import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Waveform } from "@/components/ui/waveform"
-import Footer from '@/components/footer';
+import Footer from '@/components/Footer';
 import { SITE_NAME } from "@/components/constants"
 import { TransposeControl } from "@/components/ui/transpose-control"
 import { useTheme } from '@/lib/theme-context'
