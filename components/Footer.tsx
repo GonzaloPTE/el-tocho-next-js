@@ -1,6 +1,5 @@
 import React from 'react';
 import { siteName } from '@/lib/config/site';
-import { Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -9,25 +8,10 @@ const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <h2 className="text-2xl font-bold text-white">{siteName}</h2>
-            <p className="mt-2">Tu compañero musical para la liturgia</p>
           </div>
           <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-            <a href="#" className="hover:text-white transition-colors">Acerca de</a>
-            <a href="#" className="hover:text-white transition-colors">Contacto</a>
-            <a href="#" className="hover:text-white transition-colors">Política de privacidad</a>
+            <p className="mt-2">by Coro9</p>
           </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-stone-700 flex flex-col md:flex-row justify-between items-center">
-          <p>&copy; {new Date().getFullYear()} {siteName}. Todos los derechos reservados.</p>
-          <a 
-            href="https://github.com/yourusername/your-repo" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center mt-4 md:mt-0 hover:text-white transition-colors"
-          >
-            <Github className="mr-2" size={20} />
-            Ver en GitHub
-          </a>
         </div>
       </div>
     </footer>
