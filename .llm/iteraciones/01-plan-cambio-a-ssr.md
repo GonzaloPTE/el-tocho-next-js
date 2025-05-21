@@ -75,60 +75,56 @@ This plan details the steps to refactor the main application pages (`HomePage`, 
     ```
 5.  **Delete `components/home-page.tsx`** after its logic is moved and refactored.
 
-## II. Refactor `CategoryPage` (`app/category/[letter]/page.tsx` and `components/category-songs.tsx`)
+## II. Refactor `CategoryPage` (`app/category/[letter]/page.tsx` and `components/client/category-song-list.tsx`)
 
-**Goal:** Make `app/category/[letter]/page.tsx` a Server Component.
+**Goal:** Make `app/category/[letter]/page.tsx` a Server Component that handles search filtering. Convert `CategorySongList` into a Server Component, extracting individual song interactions into a new Client Component.
 
-1.  **Identify Client-Side Interactive Parts in `components/category-songs.tsx`:**
-    *   **Theme Toggle:** `useTheme()`.
-    *   **Navigation:** `useRouter()` for back button and `handleSongClick`.
-    *   **Search within Category:** `searchTerm`, `filteredSongs` state, `useEffect` for filtering.
-    *   **Audio Play/Pause State:** `playingSong` state and `handlePlayPause`.
-    *   **Favorites:** `favorites` state and `toggleFavorite`.
-2.  **Convert `app/category/[letter]/page.tsx` to a Server Component:**
-    *   Fetch `category` details and initial `songs` for that category on the server based on `params.letter`.
-    *   Import and use `siteName`.
-3.  **Extract Client Components from `components/category-songs.tsx`:**
-    *   **`CategoryHeaderClientActions` (New Component):**
-        *   Theme toggle, back button using `useRouter`.
-        *   Props: `siteName`.
-        *   Marked with `"use client"`.
-    *   **`SongListInteractive` (New Component):**
-        *   Search input, `searchTerm` state, filtering logic.
-        *   Play/pause state, favorite state and handlers.
-        *   `handleSongClick` logic.
-        *   Props: Initial `songs` for the category (from Server Component), `isDarkMode` (can be passed as prop if theme context is not used directly here).
-        *   Marked with `"use client"`.
-4.  **Structure of `app/category/[letter]/page.tsx` (Server Component):**
-    ```typescript
-    // app/category/[letter]/page.tsx (Server Component)
-    import { categories as staticCategories, allSongs as staticAllSongs } from "@/lib/data/songs";
-    import { siteName as staticSiteName } from "@/lib/config/site";
-    // import CategoryHeaderClientActions from '@/components/category-header-client-actions';
-    // import SongListInteractive from '@/components/song-list-interactive';
-    import Footer from '@/components/Footer';
+1.  **Modify `app/category/[letter]/page.tsx` (Server Component):**
+    *   The page component will accept an optional `search` query parameter from the URL (e.g., `searchParams.search`).
+    *   Fetch `category` details based on `params.letter`.
+    *   Fetch all `songs` for that category.
+    *   If a `search` query parameter is present, filter the songs on the server before passing them to the `CategorySongList` component. Filtering logic should match previous client-side: title, author, code.
+    *   Pass the (potentially filtered) songs and the current `search` term to `CategorySongList`.
+    *   Continue to render the header (using `HeaderClientActions`), footer, and static category information (title, number of songs).
 
-    export default async function CategoryPage({ params }: { params: { letter: string } }) {
-      const siteName = staticSiteName;
-      const category = staticCategories.find(cat => cat.letter === params.letter);
-      const songsForCategory = staticAllSongs.filter(song => song.category === params.letter);
+2.  **Create `components/client/song-item-controls.tsx` (New Client Component):**
+    *   Marked with `"use client"`.
+    *   Props: `song: Song`.
+    *   Uses `useTheme()` for dark mode styling.
+    *   Manages its own state for:
+        *   `isPlayingPreview` (for that specific song's audio preview).
+        *   `isFavorite` (for that specific song).
+    *   Renders:
+        *   Play/Pause button for audio preview (if `song.hasAudio`).
+        *   `WaveformPreview` component (if `song.hasAudio`), passing `isDarkMode`.
+        *   Favorite button.
+    *   Handles `handlePlayPause` and `toggleFavorite` for the individual song.
 
-      if (!category) { /* Handle not found */ }
+3.  **Refactor `CategorySongList` to be a Server Component (from `components/client/category-song-list.tsx` to `components/category-song-list.tsx`):**
+    *   Remove `"use client"`. This component will be moved from `components/client/` to `components/`.
+    *   Remove client-side hooks: `useRouter`, `useTheme`, `useState` for `searchTerm`, `filteredSongs`, `playingSong` (list-wide), `favorites` (list-wide), `isLoading`.
+    *   Remove `framer-motion` for list animations.
+    *   Props:
+        *   `songs: Song[]` (the pre-filtered list from the page component).
+        *   `categoryName: string`.
+        *   `currentSearchTerm?: string` (to pre-fill the search input).
+    *   Render:
+        *   A simple HTML `<form>` for the search input. The input field should be pre-filled with `currentSearchTerm`.
+            *   The form's `method` should be "GET" and `action` can be empty (to submit to the current URL). The search input should have a `name` (e.g., "search").
+        *   Iterate over the `songs` prop:
+            *   Display static song information (code, title, author).
+            *   Use a Next.js `<Link>` component to navigate to the full song page (`/song/[id]`).
+            *   Include the `<SongItemControls song={song} />` client component for interactive elements.
+        *   Display a "No songs found" message if the `songs` array is empty, considering if `currentSearchTerm` was present.
 
-      return (
-        // Main layout structure from old CategorySongs
-        // ...
-        // <CategoryHeaderClientActions siteName={siteName} />
-        // <main>
-        //   <h2>{category.description}</h2>
-        //   <SongListInteractive initialSongs={songsForCategory} />
-        // </main>
-        // <Footer />
-        // ...
-      );
-    }
-    ```
-5.  **Delete `components/category-songs.tsx`** after refactoring.
+4.  **Update Imports and Cleanup:**
+    *   Modify `app/category/[letter]/page.tsx` to import `CategorySongList` from its new location (`@/components/category-song-list`).
+    *   Delete the old `components/client/category-song-list.tsx` file *after* its logic has been successfully refactored and the new server component `components/category-song-list.tsx` is created and working.
+
+**Implications:**
+*   The in-category song search will now trigger a page reload/navigation.
+*   Client-side list animations from `framer-motion` in `CategorySongList` will be removed.
+*   The core list display becomes server-rendered, while individual song actions remain client-rendered.
 
 ## III. Refactor `SongPage` (`app/song/[id]/page.tsx` and `components/song-lyrics-viewer.tsx`)
 
