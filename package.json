@@ -12,7 +12,9 @@
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-    "transform:songs": "tsx scripts/transform-songs.ts"
+    "transform:songs": "tsx scripts/transform-songs.ts",
+    "validate:mp3-slug-map": "tsx scripts/validate-mp3-slug-map.ts",
+    "generate:mp3-slug-map": "tsx scripts/generate-mp3-slug-map.ts"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.2",
