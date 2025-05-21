@@ -18,6 +18,7 @@
     "rename:mp3-slugs": "tsx scripts/rename-mp3-by-slug.ts"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.0.4",
     "@radix-ui/react-select": "^2.1.2",
     "@radix-ui/react-slider": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
@@ -48,6 +49,7 @@
     "tailwindcss": "^3.4.1",
     "tsx": "^4.19.4",
     "typescript": "^5",
-    "typescript-eslint": "^8.32.1"
+    "typescript-eslint": "^8.32.1",
+    "wrangler": "^4.16.0"
   }
 }

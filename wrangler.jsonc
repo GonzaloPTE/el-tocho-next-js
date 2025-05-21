@@ -1,0 +1,23 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "main": ".open-next/worker.js",
+    "name": "cantoraleltocho",
+    "compatibility_date": "2025-03-25",
+    "compatibility_flags": ["nodejs_compat"],
+    "assets": {
+      "directory": ".open-next/assets",
+      "binding": "ASSETS",
+    },
+    "services": [
+      {
+        "binding": "WORKER_SELF_REFERENCE",
+        // The service should match the "name" of your worker
+        "service": "cantoraleltocho",
+      },
+    ],
+    // Variables de entorno públicas
+    "vars": {
+        "NEXT_PUBLIC_BASE_URL": "https://cantoraleltocho.com",
+        "NEXT_PUBLIC_PDF_URL": "https://cantoraleltocho.com/el-tocho-7-coro9.pdf"
+    }
+}
