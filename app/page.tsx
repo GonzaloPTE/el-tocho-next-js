@@ -5,12 +5,41 @@ import { CategoryNavigation } from "@/components/category-navigation";
 import { FeaturedSongNavigation } from "@/components/client/featured-song-navigation";
 import { PageHeader } from "@/components/page-header";
 import Link from "next/link";
+import { Metadata } from 'next';
 
 // NOTE: ThemeProvider and useTheme are client-side.
 // The root layout (app/layout.tsx) should wrap children in ThemeProvider.
 // Individual server components *cannot* directly access isDarkMode or toggleDarkMode.
 // Client components that need theme information (like SearchBar or HeaderClientActions)
 // will use the useTheme() hook themselves.
+
+export const metadata: Metadata = {
+  title: "Cantoral El Tocho - Acordes y Letras de Canciones",
+  description: "Encuentra acordes y letras de miles de canciones en español. Explora nuestro cancionero digital y toca tus canciones favoritas.",
+  openGraph: {
+    title: "Cantoral El Tocho - Acordes y Letras de Canciones",
+    description: "Encuentra acordes y letras de miles de canciones cristianas en español. Explora nuestro cancionero digital y toca tus canciones favoritas.",
+    url: process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com",
+    siteName: "Cantoral El Tocho",
+    // Assuming you have a general logo or image for the site in public/images/og-image.png
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`, 
+        width: 1024, // Replace with your image's width
+        height: 1024, // Replace with your image's height
+        alt: "Cantoral El Tocho Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cantoral El Tocho - Acordes y Letras de Canciones",
+    description: "Encuentra acordes y letras de miles de canciones cristianas en español. Explora nuestro cancionero digital y toca tus canciones favoritas.",
+    // Assuming you have a general logo or image for Twitter cards in public/images/twitter-image.png
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`], 
+  },
+};
 
 export default async function HomePage() {
   // Fetch data on the server
@@ -36,7 +65,7 @@ export default async function HomePage() {
           {/* Help section - static title, client component for navigation */}
           <div className="mb-16 text-right relative max-w-2xl mx-auto">
             <p className="text-base font-medium text-stone-600 dark:text-stone-300">
-                <span className="mx-2">¿Quieres simplemente explorar?</span>
+                <span className="mx-2">¿Quieres explorar?</span>
                 <Link 
                 href="/canciones" 
                 className="text-base font-medium text-stone-600 hover:text-sky-600 dark:text-stone-300 dark:hover:text-sky-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 dark:focus:ring-offset-stone-900 dark:focus:ring-sky-400"

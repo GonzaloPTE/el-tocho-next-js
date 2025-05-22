@@ -3,6 +3,36 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Acerca de Cantoral El Tocho | Nuestra Historia y Misión",
+  description: "Conoce la historia de Cantoral El Tocho, nuestro cantoral misionero. Descubre nuestra misión de evangelizar a través de la música y el trabajo del Coro9.",
+  openGraph: {
+    title: "Acerca de Cantoral El Tocho | Nuestra Historia y Misión",
+    description: "Conoce la historia del Cantoral El Tocho, nuestro cantoral misionero. Descubre nuestra misión de evangelizar a través de la música y el trabajo del Coro9.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/acerca-de`,
+    siteName: "Cantoral El Tocho",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`, 
+        width: 1024, 
+        height: 1024, 
+        alt: "Cantoral El Tocho",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Acerca de Cantoral El Tocho | Nuestra Historia y Misión",
+    description: "Conoce la historia del Cantoral El Tocho, nuestro cantoral misionero. Descubre nuestra misión de evangelizar a través de la música y el trabajo del Coro9.",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`], 
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/acerca-de`,
+  },
+};
 
 export default async function AcercaDePage() {
   const breadcrumbItems = [

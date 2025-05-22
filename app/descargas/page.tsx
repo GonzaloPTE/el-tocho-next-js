@@ -4,6 +4,36 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import Link from "next/link";
 import Image from "next/image";
 import { DownloadCloud, Printer } from "lucide-react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Descargar El Tocho en PDF - Versiones Imprimibles del Cantoral",
+  description: "Accede a las versiones PDF imprimibles de El Tocho. Descarga las diferentes ediciones de nuestro cantoral cristiano para tu comunidad o uso personal.",
+  openGraph: {
+    title: "Descargar El Tocho en PDF - Versiones Imprimibles del Cantoral",
+    description: "Accede a las versiones PDF imprimibles de El Tocho. Descarga las diferentes ediciones de nuestro cantoral cristiano para tu comunidad o uso personal.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/descargas`,
+    siteName: "El Tocho Cancionero",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`, 
+        width: 1024, 
+        height: 1024, 
+        alt: "Descargar El Tocho en PDF",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Descargar El Tocho en PDF - Versiones Imprimibles del Cantoral",
+    description: "Accede a las versiones PDF imprimibles de El Tocho. Descarga las diferentes ediciones de nuestro cantoral cristiano para tu comunidad o uso personal.",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`], 
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/descargas`,
+  },
+};
 
 interface DownloadItem {
   id: string;

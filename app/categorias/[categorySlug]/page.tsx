@@ -5,11 +5,62 @@ import { CategorySongList } from "@/components/category-song-list";
 import { notFound } from 'next/navigation';
 import { PageHeader } from "@/components/page-header";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Metadata, ResolvingMetadata } from 'next';
 
 interface CategoryPageProps {
   // Update params to use categorySlug
   params: { categorySlug: string }; 
   searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export async function generateMetadata(
+  { params }: CategoryPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const categorySlug = params.categorySlug;
+  const category = getCategoryBySlug(categorySlug);
+
+  if (!category) {
+    return {
+      title: "Categoría no encontrada",
+      description: "La categoría de canciones que buscas no existe."
+    };
+  }
+
+  const pageTitle = `Canciones de ${category.description} - Acordes y Letras | El Tocho`;
+  const pageDescription = `Descubre letras y acordes de canciones de ${category.description}. Encuentra música para cada momento de la celebración en el cantoral El Tocho.`;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com";
+  // Assuming a generic category image or site logo if specific category images aren't available
+  const imageUrl = `${baseUrl}/images/logo-1x1-1k.png`; 
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: `${baseUrl}/categorias/${categorySlug}`,
+      siteName: "Cantoral El Tocho",
+      images: [
+        {
+          url: imageUrl,
+          width: 1024, // Replace with your image's width
+          height: 1024, // Replace with your image's height
+          alt: `Canciones de ${category.description}`,
+        },
+      ],
+      type: "website", // or "object" or a more specific type if applicable
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: pageDescription,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: `${baseUrl}/categorias/${categorySlug}`,
+    },
+  };
 }
 
 export default async function CategoryPage({ params, searchParams }: CategoryPageProps) {

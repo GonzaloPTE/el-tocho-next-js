@@ -3,6 +3,36 @@ import Footer from "@/components/Footer";
 import { CategoryNavigation } from "@/components/category-navigation";
 import { PageHeader } from "@/components/page-header";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Categorías de Cantos Litúrgicos | El Tocho",
+  description: "Explora las categorías de cantos de El Tocho. Encuentra música para cada momento de la misa, organizada temáticamente para facilitar tu selección.",
+  openGraph: {
+    title: "Categorías de Cantos Litúrgicos | El Tocho",
+    description: "Explora las categorías de cantos de El Tocho. Encuentra música para cada momento de la misa, organizada temáticamente para facilitar tu selección.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/categorias`,
+    siteName: "Cantoral El Tocho",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`, 
+        width: 1024, 
+        height: 1024, 
+        alt: "Categorías de Cantos El Tocho",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Categorías de Cantos Litúrgicos | El Tocho",
+    description: "Explora las categorías de cantos de El Tocho. Encuentra música para cada momento de la misa, organizada temáticamente para facilitar tu selección.",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`], 
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/categorias`,
+  },
+};
 
 export default async function CategoriasPage() {
   const breadcrumbItems = [

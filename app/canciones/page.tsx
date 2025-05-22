@@ -4,6 +4,36 @@ import { PageHeader } from "@/components/page-header";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CategorySongList } from "@/components/category-song-list";
 import Link from "next/link";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Cancionero Completo - Todas las Canciones | El Tocho",
+  description: "Explora el cancionero completo de El Tocho. Encuentra letras y acordes de todas nuestras canciones cristianas, organizadas y listas para usar.",
+  openGraph: {
+    title: "Cancionero Completo - Todas las Canciones | El Tocho",
+    description: "Explora el cancionero completo de El Tocho. Encuentra letras y acordes de todas nuestras canciones cristianas, organizadas y listas para usar.",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/canciones`,
+    siteName: "El Tocho Cancionero",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`, 
+        width: 1024, 
+        height: 1024, 
+        alt: "Cancionero Completo El Tocho",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cancionero Completo - Todas las Canciones | El Tocho",
+    description: "Explora el cancionero completo de El Tocho. Encuentra letras y acordes de todas nuestras canciones cristianas, organizadas y listas para usar.",
+    images: [`${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/images/logo-1x1-1k.png`], 
+  },
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com"}/canciones`,
+  },
+};
 
 interface CancionesPageProps {
   searchParams: { [key: string]: string | string[] | undefined };
