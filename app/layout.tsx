@@ -14,9 +14,40 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const siteBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com";
+
 export const metadata: Metadata = {
-  title: "EL TOCHO",
-  description: "Cantoral de música cristiana EL TOCHO",
+  metadataBase: new URL(siteBaseUrl),
+  title: {
+    default: "Cantoral El Tocho - Acordes y Letras de Canciones Cristianas",
+    template: `%s | Cantoral El Tocho`,
+  },
+  description: "Encuentra acordes y letras de miles de canciones cristianas en español. Explora nuestro cancionero digital El Tocho y toca tus canciones favoritas.",
+  // Basic OpenGraph and Twitter metadata, can be overridden by specific pages
+  openGraph: {
+    title: "Cantoral El Tocho - Acordes y Letras de Canciones Cristianas",
+    description: "Encuentra acordes y letras de miles de canciones cristianas en español.",
+    url: siteBaseUrl,
+    siteName: "Cantoral El Tocho",
+    images: [
+      {
+        url: `${siteBaseUrl}/images/logo-1x1-1k.png`, // Default OG image
+        width: 1024,
+        height: 1024,
+        alt: "Cantoral El Tocho Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cantoral El Tocho - Acordes y Letras de Canciones Cristianas",
+    description: "Encuentra acordes y letras de miles de canciones cristianas en español.",
+    images: [`${siteBaseUrl}/images/logo-1x1-1k.png`], // Default Twitter image
+  },
+  // Add other metadata like icons, manifest, etc. here if needed
+  icons: { icon: '/favicon.ico' },
+  // manifest: '/manifest.json',
 };
 
 export default function RootLayout({
@@ -24,8 +55,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Cantoral El Tocho",
+    "url": siteBaseUrl,
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${siteBaseUrl}/canciones?search={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
-    <html lang="en">
+    <html lang="es">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
+        />
+      </head>
       <ThemeProvider>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-100 dark:bg-stone-900 text-stone-900 dark:text-stone-100`}

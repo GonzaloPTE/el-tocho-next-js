@@ -75,15 +75,79 @@ export default async function SongPage({ params }: SongPageProps) {
   }
 
   const isLongSongLayout = song.lyrics.split('\n').length > 20;
+  const siteBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com";
+  const songCategory = categories.find(c => c.letter === song.category);
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": `${siteBaseUrl}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Categorías",
+        "item": `${siteBaseUrl}/categorias`
+      },
+      ...(songCategory ? [{
+        "@type": "ListItem",
+        "position": 3,
+        "name": songCategory.description,
+        "item": `${siteBaseUrl}/categorias/${songCategory.slug}`
+      }] : []),
+      {
+        "@type": "ListItem",
+        "position": songCategory ? 4 : 3,
+        "name": song.title,
+        "item": `${siteBaseUrl}/canciones/${songSlug}`
+      }
+    ]
+  };
+  
+  const songSchema = {
+    "@context": "https://schema.org",
+    "@type": "Song", // or "Song"
+    "name": song.title,
+    "byArtist": {
+      "@type": "Person", // or "MusicGroup"
+      "name": song.author || "Autor Desconocido"
+    },
+    "lyrics": {
+        "@type": "CreativeWork",
+        "text": song.lyrics
+    },
+    // "inLanguage": "es", // Add if you have language info for songs
+    "url": `${siteBaseUrl}/canciones/${songSlug}`
+  };
+
+  const breadcrumbItems = [
+    { label: 'Inicio', href: '/' }, 
+    { label: 'Categorías', href: '/categorias' },
+    ...(songCategory ? [{ label: songCategory.description, href: `/categorias/${songCategory.slug}` }] : []),
+    { label: song.title }
+  ];
 
   return (
     <div className="min-h-screen flex flex-col font-inter">
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(songSchema) }}
+      />
       <PageHeader showBackButton={true} />
 
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className={`mx-auto space-y-6 ${isLongSongLayout ? 'max-w-6xl' : 'max-w-4xl'}`}>
           <Breadcrumb 
-            items={[{ label: 'Inicio', href: '/' }, { label: 'Categorías', href: '/categorias' }, { label: categories.find(c => c.letter === song.category)?.description || '', href: `/categorias/${categories.find(c => c.letter === song.category)?.slug}` }, { label: song.title }]}
+            items={breadcrumbItems}
             showBackButton={true}
           />
           <LyricsViewerInteractive song={song} />

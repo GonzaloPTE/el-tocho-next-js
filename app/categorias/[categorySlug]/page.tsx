@@ -74,7 +74,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     notFound();
   }
 
-  // Update basePath
+  const siteBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cantoraleltocho.com";
   const basePath = `/categorias/${categorySlug}`; 
 
   // Get songs using category.letter
@@ -88,8 +88,64 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
     });
   }
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": `${siteBaseUrl}/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Categorías",
+        "item": `${siteBaseUrl}/categorias` 
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": category.description,
+        "item": `${siteBaseUrl}${basePath}`
+      }
+    ]
+  };
+
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": `Canciones de ${category.description}`,
+    "description": `Lista de canciones pertenecientes a la categoría ${category.description} en El Tocho Cancionero.`,
+    "numberOfItems": songsForCategory.length,
+    "itemListElement": songsForCategory.map((song, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Song",
+        "name": song.title,
+        "url": `${siteBaseUrl}/canciones/${song.slug}`,
+        ...(song.author && { 
+          "byArtist": {
+            "@type": "Person", // or "MusicGroup"
+            "name": song.author
+          }
+        })
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen flex flex-col font-inter">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <PageHeader showBackButton={true} />
       
       <main className="flex-grow container mx-auto px-4 py-8">
