@@ -31,7 +31,7 @@ export function PrintableSongItem({ song, songIndex, totalSongs, tag, onTagChang
   return (
     // Web view container with border and shadow, print styles remove this
     <div 
-      className={`printable-song-item mb-6 p-4 sm:p-6 border border-stone-200 rounded-lg shadow-sm print:border-none print:shadow-none print:p-0 print:my-4 ${
+      className={`printable-song-item mb-6 p-4 sm:p-6 border border-stone-200 rounded-lg shadow-sm print:border-none print:shadow-none print:p-0 print:mb-4 print:pt-8 ${
         isLongSong ? 'print-col-span-all' : ''
       }`}
     >
@@ -46,30 +46,33 @@ export function PrintableSongItem({ song, songIndex, totalSongs, tag, onTagChang
         <div className="flex-grow flex justify-between items-start">
           {/* Title and Author block */}
           <div>
-            {/* New container for input, separator, and title */}
-            <div className="flex items-baseline mb-1">
-              {/* Group for input (web) / tag display (print) and separator */}
-              <div className="flex items-baseline mr-2">
+            {/* Container for input/tag, separator, and title - responsive flex direction */}
+            <div className="flex flex-col sm:flex-row sm:items-baseline print:flex-row print:items-baseline mb-1">
+              {/* Group for input (web) / tag display (print) - responsive width and margin */}
+              <div className="w-full sm:w-auto mb-1 sm:mb-0 print:mb-0 flex items-baseline">
                 {/* Web: Input field */}
                 <input
                   type="text"
                   placeholder="Entrada, Comunión,..."
                   value={tag || ''} // Controlled component
                   onChange={(e) => onTagChange(e.target.value)} // Update state
-                  className="print:hidden text-sm border border-stone-300 rounded px-2 py-1 w-auto sm:w-36 md:w-48 focus:ring-sky-500 focus:border-sky-500"
+                  className="print:hidden text-sm border border-stone-300 rounded px-2 py-1 w-full sm:w-36 md:w-48 focus:ring-sky-500 focus:border-sky-500"
                   onClick={(e) => e.stopPropagation()} // Prevent click from bubbling
                 />
                 {/* Print: Display tag value if present */}
-                {tag && <span className="hidden print:inline text-sm text-stone-700">{tag}</span>}
+                {tag && tag.trim() !== '' && <span className="hidden print:inline text-sm text-stone-700">{tag.trim()}</span>}
                 
+                {/* Separator - Web view (sm and up) */}
+                <span className="hidden sm:inline print:hidden text-stone-400 mx-2">|</span>
                 {/* Separator - Print view (only show if tag is present and not empty) */}
-                {tag && tag.trim() !== '' && <span className="hidden print:inline text-stone-400 print:mx-1">-</span>}
+                {tag && tag.trim() !== '' && <span className="hidden print:inline text-stone-400 mx-1">|</span>}
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold print:text-lg leading-tight text-stone-800 print:text-black">{song.title}</h2>
+              {/* Title - conditional margin for web */}
+              <h2 className="text-xl sm:text-2xl font-bold print:text-lg leading-tight text-stone-800 print:text-black sm:ml-0 print:ml-0">{song.title}</h2>
             </div>
             {/* Display author and song code conditionally */} 
             {song.author ? (
-              <h3 className="text-md sm:text-lg text-stone-600 print:text-black print:text-xs ml-2">
+              <h3 className="text-md sm:text-lg text-stone-600 print:text-black print:text-xs">
                 <span className="text-stone-500 print:text-gray-700">{song.code} - {song.author} </span>
               </h3>
             ) : (
