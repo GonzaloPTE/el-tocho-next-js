@@ -64,6 +64,8 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
               categoryName={category.description} 
               currentSearchTerm={searchTerm}
               basePath={basePath}
+              sortBy="code"
+              sortOrder="asc"
             />
           </div>
         </div>

@@ -6,16 +6,70 @@ import { SongItemControls } from '@/components/client/song-item-controls';
 import { DebouncedCategorySearchInput } from '@/components/client/debounced-category-search-input';
 import { SongPreviewProvider } from '@/components/client/song-preview-context'; 
 
+// Define possible sort fields based on Song interface string properties
+export type SongSortField = 'id' | 'code' | 'title' | 'author' | 'category' | 'slug' | 'lyrics' | 'audioUrl' | 'videoUrl';
+export type SortOrder = 'asc' | 'desc';
+
 interface CategorySongListProps {
   songs: Song[];
   categoryName: string;
   currentSearchTerm?: string;
   basePath: string;
+  sortBy?: SongSortField;
+  sortOrder?: SortOrder;
 }
 
-export function CategorySongList({ songs, categoryName, currentSearchTerm, basePath }: CategorySongListProps) {
+export function CategorySongList({ 
+  songs, 
+  categoryName, 
+  currentSearchTerm, 
+  basePath, 
+  sortBy, 
+  sortOrder = 'asc' // Default sortOrder to ascending
+}: CategorySongListProps) {
   // Removed: useState for activePreviewSongId
   // Removed: handleTogglePreview function
+
+  let processedSongs = [...songs];
+
+  if (sortBy) {
+    processedSongs.sort((a, b) => {
+      const valA = String(a[sortBy] ?? ''); // Ensure string and provide default
+      const valB = String(b[sortBy] ?? ''); // Ensure string and provide default
+
+      if (sortBy === 'code') {
+        // Natural sort for 'code' (e.g., A1, A2, A10)
+        const matchA = valA.match(/^([A-Z]+)(\d+)$/);
+        const matchB = valB.match(/^([A-Z]+)(\d+)$/);
+
+        const letterA = matchA ? matchA[1] : valA;
+        const numAStr = matchA ? matchA[2] : '0';
+        const letterB = matchB ? matchB[1] : valB;
+        const numBStr = matchB ? matchB[2] : '0';
+        
+        const numA = parseInt(numAStr, 10);
+        const numB = parseInt(numBStr, 10);
+
+        if (letterA.toLowerCase() < letterB.toLowerCase()) return sortOrder === 'asc' ? -1 : 1;
+        if (letterA.toLowerCase() > letterB.toLowerCase()) return sortOrder === 'asc' ? 1 : -1;
+        if (numA < numB) return sortOrder === 'asc' ? -1 : 1;
+        if (numA > numB) return sortOrder === 'asc' ? 1 : -1;
+        return 0;
+      } else {
+        // Standard string sort for other fields
+        const strA = valA.toLowerCase();
+        const strB = valB.toLowerCase();
+
+        if (strA < strB) {
+          return sortOrder === 'asc' ? -1 : 1;
+        }
+        if (strA > strB) {
+          return sortOrder === 'asc' ? 1 : -1;
+        }
+        return 0;
+      }
+    });
+  }
 
   return (
     <div>
@@ -26,9 +80,9 @@ export function CategorySongList({ songs, categoryName, currentSearchTerm, baseP
       />
 
       <SongPreviewProvider>
-        {songs.length > 0 ? (
+        {processedSongs.length > 0 ? (
           <div className="space-y-1">
-            {songs.map((song) => (
+            {processedSongs.map((song) => (
               <Link 
                 href={`/canciones/${song.slug}`}
                 key={song.id}
