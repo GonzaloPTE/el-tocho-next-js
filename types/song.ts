@@ -15,4 +15,5 @@ export interface Song {
   audioUrl?: string;
   videoUrl?: string;
   duration?: number;
+  tag?: string;
 }
