@@ -11,6 +11,7 @@ interface CancionesPageProps {
 
 export default async function CancionesPage({ searchParams }: CancionesPageProps) {
   const searchTerm = typeof searchParams.search === 'string' ? searchParams.search : undefined;
+  const isSearching = !!searchTerm;
 
   const breadcrumbItems = [
     { label: "Inicio", href: "/" },
@@ -67,6 +68,7 @@ export default async function CancionesPage({ searchParams }: CancionesPageProps
               basePath="/canciones" // Base path for search URLs
               sortBy="code"
               sortOrder="asc"
+              isSearching={isSearching}
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, SearchIcon } from "lucide-react";
 import { Song } from "@/types/song";
 import { SongItemControls } from '@/components/client/song-item-controls';
 import { DebouncedCategorySearchInput } from '@/components/client/debounced-category-search-input';
@@ -17,6 +17,7 @@ interface CategorySongListProps {
   basePath: string;
   sortBy?: SongSortField;
   sortOrder?: SortOrder;
+  isSearching?: boolean;
 }
 
 export function CategorySongList({ 
@@ -25,7 +26,8 @@ export function CategorySongList({
   currentSearchTerm, 
   basePath, 
   sortBy, 
-  sortOrder = 'asc' // Default sortOrder to ascending
+  sortOrder = 'asc', // Default sortOrder to ascending
+  isSearching // Destructure the prop
 }: CategorySongListProps) {
   // Removed: useState for activePreviewSongId
   // Removed: handleTogglePreview function
@@ -72,16 +74,25 @@ export function CategorySongList({
   }
 
   return (
-    <div>
+    <div className="mt-6">
       <DebouncedCategorySearchInput 
         initialSearchTerm={currentSearchTerm}
         categoryName={categoryName}
         basePath={basePath}
       />
 
+      {isSearching && currentSearchTerm && processedSongs.length > 0 && (
+        <div className="my-6 p-3 bg-stone-50 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg shadow-sm">
+          <p className="text-sm font-medium text-stone-700 dark:text-stone-200 flex items-center">
+            <SearchIcon className="w-4 h-4 mr-2 flex-shrink-0 text-stone-500 dark:text-stone-400" />
+            Mostrando resultados para: <strong className="ml-1 font-semibold">"{currentSearchTerm}"</strong>
+          </p>
+        </div>
+      )}
+
       <SongPreviewProvider>
         {processedSongs.length > 0 ? (
-          <div className="space-y-1">
+          <div className="space-y-1 pt-2">
             {processedSongs.map((song) => (
               <Link 
                 href={`/canciones/${song.slug}`}
@@ -106,13 +117,18 @@ export function CategorySongList({
             ))}
           </div>
         ) : (
-          <div className="text-center py-8">
+          <div className="text-center py-12">
+            <SearchIcon className="mx-auto h-12 w-12 text-stone-400 dark:text-stone-500 mb-3" />
             <p className="text-xl font-semibold text-stone-700 dark:text-stone-300">
               {currentSearchTerm 
                 ? `No se encontraron canciones para "${currentSearchTerm}"` 
                 : `No hay canciones en ${categoryName}`}
             </p>
-            {currentSearchTerm && <p className="text-sm text-stone-500 dark:text-stone-400">Intenta con otra búsqueda o revisa la ortografía.</p>}
+            {currentSearchTerm && (
+                <p className="mt-2 text-sm text-stone-500 dark:text-stone-400">
+                    Intenta con otra búsqueda o revisa la ortografía.
+                </p>
+            )}
           </div>
         )}
       </SongPreviewProvider>
