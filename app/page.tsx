@@ -4,6 +4,7 @@ import { SearchBar } from "@/components/client/search-bar";
 import { CategoryNavigation } from "@/components/category-navigation";
 import { FeaturedSongNavigation } from "@/components/client/featured-song-navigation";
 import { PageHeader } from "@/components/page-header";
+import Link from "next/link";
 
 // NOTE: ThemeProvider and useTheme are client-side.
 // The root layout (app/layout.tsx) should wrap children in ThemeProvider.
@@ -26,9 +27,24 @@ export default async function HomePage() {
       <PageHeader />
 
       <main className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto space-y-24">
+        <div className="max-w-5xl mx-auto">
           {/* SearchBar is a client component */}
-          <SearchBar allSongs={songs} />
+          <div className="mt-24 mb-8">
+            <SearchBar allSongs={songs} />
+          </div>
+
+          {/* Help section - static title, client component for navigation */}
+          <div className="mb-16 text-right relative max-w-2xl mx-auto">
+            <p className="text-base font-medium text-stone-600 dark:text-stone-300">
+                <span className="mx-2">¿Quieres simplemente explorar?</span>
+                <Link 
+                href="/canciones" 
+                className="text-base font-medium text-stone-600 hover:text-sky-600 dark:text-stone-300 dark:hover:text-sky-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 dark:focus:ring-offset-stone-900 dark:focus:ring-sky-400"
+                >
+                Ver todo el cancionero →
+                </Link>
+            </p>
+          </div>
 
           {/* Categories section - static title, client component for navigation */}
           <div>

@@ -8,7 +8,7 @@ export { allSongs };
 export const categories: Category[] = [
   { letter: 'A', description: 'Entrada', slug: slugifyText('Entrada') },
   //{ letter: 'K', description: 'Kyrie', slug: slugifyText('Kyrie') },
-  { letter: 'B', description: 'Perdón/Agua', slug: slugifyText('Perdón/Agua') },
+  { letter: 'B', description: 'Perdón y Agua', slug: slugifyText('Perdón-y-Agua') },
   { letter: 'C', description: 'Gloria', slug: slugifyText('Gloria') },
   { letter: 'D', description: 'Antifona', slug: slugifyText('Antifona') },
   { letter: 'E', description: 'Aleluya', slug: slugifyText('Aleluya') },

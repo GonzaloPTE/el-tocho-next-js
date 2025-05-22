@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { CategorySongList } from "@/components/category-song-list";
 import { notFound } from 'next/navigation';
 import { PageHeader } from "@/components/page-header";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 interface CategoryPageProps {
   // Update params to use categorySlug
@@ -39,9 +40,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   return (
     <div className="min-h-screen flex flex-col font-inter">
       <PageHeader showBackButton={true} />
-
+      
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto space-y-8">
+          <Breadcrumb items={[{ label: 'Inicio', href: '/' }, { label: 'Categorías', href: '/categorias' }, { label: category.description }]} />
           <div className="rounded-2xl shadow-xl p-6 border bg-white border-stone-200 dark:bg-stone-800 dark:border-stone-700">
             <div className="flex items-center space-x-6 mb-8">
               <div className="w-24 h-24 flex-shrink-0 rounded-full flex items-center justify-center text-white font-bold shadow-lg bg-stone-800 dark:bg-stone-600">
