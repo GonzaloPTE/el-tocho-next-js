@@ -1,4 +1,4 @@
-import { allSongs, categories } from "@/lib/data/songs";
+import { allSongs, categories, searchSongs } from "@/lib/data/songs";
 import Footer from "@/components/Footer";
 import { PageHeader } from "@/components/page-header";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -23,11 +23,11 @@ export default async function CancionesPage({ searchParams }: CancionesPageProps
   let songsToDisplay = allSongs;
 
   if (searchTerm) {
-    songsToDisplay = allSongs.filter(song =>
-      song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (song.author && song.author.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      song.code.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    songsToDisplay = searchSongs(searchTerm, {
+      songsToSearch: allSongs, 
+      priorityFields: ['title', 'author', 'lyrics', 'code'] 
+      // No limit, show all matches
+    });
   }
 
   return (

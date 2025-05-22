@@ -7,28 +7,25 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Song } from "@/types/song";
 import { useTheme } from "@/lib/theme-context";
+import { searchSongs } from '@/lib/data/songs';
 
-interface SearchBarProps {
-  allSongs: Song[];
-}
-
-export function SearchBar({ allSongs }: SearchBarProps) {
+export function SearchBar() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchResults, setSearchResults] = React.useState<Song[]>([]);
   const router = useRouter();
   const { isDarkMode } = useTheme();
 
   React.useEffect(() => {
-    if (searchTerm.length > 0) {
-      const filteredResults = allSongs.filter(song => 
-        song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        song.code.toLowerCase().includes(searchTerm.toLowerCase())
-      ).slice(0, 5);
-      setSearchResults(filteredResults);
+    if (searchTerm.trim().length > 0) {
+      const results = searchSongs(searchTerm, {
+        priorityFields: ['title', 'author', 'lyrics', 'code'],
+        limit: 5,
+      });
+      setSearchResults(results);
     } else {
       setSearchResults([]);
     }
-  }, [searchTerm, allSongs]);
+  }, [searchTerm]);
 
   const handleSongClick = (songSlug: string) => {
     router.push(`/canciones/${songSlug}`);
@@ -54,7 +51,7 @@ export function SearchBar({ allSongs }: SearchBarProps) {
             <Search className="absolute left-6 top-1/2 transform -translate-y-1/2 text-stone-400" size={24} />
             <Input
               type="text"
-              placeholder="Buscar por título, autor, letra..."
+              placeholder="Título, autor, letra, código..."
               className={`w-full pl-16 pr-4 py-6 text-lg border-none focus:ring-2 ${isDarkMode ? 'bg-stone-800 text-stone-100 focus:ring-stone-600' : 'bg-white text-stone-800 focus:ring-stone-300'} rounded-l-full`}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}

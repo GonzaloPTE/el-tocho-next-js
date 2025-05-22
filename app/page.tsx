@@ -30,7 +30,7 @@ export default async function HomePage() {
         <div className="max-w-5xl mx-auto">
           {/* SearchBar is a client component */}
           <div className="mt-24 mb-8">
-            <SearchBar allSongs={songs} />
+            <SearchBar />
           </div>
 
           {/* Help section - static title, client component for navigation */}

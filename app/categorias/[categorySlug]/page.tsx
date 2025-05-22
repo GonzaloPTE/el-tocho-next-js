@@ -1,5 +1,5 @@
 // Update to use getCategoryBySlug and getSongsByCategory
-import { getCategoryBySlug, getSongsByCategory } from "@/lib/data/songs"; 
+import { getCategoryBySlug, getSongsByCategory, searchSongs } from "@/lib/data/songs"; 
 import Footer from "@/components/Footer";
 import { CategorySongList } from "@/components/category-song-list";
 import { notFound } from 'next/navigation';
@@ -30,11 +30,11 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
   let songsForCategory = getSongsByCategory(category.letter); 
 
   if (searchTerm) {
-    songsForCategory = songsForCategory.filter(song => 
-      song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (song.author && song.author.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      song.code.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    songsForCategory = searchSongs(searchTerm, {
+      songsToSearch: songsForCategory, // Search within the already filtered category songs
+      priorityFields: ['title', 'author', 'lyrics', 'code']
+      // No limit, show all matches within the category
+    });
   }
 
   return (
