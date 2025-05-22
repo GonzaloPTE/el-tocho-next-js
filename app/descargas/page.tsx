@@ -84,7 +84,7 @@ export default async function DescargasPage() {
               </p>
             </div>
 
-            <div className="mt-8 prose prose-stone dark:prose-invert max-w-none text-center py-4">
+            <div className="mt-8 prose prose-stone dark:prose-invert max-w-none text-center pt-4 pb-12">
                 <h3 className="font-merriweather text-xl font-bold text-stone-800 dark:text-stone-100 flex items-center justify-center my-4">
                     Un Proyecto Comunitario
                 </h3>
