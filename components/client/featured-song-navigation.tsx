@@ -2,12 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { HeartCrack, ChevronRight } from 'lucide-react';
+import { HeartCrack, ChevronRight, PrinterIcon } from 'lucide-react';
 import { Song } from '@/types/song';
 import { useTheme } from '@/lib/theme-context';
 import { getFavoriteSongIdsFromStorage } from '@/lib/client-utils';
 import { SongItemControls } from '@/components/client/song-item-controls';
 import { SongPreviewProvider } from '@/components/client/song-preview-context';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 interface FeaturedSongNavigationProps {
   allSongs: Song[];
@@ -16,6 +18,7 @@ interface FeaturedSongNavigationProps {
 export function FeaturedSongNavigation({ allSongs }: FeaturedSongNavigationProps) {
   const { isDarkMode } = useTheme();
   const [favoriteSongs, setFavoriteSongs] = useState<Song[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const favoriteIds = getFavoriteSongIdsFromStorage();
@@ -71,6 +74,18 @@ export function FeaturedSongNavigation({ allSongs }: FeaturedSongNavigationProps
           </Link>
         ))}
       </div>
+      {favoriteSongs.length > 0 && (
+        <div className="mt-6 text-center">
+          <Button 
+            onClick={() => router.push('/hoja-favoritos')}
+            variant="outline"
+            className="border-stone-300 hover:border-stone-400 dark:border-stone-600 dark:hover:border-stone-500 dark:text-stone-300 dark:hover:text-stone-100"
+          >
+            <PrinterIcon className="mr-2 h-4 w-4" />
+            Imprimir Hoja de Favoritos
+          </Button>
+        </div>
+      )}
     </SongPreviewProvider>
   );
 } 
