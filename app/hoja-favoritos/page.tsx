@@ -17,7 +17,7 @@ export default function HojaFavoritosPage() {
   const router = useRouter();
   const [favoriteSongs, setFavoriteSongs] = useState<Song[]>([]);
   const [isClient, setIsClient] = useState(false);
-  const [printableSheetTitle, setPrintableSheetTitle] = useState('Mis Canciones Favoritas');
+  const [printableSheetTitle, setPrintableSheetTitle] = useState('');
 
   useEffect(() => {
     setIsClient(true);
@@ -63,7 +63,7 @@ export default function HojaFavoritosPage() {
           </Button>
           <Input 
             type="text"
-            value={''}
+            value={printableSheetTitle}
             onChange={(e) => setPrintableSheetTitle(e.target.value)}
             placeholder="Escribe un título para la hoja..."
             className="w-full sm:w-1/2 md:w-1/3 text-center border-stone-300 focus:border-sky-500"
