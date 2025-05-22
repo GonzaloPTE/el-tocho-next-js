@@ -59,7 +59,7 @@ export default async function HomePage() {
           </div>
 
           {/* Featured songs section - static title, client component for navigation */}
-          <div>
+          <div className="mt-16">
             <h2 className="text-4xl font-merriweather font-bold mb-8 text-stone-800 dark:text-stone-100">
               Canciones Favoritas
             </h2>
