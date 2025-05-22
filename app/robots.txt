@@ -1,0 +1,9 @@
+# robots.txt
+User-agent: *
+Allow: /
+
+# Disallow indexing of search results within category pages
+Disallow: /categorias/*?search=*
+Disallow: /canciones?search=*
+
+Sitemap: https://cantoraleltocho.com/sitemap.xml 
