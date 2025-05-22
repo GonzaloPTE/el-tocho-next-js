@@ -7,7 +7,7 @@ import { allSongs } from '@/lib/data/songs'; // Direct import as per plan
 import { getFavoriteSongIdsFromStorage } from '@/lib/client-utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowLeft, PrinterIcon } from 'lucide-react';
+import { ArrowLeft, PrinterIcon, ArrowUpDown } from 'lucide-react';
 import { PrintableSongItem } from '@/components/client/printable-song-item';
 
 // Placeholder for PrintableSongItem - will be created next
@@ -28,6 +28,23 @@ export default function HojaFavoritosPage() {
 
   const handlePrint = () => {
     window.print();
+  };
+
+  const handleSwapSongs = (index1: number, index2: number) => {
+    const newFavoriteSongs = [...favoriteSongs];
+    // Simple swap logic
+    const temp = newFavoriteSongs[index1];
+    newFavoriteSongs[index1] = newFavoriteSongs[index2];
+    newFavoriteSongs[index2] = temp;
+    setFavoriteSongs(newFavoriteSongs);
+  };
+
+  const handleTagChange = (songId: string, newTag: string) => {
+    setFavoriteSongs(prevSongs => 
+      prevSongs.map(song => 
+        song.id === songId ? { ...song, tag: newTag } : song
+      )
+    );
   };
 
   if (!isClient) {
@@ -60,26 +77,51 @@ export default function HojaFavoritosPage() {
 
       {/* Content to be Printed (includes fixed header/footer for print) */}
       <div className="printable-area">
-        {/* Fixed Print Header - Now includes all elements */}
-        <div className="print-header print:fixed print:top-0 print:left-0 print:right-0 print:h-[12mm] print:flex print:items-center print:justify-between print:text-xs print:border-b print:border-gray-300 hidden px-[15mm]">
-          <span className="font-bold">EL TOCHO</span>
-          <span className="flex-grow font-semibold text-lg text-center">{printableSheetTitle}</span>
-          <a href="https://cantoraleltocho.com" target="_blank" rel="noopener noreferrer" className="hover:underline">cantoraleltocho.com</a>
+        {/* Header - Print Only, First Page Only (not fixed) */}
+        <div className="print-header-first-page hidden print:block print:mb-8 print:pb-4">
+          <div className="flex items-center justify-between text-xs px-[15mm]">
+            <span className="text-xl font-bold">EL TOCHO</span>
+            <span className="flex-grow font-semibold text-lg text-center">{printableSheetTitle}</span>
+            <a href="https://cantoraleltocho.com" target="_blank" rel="noopener noreferrer" className="hover:underline">cantoraleltocho.com</a>
+          </div>
         </div>
 
         {/* Song List - main content area */}
-        {/* Adjust top padding for print to account for the new header height */}
         <div className="song-list-content container mx-auto px-2 sm:px-4 print:px-0 print:pb-[5mm]">
           {favoriteSongs.length > 0 ? (
-            <div className="space-y-4 print:space-y-0">
-              {favoriteSongs.map((song, index) => (
-                <PrintableSongItem 
-                  key={song.id} 
-                  song={song} 
-                  songIndex={index} 
-                  totalSongs={favoriteSongs.length} 
-                />
-              ))}
+            <div className="space-y-4 print:space-y-0 print-song-list-columns">
+              {favoriteSongs.map((song, index) => {
+                const numberOfLines = song.lyrics.split('\n').length;
+                const isLongSong = numberOfLines > 35;
+                
+                return (
+                  <React.Fragment key={song.id}>
+                    {index > 0 && (
+                      <div className="flex justify-center -my-8 print:hidden relative z-10">
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="rounded-full w-12 h-12 sm:w-14 sm:h-14 bg-stone-800 hover:bg-stone-900 border-2 border-white shadow-lg transform hover:scale-110 transition-transform"
+                          onClick={() => handleSwapSongs(index, index - 1)}
+                          title="Mover canción hacia arriba"
+                        >
+                          <ArrowUpDown className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
+                        </Button>
+                      </div>
+                    )}
+                    <PrintableSongItem 
+                      song={song} 
+                      songIndex={index} 
+                      totalSongs={favoriteSongs.length}
+                      tag={song.tag} 
+                      onTagChange={(newTag) => handleTagChange(song.id, newTag)}
+                    />
+                    {isLongSong && index < favoriteSongs.length - 1 && (
+                      <div key={`${song.id}-break`} className="print-page-break-after-explicit"></div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
               {/* <p className="text-center print:hidden">Renderización de PrintableSongItem aquí.</p> */}
               {/* Temporary display for development */} 
               {/* <div className="p-4 border print:border-none">

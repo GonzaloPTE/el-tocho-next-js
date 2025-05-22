@@ -52,10 +52,16 @@ main {
 
 /* Print-specific styles */
 @media print {
+  html, body {
+    /* height: 100%; // Removed */
+    /* overflow: visible !important; // Usually default, but ensure no hidden overflows */ 
+  }
+
   /* Hide scrollbars in print view for cleaner output */
   body {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
+    /* padding-top: 22mm; // REMOVED - Header will not be fixed on all pages */
   }
   body::-webkit-scrollbar {
     display: none; /* Webkit browsers */
@@ -100,11 +106,27 @@ main {
   
   .hoja-favoritos-page {
     /* counter-reset: pageTotal; // Removed as pageTotal is no longer used */
-    /* padding-top: 22mm; // Header (12mm) + Desired Gap (10mm) = 22mm. Applied to main page container for print. */
+    /* padding-top: 12mm; */ /* Moved to body for print */
+  }
+
+  .print-song-list-columns {
+    column-count: 2;
+    column-gap: 15mm; /* Adjust gap as needed */
+  }
+
+  .print-col-span-all {
+    column-span: all;
+  }
+
+  .print-page-break-after-explicit {
+    break-after: page !important;
+    height: 0;
+    display: block; /* Ensure it takes up space to trigger break */
   }
 
   .printable-song-item {
-    break-inside: avoid;
+    break-inside: avoid-column; /* Try to keep items from breaking across columns */
+    page-break-inside: avoid; /* Legacy/alias for break-inside: avoid */
     margin-bottom: 10mm; /* Spacing between song items */
     /* counter-increment: pageTotal; // Removed pageTotal increment */
   }
