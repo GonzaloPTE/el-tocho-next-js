@@ -29,16 +29,6 @@ const Footer: React.FC = () => {
                   height="31"
                 />
               </Link>
-              <p className="text-xs text-stone-500 dark:text-stone-400 my-2">
-                <Link 
-                  href="https://creativecommons.org/licenses/by-sa/4.0/deed.es"
-                  target="_blank"
-                  rel="noopener noreferrer license" 
-                  className="underline hover:text-stone-700 dark:hover:text-stone-200"
-                >
-                  Creative Commons Attribution-ShareAlike 4.0 International License
-                </Link>.
-              </p>
             </div>
           </div>
         </div>
