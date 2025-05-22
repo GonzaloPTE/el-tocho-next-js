@@ -57,21 +57,31 @@ export default async function HomePage() {
 
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-5xl mx-auto">
+          <div className="text-center pt-12 pb-8">
+            <h1 className="text-5xl sm:text-6xl font-merriweather font-bold mb-6 text-stone-800 dark:text-stone-100">
+              Cantoral EL TOCHO
+            </h1>
+            <p className="text-xl text-stone-600 dark:text-stone-300 max-w-2xl mx-auto">
+              Tu cancionero de acordes y letras para canciones cristianas en español. Explora, aprende y canta con nosotros.
+            </p>
+          </div>
+
           {/* SearchBar is a client component */}
-          <div className="mt-24 mb-8">
+          <div className="mt-8 mb-12">
             <SearchBar />
           </div>
 
           {/* Help section - static title, client component for navigation */}
           <div className="mb-16 text-right relative max-w-2xl mx-auto">
             <p className="text-base font-medium text-stone-600 dark:text-stone-300">
-                <span className="mx-2">¿Quieres explorar?</span>
+                <h2 className="mx-2">
                 <Link 
                 href="/canciones" 
                 className="text-base font-medium text-stone-600 hover:text-sky-600 dark:text-stone-300 dark:hover:text-sky-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 dark:focus:ring-offset-stone-900 dark:focus:ring-sky-400"
                 >
-                Ver todo el cancionero →
+                Explora todo el cancionero →
                 </Link>
+                </h2>
             </p>
           </div>
 

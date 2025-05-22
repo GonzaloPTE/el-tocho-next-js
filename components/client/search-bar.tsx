@@ -42,9 +42,6 @@ export function SearchBar() {
 
   return (
     <div className="text-center">
-      <h2 className={`text-5xl font-merriweather font-bold mb-8 leading-tight ${isDarkMode ? 'text-stone-100' : 'text-stone-800'}`}>
-        Encuentra tu canción favorita
-      </h2>
       <div className="relative max-w-2xl mx-auto">
         <div className={`flex items-center shadow-xl rounded-full overflow-hidden ${isDarkMode ? 'bg-stone-800 border-stone-700' : 'bg-white border-stone-200'} border`}>
           <div className="relative flex-grow">

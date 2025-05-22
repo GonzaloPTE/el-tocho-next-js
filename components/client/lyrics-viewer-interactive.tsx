@@ -192,8 +192,8 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
             <span className="text-2xl">{song.code}</span>
           </div>
           <div className="text-left">
-            <h2 className="text-2xl font-merriweather font-bold leading-tight text-stone-800 dark:text-stone-100">{song.title}</h2>
-            {song.author && <h3 className={`text-lg font-merriweather ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>{song.author}</h3>}
+            <h1 className="text-3xl sm:text-4xl font-merriweather font-bold leading-tight text-stone-800 dark:text-stone-100">{song.title}</h1>
+            {song.author && <h2 className={`text-xl sm:text-2xl font-merriweather ${isDarkMode ? 'text-stone-400' : 'text-stone-600'}`}>{song.author}</h2>}
           </div>
         </div>
         <div className="flex justify-end sm:justify-start">
