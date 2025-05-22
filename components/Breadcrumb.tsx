@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { BackButton } from '@/components/client/back-button';
 
 export interface BreadcrumbItem {
   label: string;
@@ -8,15 +9,23 @@ export interface BreadcrumbItem {
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
+  showBackButton?: boolean;
 }
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+export function Breadcrumb({ items, showBackButton = false }: BreadcrumbProps) {
   if (!items || items.length === 0) {
+    if (showBackButton) {
+      return (
+        <nav aria-label="breadcrumb" className="flex items-center justify-end">
+          <BackButton />
+        </nav>
+      );
+    }
     return null;
   }
 
   return (
-    <nav aria-label="breadcrumb" className="text-sm text-stone-600 dark:text-stone-400">
+    <nav aria-label="breadcrumb" className="flex items-center justify-between text-sm text-stone-600 dark:text-stone-400">
       <ol className="flex items-center space-x-1.5">
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
@@ -36,6 +45,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
           </li>
         ))}
       </ol>
+      {showBackButton && <BackButton />}
     </nav>
   );
 } 

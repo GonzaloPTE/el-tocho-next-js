@@ -29,3 +29,15 @@ body {
 main {
   flex: 1;
 }
+
+.rounded-md {
+  border-radius: 0.5rem;
+}
+
+.rounded-lg {
+  border-radius: 0.75rem;
+}
+
+.rounded-xl {
+  border-radius: 1rem;
+}

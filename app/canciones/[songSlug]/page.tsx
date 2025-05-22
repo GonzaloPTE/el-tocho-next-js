@@ -25,7 +25,10 @@ export default async function SongPage({ params }: SongPageProps) {
 
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className={`mx-auto space-y-6 ${isLongSongLayout ? 'max-w-6xl' : 'max-w-4xl'}`}>
-          <Breadcrumb items={[{ label: 'Inicio', href: '/' }, { label: 'Categorías', href: '/categorias' }, { label: categories.find(c => c.letter === song.category)?.description || '', href: `/categorias/${categories.find(c => c.letter === song.category)?.slug}` }, { label: song.title }]} />
+          <Breadcrumb 
+            items={[{ label: 'Inicio', href: '/' }, { label: 'Categorías', href: '/categorias' }, { label: categories.find(c => c.letter === song.category)?.description || '', href: `/categorias/${categories.find(c => c.letter === song.category)?.slug}` }, { label: song.title }]}
+            showBackButton={true}
+          />
           <LyricsViewerInteractive song={song} />
         </div>
       </main>
