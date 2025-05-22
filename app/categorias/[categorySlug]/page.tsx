@@ -161,10 +161,10 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
                 <span className="text-4xl">{category.letter.toUpperCase()}</span> 
               </div>
               <div>
-                <h1 className="text-3xl font-merriweather font-bold mb-2 text-stone-800 dark:text-stone-100">
+                <h1 className="text-2xl sm:text-4xl font-merriweather font-bold mb-2 text-stone-800 dark:text-stone-100">
                   {category.description} 
                 </h1>
-                <p className="text-xl text-stone-600 dark:text-stone-400">
+                <p className="text-lg sm:text-xl text-stone-600 dark:text-stone-400">
                   {songsForCategory.length} {songsForCategory.length === 1 ? "canción encontrada" : "canciones encontradas"}
                   {searchTerm && ` para "${searchTerm}"`}
                   {!searchTerm && (songsForCategory.length === 1 ? " en esta categoría" : " en esta categoría")}
