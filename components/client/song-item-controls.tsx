@@ -31,7 +31,7 @@ export function SongItemControls({ song }: SongItemControlsProps) {
   }, [song.id]);
 
   const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
-  const audioFileUrl = canPlayAudio && process.env.NEXT_PUBLIC_BASE_URL ? `${process.env.NEXT_PUBLIC_BASE_URL}/${song.slug}.mp3` : '';
+  const audioFileUrl = canPlayAudio && process.env.NEXT_PUBLIC_DOWNLOADS_BASE_URL ? `${process.env.NEXT_PUBLIC_DOWNLOADS_BASE_URL}/${song.slug}.mp3` : '';
 
   React.useEffect(() => {
     if (!canPlayAudio || !audioFileUrl) {

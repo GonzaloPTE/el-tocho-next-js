@@ -37,7 +37,7 @@ export function LyricsViewerInteractive({ song }: LyricsViewerInteractiveProps) 
   const audioRef = React.useRef<HTMLAudioElement | null>(null);
 
   const canPlayAudio = song.audioUrl && song.audioUrl.length > 0;
-  const audioFileUrl = canPlayAudio && process.env.NEXT_PUBLIC_BASE_URL ? `${process.env.NEXT_PUBLIC_BASE_URL}/${song.slug}.mp3` : '';
+  const audioFileUrl = canPlayAudio && process.env.NEXT_PUBLIC_DOWNLOADS_BASE_URL ? `${process.env.NEXT_PUBLIC_DOWNLOADS_BASE_URL}/${song.slug}.mp3` : '';
 
   // Stable event handlers
   const handleLoadedMetadata = React.useCallback(() => {

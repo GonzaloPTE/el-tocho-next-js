@@ -18,6 +18,7 @@
     // Variables de entorno públicas
     "vars": {
         "NEXT_PUBLIC_BASE_URL": "https://cantoraleltocho.com",
-        "NEXT_PUBLIC_PDF_URL": "https://cantoraleltocho.com/el-tocho-7-coro9.pdf"
+        "NEXT_PUBLIC_PDF_URL": "https://cantoraleltocho.com/el-tocho-7-coro9.pdf",
+        "NEXT_PUBLIC_DOWNLOADS_BASE_URL": "https://descargas.cantoraleltocho.com"
     }
 }
