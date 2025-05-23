@@ -1,8 +1,8 @@
 # Plan: Playlist Feature Implementation
 
-## I. Core Audio Player Component (`components/client/audio-player.tsx`)
+## I. Core Audio Player Component (`components/client/audio-player.tsx`) - COMPLETE
 
-1.  **Define Props Interface (`AudioPlayerProps`):**
+1.  **Define Props Interface (`AudioPlayerProps`):** - COMPLETE
     *   `song: Song | null` (current song; null if no song is loaded)
     *   `audioSrcOverride?: string` (optional: to directly provide an audio URL if `song.audioUrl` isn't the source)
     *   `showWaveform?: boolean` (default: `true`)
@@ -21,31 +21,37 @@
     *   `waveformColor?: string`
     *   `waveformProgressColor?: string`
 
-2.  **Internal State (`useAudioPlayer` hook or local state):**
+2.  **Internal State (`useAudioPlayer` hook or local state):** - COMPLETE
     *   `isPlaying: boolean`
     *   `currentTime: number`
     *   `duration: number`
     *   `audioElementRef: React.RefObject<HTMLAudioElement>`
     *   `isLoading: boolean` (for when audio is loading)
     *   `error: string | null` (for audio playback errors)
+    *   `isMuted: boolean`
+    *   `volume: number`
 
-3.  **Core Functionality:**
+3.  **Core Functionality:** - COMPLETE
     *   Initialize `AudioElement` with `song.audioUrl` or `audioSrcOverride`.
-    *   Handle audio events: `loadedmetadata`, `timeupdate`, `ended`, `error`.
-    *   Implement playback controls: `play()`, `pause()`, `seek(time)`, `rewind(seconds)`, `fastForward(seconds)`.
+    *   Handle audio events: `loadedmetadata`, `timeupdate`, `ended`, `error`, `stalled`, `waiting`, `playing`, `canplay`.
+    *   Implement playback controls: `play()`, `pause()`, `seek(time)`, `rewind(seconds)`, `fastForward(seconds)`, `volume`, `mute`.
     *   Conditionally render UI elements based on props.
     *   Use `useTheme` for styling.
-    *   **Media Session API Integration:**
+    *   **Media Session API Integration:** - COMPLETE
         *   On song play, update `navigator.mediaSession.metadata` with title, artist, album (can use category or a site-wide name), and artwork (if available, e.g., a default site logo or category-specific icon).
         *   Set up `navigator.mediaSession.setActionHandler` for `play`, `pause`, `previoustrack`, `nexttrack`. These handlers will call the corresponding `AudioPlayer` or `PlaylistStore` actions.
 
-4.  **UI Elements:**
+4.  **UI Elements:** - COMPLETE
     *   Song Info: Title, Author, Code, Category.
     *   Playback: Play/Pause, Rewind, Fast Forward buttons.
-    *   Navigation: Next Song, Previous Song buttons.
+    *   Navigation: Next Song, Previous Song buttons (conditionally rendered based on `onPrevSong`/`onNextSong` props).
     *   Time Display: Current time / Total duration.
     *   Waveform: Reuse or adapt `Waveform` component.
-    *   Optional: Shuffle, Repeat buttons (visual only, logic handled by playlist manager).
+    *   Volume Control: Mute button and volume slider.
+    *   Error Display.
+    *   Loading Indicator (on play button).
+    *   Message for unavailable audio.
+    *   Optional: Shuffle, Repeat buttons (visual only, logic handled by playlist manager - currently commented out in JSX).
 
 ## II. Playlist Management (`lib/playlist-store.ts` using Zustand, or `components/client/playlist-context.tsx`)
 

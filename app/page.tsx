@@ -6,6 +6,7 @@ import { FeaturedSongNavigation } from "@/components/client/featured-song-naviga
 import { PageHeader } from "@/components/page-header";
 import Link from "next/link";
 import { Metadata } from 'next';
+import { AudioPlayerTestWrapper } from '@/components/client/audio-player-test-wrapper';
 
 // NOTE: ThemeProvider and useTheme are client-side.
 // The root layout (app/layout.tsx) should wrap children in ThemeProvider.
@@ -44,6 +45,8 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   // Fetch data on the server
   const songs = allSongs; // Assuming allSongs is already the data, not a function to call
+  const songForPlayer = songs.find(s => s.audioUrl && s.audioUrl.length > 0) || songs[0]; // Find a song with audio, or fallback to the first song
+  const allCategories = categories; // Pass categories to the wrapper
 
   return (
     // The main div's theme-dependent classes will be handled by ThemeProvider in layout.tsx
@@ -56,6 +59,17 @@ export default async function HomePage() {
       <PageHeader />
 
       <main className="container mx-auto px-4 py-16">
+        {/* TEST AUDIO PLAYER */}
+        <div className="my-8 p-4 border border-dashed border-stone-400 dark:border-stone-600 rounded-lg">
+          <h2 className="text-2xl font-semibold mb-4 text-center text-stone-700 dark:text-stone-300">Audio Player Test</h2>
+          <AudioPlayerTestWrapper 
+            song={songForPlayer} 
+            categories={allCategories} 
+            allSongs={songs} // Pass all songs for navigation
+          />
+        </div>
+        {/* END TEST AUDIO PLAYER */}
+
         <div className="max-w-5xl mx-auto">
           <div className="text-center pt-12 pb-8">
             <h1 className="text-5xl sm:text-6xl font-merriweather font-bold mb-6 text-stone-800 dark:text-stone-100">
