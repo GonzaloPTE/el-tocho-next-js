@@ -32,6 +32,7 @@ interface AudioPlayerProps {
   onRepeatToggle?: () => void;
   autoplay?: boolean;
   className?: string;
+  playNonce?: number;
   // waveformColor?: string; // Removed
   // waveformProgressColor?: string; // Removed
   // TODO: Add shuffle/repeat state if managed internally, or props to reflect parent state
@@ -59,6 +60,7 @@ export function AudioPlayer({
   onRepeatToggle,
   autoplay = false,
   className,
+  playNonce,
   // waveformColor, // Removed
   // waveformProgressColor, // Removed
 }: AudioPlayerProps) {
@@ -174,7 +176,7 @@ export function AudioPlayer({
       // Source is not new. Handle direct play/pause commands from autoplay prop change.
       if (autoplay && audioElement.paused) {
         audioElement.play().catch(err => {
-          console.warn("Play attempt failed (same song, autoplay=true):", err);
+          // console.warn("Play attempt failed (same song, autoplay=true):", err);
           setIsPlaying(false); // Ensure UI reflects failure
           if(onPause && song) onPause(song); // Notify parent about the effective pause
         });
@@ -191,11 +193,10 @@ export function AudioPlayer({
 
     const onLoadedMetadataCallback = () => {
       handleLoadedMetadata(); // Sets duration, clears loading/error
-      // If it was a new source and autoplay is intended, and it's still paused (e.g. play() before load wasn't effective)
       if (isNewSource && autoplay && audioElement.paused) {
-        console.log('[AudioPlayer] Attempting autoplay for new song on loadedmetadata. Autoplay prop:', autoplay);
+        // console.log('[AudioPlayer] Attempting autoplay for new song on loadedmetadata. Autoplay prop:', autoplay);
         audioElement.play().catch(err => {
-          console.warn("[AudioPlayer] Autoplay for new song failed on loadedmetadata:", err);
+          // console.warn("[AudioPlayer] Autoplay for new song failed on loadedmetadata:", err);
           setIsPlaying(false);
           if(onPause && song) onPause(song); // Notify parent
         });
@@ -234,7 +235,7 @@ export function AudioPlayer({
       audioElement.removeEventListener('canplay', () => setIsLoading(false));
       // No need to pause here if audio should persist across route changes if this component isn't unmounted
     };
-  }, [song, audioFileUrl, volume, isMuted, autoplay, handleLoadedMetadata, handleTimeUpdateInternal, handleEndedInternal, handleError, onPlay, onPause]);
+  }, [song, audioFileUrl, volume, isMuted, autoplay, playNonce, handleLoadedMetadata, handleTimeUpdateInternal, handleEndedInternal, handleError, onPlay, onPause]);
 
   // Media Session API Integration
   useEffect(() => {
@@ -326,7 +327,7 @@ export function AudioPlayer({
   const textColorClass = isDarkMode ? 'text-stone-300' : 'text-stone-700';
   const subTextColorClass = isDarkMode ? 'text-stone-400' : 'text-stone-500';
   const iconColorClass = isDarkMode ? 'text-stone-400 hover:text-stone-200' : 'text-stone-500 hover:text-stone-700';
-  const primaryIconColorClass = isDarkMode ? 'text-stone-100 hover:text-stone-200' : 'text-stone-600 hover:text-stone-700';
+  const primaryIconColorClass = isDarkMode ? 'text-stone-100 hover:text-stone-200' : 'text-stone-800 hover:text-stone-900';
 
   return (
     <div className={`p-4 sm:p-6 rounded-2xl shadow-xl border ${mainPlayerColorClass} ${className || ''} flex flex-col space-y-4`}>

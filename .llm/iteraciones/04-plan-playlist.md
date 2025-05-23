@@ -1,6 +1,6 @@
 # Plan: Playlist Feature Implementation
 
-## I. Core Audio Player Component (`components/client/audio-player.tsx`) - COMPLETE
+## I. Core Audio Player Component (`components/client/audio-player.tsx`) - FULLY TESTED & COMPLETE
 
 1.  **Define Props Interface (`AudioPlayerProps`):** - COMPLETE
     *   `song: Song | null` (current song; null if no song is loaded)
@@ -44,42 +44,65 @@
 4.  **UI Elements:** - COMPLETE
     *   Song Info: Title, Author, Code, Category.
     *   Playback: Play/Pause, Rewind, Fast Forward buttons.
-    *   Navigation: Next Song, Previous Song buttons (conditionally rendered based on `onPrevSong`/`onNextSong` props).
+    *   Navigation: Next Song, Previous Song buttons.
+    *   Shuffle & Repeat Buttons (with active state indication).
     *   Time Display: Current time / Total duration.
     *   Waveform: Reuse or adapt `Waveform` component.
     *   Volume Control: Mute button and volume slider.
     *   Error Display.
     *   Loading Indicator (on play button).
     *   Message for unavailable audio.
-    *   Optional: Shuffle, Repeat buttons (visual only, logic handled by playlist manager - currently commented out in JSX).
 
-## II. Playlist Management (`lib/playlist-store.ts` using Zustand, or `components/client/playlist-context.tsx`)
+## II. Playlist Management (`components/client/playlist-context.tsx`)
 
-1.  **State (`PlaylistState`):**
-    *   `songs: Song[]` (the current playlist)
+1.  **Define Context and Provider:**
+    *   Create `PlaylistContext` using `React.createContext()`.
+    *   Create `PlaylistProvider` component.
+
+2.  **State (`PlaylistState` within `PlaylistProvider`):**
+    *   `songs: Song[]` (the current playlist of playable songs - those with `audioUrl`)
+    *   `originalPlaylist: Song[]` (if `songs` can be a subset, e.g., filtered favorites)
     *   `currentSong: Song | null`
-    *   `currentSongIndex: number` (-1 if no song)
-    *   `isPlaying: boolean` (global playback state, distinct from `AudioPlayer`'s internal `isPlaying` if player is not always visible)
+    *   `currentSongIndex: number` (-1 if no song, or index within `songs`)
+    *   `isPlaying: boolean` (global playback state for the playlist)
     *   `isShuffled: boolean`
-    *   `repeatMode: 'none' | 'one' | 'all'`
-    *   `originalOrderSongs: Song[]` (to restore from shuffle)
-    *   **Persistence:** Current playlist (songs, currentSongIndex, isShuffled, repeatMode) should be saved to `localStorage` and rehydrated on load.
+    *   `shuffledSongs: Song[]` (the shuffled version of `songs` if `isShuffled` is true)
+    *   `repeatMode: 'none' | 'one' | 'all'` (default: `'none'`)
+    *   **Persistence:** State (`currentSongIndex`, `isShuffled`, `repeatMode`, potentially `originalPlaylist` if it's user-defined like favorites) should be saved to `localStorage` and rehydrated on load. `songs` will usually be derived from `originalPlaylist` or loaded fresh.
 
-2.  **Actions (`PlaylistActions`):**
-    *   `loadPlaylist(songs: Song[], startIndex?: number): void`
-    *   `playSong(song: Song): void` or `playSongAtIndex(index: number): void`
-    *   `pause(): void`
-    *   `resume(): void`
-    *   `nextSong(): void` (handles shuffle/repeat)
-    *   `prevSong(): void` (handles shuffle/repeat)
+3.  **Actions (Functions exposed via context value in `PlaylistProvider`):**
+    *   `loadPlaylist(newSongs: Song[], startIndex?: number): void`
+        *   Filters for playable songs.
+        *   Sets `originalPlaylist` and `songs`.
+        *   Resets shuffle if active.
+        *   Sets `currentSong` and `currentSongIndex` (default to `startIndex` or 0).
+        *   Sets `isPlaying = true` (or false, depending on desired behavior for new playlist load).
+    *   `playSongAtIndex(index: number): void`
+        *   Sets `currentSong` based on index in `songs` (or `shuffledSongs`).
+        *   Sets `isPlaying = true`.
+    *   `togglePlayPause(): void` (Replaces `pause()` and `resume()` for simplicity with global player)
+        *   Toggles `isPlaying` state.
+    *   `playNextSong(): void`
+        *   Calculates next index based on `repeatMode` and `isShuffled`.
+        *   Updates `currentSong` and `currentSongIndex`.
+        *   Keeps `isPlaying = true` (unless `repeatMode` is `'none'` and at end of non-shuffled list).
+    *   `playPrevSong(): void`
+        *   Calculates previous index, handles shuffle.
+        *   Updates `currentSong` and `currentSongIndex`.
+        *   Keeps `isPlaying = true`.
     *   `toggleShuffle(): void`
+        *   Toggles `isShuffled`.
+        *   If turning shuffle on, generate `shuffledSongs` and update `currentSongIndex` to match `currentSong`'s new position.
+        *   If turning shuffle off, revert to `songs` and update `currentSongIndex`.
     *   `setRepeatMode(mode: 'none' | 'one' | 'all'): void`
     *   `clearPlaylist(): void`
-    *   `addSongToQueue(song: Song): void`
-    *   `removeSongFromQueue(songId: string): void`
+        *   Resets all relevant states to initial/empty.
+    // Optional for later: `addSongToQueue`, `removeSongFromQueue`
 
-3.  **Hook (`usePlaylist`):**
-    *   Provides access to state and actions.
+4.  **Custom Hook (`usePlaylist`):**
+    *   `const context = useContext(PlaylistContext);`
+    *   `if (!context) throw new Error('usePlaylist must be used within a PlaylistProvider');`
+    *   `return context;`
 
 ## III. Refactor `LyricsViewerInteractive` (`components/client/lyrics-viewer-interactive.tsx`)
 

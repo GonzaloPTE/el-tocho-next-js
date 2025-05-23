@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Song, Category } from '@/types/song';
 import { AudioPlayer } from './audio-player';
+import { PlaylistProvider, usePlaylist } from './playlist-context';
 
 interface AudioPlayerTestWrapperProps {
   song: Song;
@@ -10,86 +11,62 @@ interface AudioPlayerTestWrapperProps {
   allSongs: Song[];
 }
 
-export function AudioPlayerTestWrapper({ song: initialSong, categories, allSongs }: AudioPlayerTestWrapperProps) {
-  const [currentSong, setCurrentSong] = useState<Song>(initialSong);
-  const [currentIndex, setCurrentIndex] = useState(() => 
-    allSongs.filter(s => s.audioUrl && s.audioUrl.length > 0).findIndex(s => s.id === initialSong.id)
-  );
-  const [isShuffle, setIsShuffle] = useState(false);
-  const [isRepeat, setIsRepeat] = useState(false);
-  const [isPlayingExpected, setIsPlayingExpected] = useState(false);
+function TestPlayerComponent({ song, categories, allSongs }: AudioPlayerTestWrapperProps) {
+  const playlist = usePlaylist();
 
-  const playableSongs = allSongs.filter(s => s.audioUrl && s.audioUrl.length > 0);
-
-  const handlePlayInWrapper = (playedSong: Song) => {
-    console.log('Playing in wrapper:', playedSong.title);
-    setIsPlayingExpected(true);
-  };
-
-  const handlePauseInWrapper = (pausedSong: Song) => {
-    console.log('Paused in wrapper:', pausedSong.title);
-    setIsPlayingExpected(false);
-  };
-
-  const handleEnded = (endedSong: Song) => {
-    console.log('Ended:', endedSong.title);
-    if (isPlayingExpected) {
-        handleNextSong(); 
-    } else {
-        setIsPlayingExpected(false);
+  useEffect(() => {
+    const playableSongs = allSongs.filter(s => s.audioUrl && s.audioUrl.length > 0);
+    if (playableSongs.length > 0) {
+      const initialIndex = playableSongs.findIndex(s => s.id === song.id);
+      playlist.loadPlaylist(playableSongs, initialIndex >= 0 ? initialIndex : 0);
     }
-  };
+  }, [allSongs, song, playlist.loadPlaylist]);
 
-  const handleTimeUpdate = (currentTime: number, duration: number) => {
-    console.log(`Time: ${currentTime.toFixed(1)} / ${duration.toFixed(1)}`);
-  };
-
-  const handleNextSong = () => {
-    if (playableSongs.length === 0) return;
-    const nextIndex = (currentIndex + 1) % playableSongs.length;
-    setCurrentIndex(nextIndex);
-    setCurrentSong(playableSongs[nextIndex]);
-    console.log('Next song:', playableSongs[nextIndex].title);
-  };
-
-  const handlePrevSong = () => {
-    if (playableSongs.length === 0) return;
-    const prevIndex = (currentIndex - 1 + playableSongs.length) % playableSongs.length;
-    setCurrentIndex(prevIndex);
-    setCurrentSong(playableSongs[prevIndex]);
-    console.log('Previous song:', playableSongs[prevIndex].title);
-  };
-
-  const handleShuffleToggle = () => {
-    setIsShuffle(prev => !prev);
-    console.log('Shuffle toggled:', !isShuffle);
-  };
-
-  const handleRepeatToggle = () => {
-    setIsRepeat(prev => !prev);
-    console.log('Repeat toggled:', !isRepeat);
-  };
-
-  const categoryDescription = categories.find(cat => cat.letter === currentSong.category)?.description || currentSong.category;
+  const categoryDescription = useMemo(() => {
+    if (!playlist.currentSong) return '';
+    return categories.find(cat => cat.letter === playlist.currentSong!.category)?.description || playlist.currentSong!.category;
+  }, [playlist.currentSong, categories]);
+  
+  if (!playlist.currentSong) {
+    return <div>Loading playlist or no song selected...</div>; 
+  }
 
   return (
     <AudioPlayer 
-      song={currentSong}
+      song={playlist.currentSong}
       categoryDescription={categoryDescription}
       showNavigationControls={true}
       showShuffleButton={true}
       showRepeatButton={true}
-      isShuffleActive={isShuffle}
-      isRepeatActive={isRepeat}
-      autoplay={isPlayingExpected}
-      onPlay={handlePlayInWrapper}
-      onPause={handlePauseInWrapper}
-      onEnded={handleEnded}
-      onTimeUpdate={handleTimeUpdate}
-      onNextSong={handleNextSong}
-      onPrevSong={handlePrevSong}
-      onShuffleToggle={handleShuffleToggle}
-      onRepeatToggle={handleRepeatToggle}
+      isShuffleActive={playlist.isShuffled}
+      isRepeatActive={playlist.repeatMode !== 'none'}
+      autoplay={playlist.isPlaying}
+      playNonce={playlist.playNonce}
+      onPlay={() => {
+        if (!playlist.isPlaying) {
+          playlist.togglePlayPause();
+        }
+      }}
+      onPause={() => {
+        if (playlist.isPlaying) {
+          playlist.togglePlayPause();
+        }
+      }}
+      onEnded={playlist.playNextSong}
+      onTimeUpdate={(currentTime, duration) => {
+      }}
+      onNextSong={playlist.playNextSong}
+      onPrevSong={playlist.playPrevSong}
+      onShuffleToggle={playlist.toggleShuffle}
+      onRepeatToggle={playlist.cycleRepeatMode}
     />
+  );
+}
+
+export function AudioPlayerTestWrapper(props: AudioPlayerTestWrapperProps) {
+  return (
+    <PlaylistProvider>
+      <TestPlayerComponent {...props} />
+    </PlaylistProvider>
   );
 } 
