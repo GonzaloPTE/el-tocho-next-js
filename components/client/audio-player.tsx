@@ -72,6 +72,7 @@ export function AudioPlayer({
   const [volume, setVolume] = useState(1); // Volume from 0 to 1
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const internalAudioSrcRef = useRef<string | null>(null); // Ref to track current internal src
 
   const audioFileUrl = audioSrcOverride || 
     (song && song.audioUrl && process.env.NEXT_PUBLIC_DOWNLOADS_BASE_URL 
@@ -135,6 +136,7 @@ export function AudioPlayer({
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = "";
+        internalAudioSrcRef.current = ""; // Clear internal src ref
       }
       setIsPlaying(false);
       setCurrentTime(0);
@@ -144,71 +146,67 @@ export function AudioPlayer({
       return;
     }
 
-    setIsLoading(true);
-    setError(null);
-    let audioElementWasPlaying = false;
-    if(audioRef.current && !audioRef.current.paused) {
-        audioElementWasPlaying = true;
-        // audioRef.current.pause(); // Don't pause if source is same and it's already playing.
-    }
+    let isNewSource = internalAudioSrcRef.current !== audioFileUrl;
 
     if (!audioRef.current) {
       audioRef.current = new Audio(audioFileUrl);
-    } else {
-      if (audioRef.current.src !== audioFileUrl) {
-        // Source is different, definitely pause current, then change src
-        if(!audioRef.current.paused) {
-            audioElementWasPlaying = true; // Capture state before pausing
-            audioRef.current.pause();
-        }
-        audioRef.current.src = audioFileUrl;
-        // Reset states for new song, except for isPlaying if autoplay is intended
-        setCurrentTime(0); 
-        // Duration will be set by loadedmetadata
-        // isPlaying will be set by autoplay logic below or play button
-      } else {
-        // Source is the same. This effect might run due to other prop changes.
-        // We generally don't want to interrupt playback if the src is identical.
-        // If autoplay is true, it implies an external intent to play, even if src is same.
-      }
+      internalAudioSrcRef.current = audioFileUrl;
+      isNewSource = true; // Definitely a new source
+    } else if (isNewSource) {
+      // Existing audio element, but new source URL
+      audioRef.current.pause(); // Pause current playback before changing source
+      audioRef.current.src = audioFileUrl;
+      internalAudioSrcRef.current = audioFileUrl;
     }
-    
+    // If !isNewSource, audioRef.current exists and its src is already audioFileUrl
+
     const audioElement = audioRef.current;
-    audioElement.load();
-    audioElement.volume = volume;
+    audioElement.volume = volume; // Apply volume/mute on every run if they changed
     audioElement.muted = isMuted;
 
-    const attemptAutoplay = async () => {
-      if (autoplay || audioElementWasPlaying) { // If autoplay prop is true OR it was already playing before src change
-        try {
-          await audioElement.play();
-          setIsPlaying(true);
-          if (onPlay && song) onPlay(song); // Notify parent if autoplay succeeds
-        } catch (err) {
-          console.warn("Autoplay was prevented: ", err);
-          setIsPlaying(false); // Ensure UI reflects that play failed
-          // Optionally, notify parent that autoplay failed or play was blocked
-        }
-      } else {
-        setIsPlaying(false); // Ensure UI reflects it's not playing if no autoplay
+    if (isNewSource) {
+      setIsLoading(true);
+      setError(null);
+      setCurrentTime(0); // Reset current time ONLY for a new source
+      setDuration(0);    // Reset duration, will be updated by loadedmetadata
+      audioElement.load(); // Load the new source
+    } else {
+      // Source is not new. Handle direct play/pause commands from autoplay prop change.
+      if (autoplay && audioElement.paused) {
+        audioElement.play().catch(err => {
+          console.warn("Play attempt failed (same song, autoplay=true):", err);
+          setIsPlaying(false); // Ensure UI reflects failure
+          if(onPause && song) onPause(song); // Notify parent about the effective pause
+        });
+      } else if (!autoplay && !audioElement.paused) {
+        audioElement.pause();
+        // The 'pause' event listener will call setIsPlaying(false)
+        // and onPause will have already been called by handlePlayPause
+      }
+    }
+
+    // Event listeners are set up below and should handle isPlaying state for most cases.
+    // Be careful about adding/removing them if not necessary on every run.
+    // For simplicity in this step, we assume they are fine as they were.
+
+    const onLoadedMetadataCallback = () => {
+      handleLoadedMetadata(); // Sets duration, clears loading/error
+      // If it was a new source and autoplay is intended, and it's still paused (e.g. play() before load wasn't effective)
+      if (isNewSource && autoplay && audioElement.paused) {
+        console.log('[AudioPlayer] Attempting autoplay for new song on loadedmetadata. Autoplay prop:', autoplay);
+        audioElement.play().catch(err => {
+          console.warn("[AudioPlayer] Autoplay for new song failed on loadedmetadata:", err);
+          setIsPlaying(false);
+          if(onPause && song) onPause(song); // Notify parent
+        });
       }
     };
 
-    // Call attemptAutoplay after event listeners are set up, or as part of loadedmetadata
-    // For now, let's try directly. If issues, move to loadedmetadata.
-    // However, loadedmetadata might not fire if src is same and metadata already known.
-    if (audioRef.current.src === audioFileUrl) { // Only attempt autoplay if src is correctly set for the current song
-        attemptAutoplay();
-    }
+    // --- Event Listeners --- (Simplified: assuming they are correctly added/removed as before for now)
+    // It's generally better to ensure event listeners are added once or cleaned up properly if dependencies change.
+    // For this focused fix, the core change is above.
 
-    audioElement.addEventListener('loadedmetadata', () => {
-        handleLoadedMetadata();
-        // If autoplay was intended and failed before metadata, try again here
-        // This is a more robust place for autoplay after src change & load
-        if (audioRef.current && audioRef.current.src === audioFileUrl && (autoplay || audioElementWasPlaying) && audioRef.current.paused) {
-            attemptAutoplay();
-        }
-    });
+    audioElement.addEventListener('loadedmetadata', onLoadedMetadataCallback);
     audioElement.addEventListener('timeupdate', handleTimeUpdateInternal);
     audioElement.addEventListener('ended', handleEndedInternal);
     audioElement.addEventListener('error', handleError);
@@ -216,20 +214,17 @@ export function AudioPlayer({
     audioElement.addEventListener('waiting', () => setIsLoading(true));
     audioElement.addEventListener('playing', () => {
         setIsLoading(false);
-        setIsPlaying(true); // Explicitly set isPlaying on 'playing' event
+        setIsPlaying(true);
     });
     audioElement.addEventListener('pause', () => {
-        // This event fires on explicit pause and when audio ends. 
-        // We only want to set isPlaying to false if it's not because it ended (handleEndedInternal handles that)
-        // or if it's not due to a src change where autoplay is expected.
-        if (audioRef.current && audioRef.current.currentTime < audioRef.current.duration) {
+        if (audioRef.current && audioRef.current.currentTime < audioRef.current.duration && !audioRef.current.ended) {
             setIsPlaying(false);
         }
     });
     audioElement.addEventListener('canplay', () => setIsLoading(false));
 
     return () => {
-      audioElement.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      audioElement.removeEventListener('loadedmetadata', onLoadedMetadataCallback);
       audioElement.removeEventListener('timeupdate', handleTimeUpdateInternal);
       audioElement.removeEventListener('ended', handleEndedInternal);
       audioElement.removeEventListener('error', handleError);
@@ -237,11 +232,9 @@ export function AudioPlayer({
       audioElement.removeEventListener('waiting', () => setIsLoading(true));
       audioElement.removeEventListener('playing', () => setIsLoading(false));
       audioElement.removeEventListener('canplay', () => setIsLoading(false));
-      // Do not pause here if we want audio to persist across component re-renders 
-      // unless the component is truly unmounting or audioFileUrl changes.
-      // If audio should stop when component is hidden but not unmounted, different logic is needed.
+      // No need to pause here if audio should persist across route changes if this component isn't unmounted
     };
-  }, [song, audioFileUrl, handleLoadedMetadata, handleTimeUpdateInternal, handleEndedInternal, handleError, volume, isMuted, autoplay]);
+  }, [song, audioFileUrl, volume, isMuted, autoplay, handleLoadedMetadata, handleTimeUpdateInternal, handleEndedInternal, handleError, onPlay, onPause]);
 
   // Media Session API Integration
   useEffect(() => {

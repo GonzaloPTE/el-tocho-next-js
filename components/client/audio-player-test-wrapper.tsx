@@ -81,7 +81,7 @@ export function AudioPlayerTestWrapper({ song: initialSong, categories, allSongs
       showRepeatButton={true}
       isShuffleActive={isShuffle}
       isRepeatActive={isRepeat}
-      autoplay={isPlayingExpected && currentSong.id === initialSong.id ? false : isPlayingExpected}
+      autoplay={isPlayingExpected}
       onPlay={handlePlayInWrapper}
       onPause={handlePauseInWrapper}
       onEnded={handleEnded}
