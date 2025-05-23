@@ -20,7 +20,7 @@ interface PlaylistState {
 
 // --- 2. Actions Interface ---
 interface PlaylistActions {
-  loadPlaylist: (newSongs: Song[], startIndex?: number) => void;
+  loadPlaylist: (newSongs: Song[], startIndex?: number, startShuffled?: boolean, startPlaying?: boolean) => void;
   playSongAtIndex: (index: number) => void;
   togglePlayPause: () => void;
   playNextSong: () => void;
@@ -143,7 +143,7 @@ export function PlaylistProvider({ children }: PlaylistProviderProps) {
     }
   }, [playlistState.originalPlaylist, playlistState.currentSongIndex, playlistState.isShuffled, playlistState.repeatMode, playlistState.currentSong, playlistState.songs, playlistState.playNonce]); // Added songs and currentSong for robust index saving
 
-  const loadPlaylist = useCallback((newSongs: Song[], startIndex: number = 0) => {
+  const loadPlaylist = useCallback((newSongs: Song[], startIndex: number = 0, startShuffled: boolean = false, startPlaying: boolean = true) => {
     const playable = newSongs.filter(song => song.audioUrl && song.audioUrl.length > 0);
     if (playable.length === 0) {
       setPlaylistState(prev => ({ ...initialPlaylistState, playNonce: prev.playNonce + 1 }));
@@ -151,15 +151,33 @@ export function PlaylistProvider({ children }: PlaylistProviderProps) {
     }
     const validStartIndex = Math.max(0, Math.min(startIndex, playable.length - 1));
 
+    let songsToPlay = playable;
+    let finalCurrentSongIndex = validStartIndex;
+    let finalShuffledSongs: Song[] = [];
+
+    if (startShuffled) {
+      // Fisher-Yates shuffle
+      finalShuffledSongs = [...playable];
+      for (let i = finalShuffledSongs.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [finalShuffledSongs[i], finalShuffledSongs[j]] = [finalShuffledSongs[j], finalShuffledSongs[i]];
+      }
+      songsToPlay = finalShuffledSongs;
+      // If starting shuffled, the startIndex usually means the first song of the shuffled list
+      // Or, if a specific song was intended via startIndex on original list, find it in shuffled.
+      // For simplicity now: if startShuffled, startIndex is for the shuffled list (so usually 0)
+      finalCurrentSongIndex = Math.max(0, Math.min(startIndex, finalShuffledSongs.length - 1));
+    }
+
     setPlaylistState(prev => ({
       ...prev,
-      originalPlaylist: newSongs,
-      songs: playable,
-      shuffledSongs: [],
-      currentSong: playable[validStartIndex],
-      currentSongIndex: validStartIndex,
-      isPlaying: true,
-      isShuffled: false,
+      originalPlaylist: newSongs, 
+      songs: playable, // Always store the original order of playable songs
+      shuffledSongs: startShuffled ? finalShuffledSongs : (prev.isShuffled ? prev.shuffledSongs : []), // Keep existing shuffle if not starting new shuffle
+      currentSong: songsToPlay[finalCurrentSongIndex],
+      currentSongIndex: finalCurrentSongIndex,
+      isPlaying: startPlaying,
+      isShuffled: startShuffled ? true : prev.isShuffled, // Set shuffle state
       playNonce: prev.playNonce + 1,
     }));
   }, []);

@@ -11,20 +11,21 @@ interface AudioPlayerTestWrapperProps {
   allSongs: Song[];
 }
 
-function TestPlayerComponent({ song, categories, allSongs }: AudioPlayerTestWrapperProps) {
+function TestPlayerComponent({ song: initialSongFromProps, categories, allSongs }: AudioPlayerTestWrapperProps) {
   const playlist = usePlaylist();
 
   useEffect(() => {
     const playableSongs = allSongs.filter(s => s.audioUrl && s.audioUrl.length > 0);
     if (playableSongs.length > 0) {
-      const initialIndex = playableSongs.findIndex(s => s.id === song.id);
+      const initialIndex = playableSongs.findIndex(s => s.id === initialSongFromProps.id);
       playlist.loadPlaylist(playableSongs, initialIndex >= 0 ? initialIndex : 0);
     }
-  }, [allSongs, song, playlist.loadPlaylist]);
+  }, [allSongs, initialSongFromProps, playlist.loadPlaylist]);
 
   const categoryDescription = useMemo(() => {
     if (!playlist.currentSong) return '';
-    return categories.find(cat => cat.letter === playlist.currentSong!.category)?.description || playlist.currentSong!.category;
+    const foundCategory = Array.isArray(categories) ? categories.find(cat => cat.letter === playlist.currentSong!.category) : undefined;
+    return foundCategory?.description || playlist.currentSong!.category;
   }, [playlist.currentSong, categories]);
   
   if (!playlist.currentSong) {

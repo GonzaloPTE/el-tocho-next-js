@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from '@/lib/theme-context'
+import { PlaylistProvider } from '@/components/client/playlist-context';
 import Script from "next/script";
 
 const geistSans = localFont({
@@ -90,11 +91,13 @@ export default function RootLayout({
         `}
       </Script>
       <ThemeProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-100 dark:bg-stone-900 text-stone-900 dark:text-stone-100`}
-        >
-          {children}
-        </body>
+        <PlaylistProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-100 dark:bg-stone-900 text-stone-900 dark:text-stone-100`}
+          >
+            {children}
+          </body>
+        </PlaylistProvider>
       </ThemeProvider>
     </html>
   );

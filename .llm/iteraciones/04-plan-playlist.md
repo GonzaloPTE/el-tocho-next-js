@@ -53,13 +53,13 @@
     *   Loading Indicator (on play button).
     *   Message for unavailable audio.
 
-## II. Playlist Management (`components/client/playlist-context.tsx`)
+## II. Playlist Management (`components/client/playlist-context.tsx`) - FULLY TESTED & COMPLETE
 
-1.  **Define Context and Provider:**
+1.  **Define Context and Provider:** - COMPLETE
     *   Create `PlaylistContext` using `React.createContext()`.
     *   Create `PlaylistProvider` component.
 
-2.  **State (`PlaylistState` within `PlaylistProvider`):**
+2.  **State (`PlaylistState` within `PlaylistProvider`):** - COMPLETE
     *   `songs: Song[]` (the current playlist of playable songs - those with `audioUrl`)
     *   `originalPlaylist: Song[]` (if `songs` can be a subset, e.g., filtered favorites)
     *   `currentSong: Song | null`
@@ -68,38 +68,21 @@
     *   `isShuffled: boolean`
     *   `shuffledSongs: Song[]` (the shuffled version of `songs` if `isShuffled` is true)
     *   `repeatMode: 'none' | 'one' | 'all'` (default: `'none'`)
-    *   **Persistence:** State (`currentSongIndex`, `isShuffled`, `repeatMode`, potentially `originalPlaylist` if it's user-defined like favorites) should be saved to `localStorage` and rehydrated on load. `songs` will usually be derived from `originalPlaylist` or loaded fresh.
+    *   `playNonce: number` (to trigger re-renders in AudioPlayer for same song replay)
+    *   **Persistence:** State (`currentSongIndex`, `isShuffled`, `repeatMode`, `playNonce`, `originalPlaylist`) saved to `localStorage` and rehydrated. - COMPLETE
 
-3.  **Actions (Functions exposed via context value in `PlaylistProvider`):**
+3.  **Actions (Functions exposed via context value in `PlaylistProvider`):** - COMPLETE
     *   `loadPlaylist(newSongs: Song[], startIndex?: number): void`
-        *   Filters for playable songs.
-        *   Sets `originalPlaylist` and `songs`.
-        *   Resets shuffle if active.
-        *   Sets `currentSong` and `currentSongIndex` (default to `startIndex` or 0).
-        *   Sets `isPlaying = true` (or false, depending on desired behavior for new playlist load).
     *   `playSongAtIndex(index: number): void`
-        *   Sets `currentSong` based on index in `songs` (or `shuffledSongs`).
-        *   Sets `isPlaying = true`.
-    *   `togglePlayPause(): void` (Replaces `pause()` and `resume()` for simplicity with global player)
-        *   Toggles `isPlaying` state.
+    *   `togglePlayPause(): void`
     *   `playNextSong(): void`
-        *   Calculates next index based on `repeatMode` and `isShuffled`.
-        *   Updates `currentSong` and `currentSongIndex`.
-        *   Keeps `isPlaying = true` (unless `repeatMode` is `'none'` and at end of non-shuffled list).
     *   `playPrevSong(): void`
-        *   Calculates previous index, handles shuffle.
-        *   Updates `currentSong` and `currentSongIndex`.
-        *   Keeps `isPlaying = true`.
     *   `toggleShuffle(): void`
-        *   Toggles `isShuffled`.
-        *   If turning shuffle on, generate `shuffledSongs` and update `currentSongIndex` to match `currentSong`'s new position.
-        *   If turning shuffle off, revert to `songs` and update `currentSongIndex`.
     *   `setRepeatMode(mode: 'none' | 'one' | 'all'): void`
+    *   `cycleRepeatMode(): void`
     *   `clearPlaylist(): void`
-        *   Resets all relevant states to initial/empty.
-    // Optional for later: `addSongToQueue`, `removeSongFromQueue`
 
-4.  **Custom Hook (`usePlaylist`):**
+4.  **Custom Hook (`usePlaylist`):** - COMPLETE
     *   `const context = useContext(PlaylistContext);`
     *   `if (!context) throw new Error('usePlaylist must be used within a PlaylistProvider');`
     *   `return context;`
