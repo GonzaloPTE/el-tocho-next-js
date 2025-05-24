@@ -53,16 +53,6 @@ export function FeaturedSongNavigation({ allSongs, categories }: FeaturedSongNav
     };
   }, [allSongs]);
 
-  useEffect(() => {
-    if (playableFavoriteSongs.length > 0) {
-      const isCurrentSongInFavorites = playlist.currentSong && 
-                                     playableFavoriteSongs.some(favSong => favSong.id === playlist.currentSong!.id);
-      if (!isCurrentSongInFavorites) {
-        playlist.loadPlaylist(playableFavoriteSongs, 0, false, false);
-      }
-    }
-  }, [playableFavoriteSongs]);
-
   const handleSelectSongForPlaylist = (songId: string) => {
     const songIndex = playableFavoriteSongs.findIndex(s => s.id === songId);
     if (songIndex !== -1) {

@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { Song, Category } from '@/types/song';
 import { AudioPlayer } from './audio-player';
-import { PlaylistProvider, usePlaylist } from './playlist-context';
+import { usePlaylist } from './playlist-context';
 
 interface AudioPlayerTestWrapperProps {
   song: Song;
@@ -66,8 +66,6 @@ function TestPlayerComponent({ song: initialSongFromProps, categories, allSongs 
 
 export function AudioPlayerTestWrapper(props: AudioPlayerTestWrapperProps) {
   return (
-    <PlaylistProvider>
-      <TestPlayerComponent {...props} />
-    </PlaylistProvider>
+    <TestPlayerComponent {...props} />
   );
 } 

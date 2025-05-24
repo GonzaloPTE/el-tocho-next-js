@@ -59,17 +59,6 @@ export default async function HomePage() {
       <PageHeader />
 
       <main className="container mx-auto px-4 py-16">
-        {/* TEST AUDIO PLAYER */}
-        <div className="my-8 p-4 border border-dashed border-stone-400 dark:border-stone-600 rounded-lg">
-          <h2 className="text-2xl font-semibold mb-4 text-center text-stone-700 dark:text-stone-300">Audio Player Test</h2>
-          <AudioPlayerTestWrapper 
-            song={songForPlayer} 
-            categories={allCategories} 
-            allSongs={songs} // Pass all songs for navigation
-          />
-        </div>
-        {/* END TEST AUDIO PLAYER */}
-
         <div className="max-w-5xl mx-auto">
           <div className="text-center pt-12 pb-8">
             <h1 className="text-5xl sm:text-6xl font-merriweather font-bold mb-6 text-stone-800 dark:text-stone-100">
@@ -117,7 +106,7 @@ export default async function HomePage() {
               Canciones Favoritas
             </h2>
             {/* Pass allSongs to FeaturedSongNavigation */}
-            <FeaturedSongNavigation allSongs={songs} />
+            <FeaturedSongNavigation allSongs={songs} categories={allCategories} />
           </div>
         </div>
       </main>
