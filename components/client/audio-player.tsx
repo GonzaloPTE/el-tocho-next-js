@@ -176,9 +176,8 @@ export function AudioPlayer({
       // Source is not new. Handle direct play/pause commands from autoplay prop change.
       if (autoplay && audioElement.paused) {
         audioElement.play().catch(err => {
-          // console.warn("Play attempt failed (same song, autoplay=true):", err);
+          console.warn("Play attempt failed (same song, autoplay=true):", err);
           setIsPlaying(false); // Ensure UI reflects failure
-          if(onPause && song) onPause(song); // Notify parent about the effective pause
         });
       } else if (!autoplay && !audioElement.paused) {
         audioElement.pause();
@@ -196,9 +195,8 @@ export function AudioPlayer({
       if (isNewSource && autoplay && audioElement.paused) {
         // console.log('[AudioPlayer] Attempting autoplay for new song on loadedmetadata. Autoplay prop:', autoplay);
         audioElement.play().catch(err => {
-          // console.warn("[AudioPlayer] Autoplay for new song failed on loadedmetadata:", err);
+          console.warn("[AudioPlayer] Autoplay for new song failed on loadedmetadata:", err);
           setIsPlaying(false);
-          if(onPause && song) onPause(song); // Notify parent
         });
       }
     };
