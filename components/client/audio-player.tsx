@@ -119,107 +119,115 @@ export function AudioPlayer({
   // Define handlePlayPause before the Media Session useEffect that depends on it
   const handlePlayPause = useCallback(() => {
     if (!audioRef.current || !song) return;
-    if (isPlaying) {
-      audioRef.current.pause();
-      if (onPause) onPause(song);
-    } else {
+
+    // Simply instruct the audio element. Event listeners will handle state updates.
+    if (audioRef.current.paused) {
       audioRef.current.play().catch(err => {
-        console.error("Error playing audio:", err);
-        setError("No se pudo reproducir el audio.");
-        setIsLoading(false);
+        // Error handling for play() is important, but actual state changes via events.
+        console.error("Error attempting to play audio:", err);
+        setError("No se pudo iniciar la reproducción.");
+        // UI state (like isLoading, isPlaying) will be updated by events or lack thereof.
       });
-      if (onPlay) onPlay(song);
+    } else {
+      audioRef.current.pause();
     }
-    setIsPlaying(!isPlaying);
-  }, [isPlaying, song, onPlay, onPause]);
+    // No direct setIsPlaying or onPlay/onPause calls here.
+  }, [song]); // Dependencies: only song. isPlaying, onPlay, onPause are not used directly.
 
   useEffect(() => {
     if (!audioFileUrl || !song) {
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = "";
-        internalAudioSrcRef.current = ""; // Clear internal src ref
+        internalAudioSrcRef.current = "";
       }
-      setIsPlaying(false);
-      setCurrentTime(0);
-      setDuration(0);
-      setIsLoading(false);
-      setError(null);
+      setIsPlaying(false); setCurrentTime(0); setDuration(0); setIsLoading(false); setError(null);
       return;
     }
-
     let isNewSource = internalAudioSrcRef.current !== audioFileUrl;
-
     if (!audioRef.current) {
       audioRef.current = new Audio(audioFileUrl);
       internalAudioSrcRef.current = audioFileUrl;
-      isNewSource = true; // Definitely a new source
+      isNewSource = true;
     } else if (isNewSource) {
-      // Existing audio element, but new source URL
-      audioRef.current.pause(); // Pause current playback before changing source
+      audioRef.current.pause();
       audioRef.current.src = audioFileUrl;
       internalAudioSrcRef.current = audioFileUrl;
     }
-    // If !isNewSource, audioRef.current exists and its src is already audioFileUrl
-
     const audioElement = audioRef.current;
-    audioElement.volume = volume; // Apply volume/mute on every run if they changed
+    audioElement.volume = volume;
     audioElement.muted = isMuted;
-
     if (isNewSource) {
-      setIsLoading(true);
-      setError(null);
-      setCurrentTime(0); // Reset current time ONLY for a new source
-      setDuration(0);    // Reset duration, will be updated by loadedmetadata
-      audioElement.load(); // Load the new source
+      setIsLoading(true); setError(null); setCurrentTime(0); setDuration(0);
+      audioElement.autoplay = autoplay; 
+      audioElement.load();
     } else {
-      // Source is not new. Handle direct play/pause commands from autoplay prop change.
       if (autoplay && audioElement.paused) {
-        audioElement.play().catch(err => {
-          console.warn("Play attempt failed (same song, autoplay=true):", err);
-          setIsPlaying(false); // Ensure UI reflects failure
-        });
+        audioElement.play().catch(err => { console.warn("[AudioPlayer useEffect] Play attempt failed:", err); setIsPlaying(false); });
       } else if (!autoplay && !audioElement.paused) {
         audioElement.pause();
-        // The 'pause' event listener will call setIsPlaying(false)
-        // and onPause will have already been called by handlePlayPause
       }
     }
-
-    // Event listeners are set up below and should handle isPlaying state for most cases.
-    // Be careful about adding/removing them if not necessary on every run.
-    // For simplicity in this step, we assume they are fine as they were.
-
     const onLoadedMetadataCallback = () => {
-      handleLoadedMetadata(); // Sets duration, clears loading/error
-      if (isNewSource && autoplay && audioElement.paused) {
-        // console.log('[AudioPlayer] Attempting autoplay for new song on loadedmetadata. Autoplay prop:', autoplay);
-        audioElement.play().catch(err => {
-          console.warn("[AudioPlayer] Autoplay for new song failed on loadedmetadata:", err);
-          setIsPlaying(false);
-        });
+      handleLoadedMetadata();
+      if (isNewSource && autoplay && audioRef.current && audioRef.current.paused) {
+        setTimeout(() => {
+          if (audioRef.current && audioRef.current.src === audioFileUrl && audioRef.current.paused && autoplay) {
+            audioRef.current.play().catch(err => { console.warn("[AudioPlayer onLoadedMetadata] Deferred play() failed:", err); setIsPlaying(false); });
+          }
+        }, 0);
       }
     };
 
-    // --- Event Listeners --- (Simplified: assuming they are correctly added/removed as before for now)
-    // It's generally better to ensure event listeners are added once or cleaned up properly if dependencies change.
-    // For this focused fix, the core change is above.
-
+    // Event Listeners
     audioElement.addEventListener('loadedmetadata', onLoadedMetadataCallback);
     audioElement.addEventListener('timeupdate', handleTimeUpdateInternal);
     audioElement.addEventListener('ended', handleEndedInternal);
     audioElement.addEventListener('error', handleError);
     audioElement.addEventListener('stalled', handleError);
     audioElement.addEventListener('waiting', () => setIsLoading(true));
-    audioElement.addEventListener('playing', () => {
+    
+    const playingEventHandler = () => {
         setIsLoading(false);
         setIsPlaying(true);
-    });
-    audioElement.addEventListener('pause', () => {
-        if (audioRef.current && audioRef.current.currentTime < audioRef.current.duration && !audioRef.current.ended) {
-            setIsPlaying(false);
+        if (song && onPlay) {
+            onPlay(song);
         }
-    });
+    };
+    const pauseEventHandler = () => {
+        if (!audioRef.current) return;
+        if (audioRef.current.ended) { 
+            if (isPlaying) setIsPlaying(false); // Sync UI if 'ended' didn't already.
+            // onEnded callback (via handleEndedInternal) is responsible for playlist actions.
+            return; 
+        }
+        
+        // Always update AudioPlayer's internal UI state first when a pause event occurs.
+        setIsPlaying(false);
+
+        const isLikelyBrowserAutoPause =
+            autoplay && // Playlist *intended* this to be playing (via autoplay prop)
+            audioRef.current.currentTime < 1.5; // And it paused very early
+
+        if (isLikelyBrowserAutoPause) {
+            // This is likely a browser auto-pause right after an autoplay attempt.
+            // DO NOT call onPause prop. This keeps playlist.isPlaying true,
+            // reflecting the playlist's original intention to play this song.
+            // The AudioPlayer's own UI (setIsPlaying(false) above) will show "Play".
+            console.log("[AudioPlayer PauseEvt] Likely browser auto-pause. NOT calling onPause prop.");
+        } else {
+            // This is a "normal" pause (e.g., user clicked pause on this player, 
+            // or useEffect paused it due to autoplay=false, or song ended and also fired pause).
+            // Notify the playlist context that it's now effectively paused.
+            console.log("[AudioPlayer PauseEvt] Normal pause. Calling onPause prop.");
+            if (song && onPause) {
+                onPause(song);
+            }
+        }
+    };
+
+    audioElement.addEventListener('playing', playingEventHandler);
+    audioElement.addEventListener('pause', pauseEventHandler);
     audioElement.addEventListener('canplay', () => setIsLoading(false));
 
     return () => {
@@ -229,11 +237,12 @@ export function AudioPlayer({
       audioElement.removeEventListener('error', handleError);
       audioElement.removeEventListener('stalled', handleError);
       audioElement.removeEventListener('waiting', () => setIsLoading(true));
-      audioElement.removeEventListener('playing', () => setIsLoading(false));
+      audioElement.removeEventListener('playing', playingEventHandler);
+      audioElement.removeEventListener('pause', pauseEventHandler);
       audioElement.removeEventListener('canplay', () => setIsLoading(false));
-      // No need to pause here if audio should persist across route changes if this component isn't unmounted
     };
-  }, [song, audioFileUrl, volume, isMuted, autoplay, playNonce, handleLoadedMetadata, handleTimeUpdateInternal, handleEndedInternal, handleError, onPlay, onPause]);
+  }, [song, audioFileUrl, autoplay, playNonce, volume, isMuted, handleLoadedMetadata, handleTimeUpdateInternal, handleEndedInternal, handleError, onPlay, onPause]);
+  // Note: onPlay and onPause are now dependencies of useEffect because the event handlers use them.
 
   // Media Session API Integration
   useEffect(() => {
@@ -337,14 +346,14 @@ export function AudioPlayer({
 
       {/* Row 1: Header, Controls, Volume */}
       {/* Main parent div for the first row. Added sm:relative for absolute positioning of controls */}
-      <div className="flex flex-col sm:flex-row items-center w-full sm:relative">
+      <div className="flex flex-col xl:flex-row items-center w-full xl:relative">
         {/* Song Info Header (Cabecera) - flex-1 to take space on the left */}
         {showSongInfo && (
-          <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 sm:min-w-[180px] flex-1 py-2 sm:py-0">
+          <div className="flex items-center space-x-3 sm:space-x-4 min-w-0 w-full xl:w-auto xl:min-w-[180px] xl:flex-1 py-2 xl:py-0">
             <div className={`w-12 h-12 sm:w-16 sm:h-16 flex-shrink-0 rounded-lg flex items-center justify-center font-bold text-xl sm:text-2xl shadow-md ${isDarkMode ? 'bg-stone-700 text-stone-200' : 'bg-stone-200 text-stone-700'}`}>
               {song.code}
             </div>
-            <div className="min-w-0 flex-grow">
+            <div className="min-w-0 max-w-[290px] flex-grow">
               <h3 className={`text-lg sm:text-xl font-semibold truncate ${textColorClass}`}>{song.title}</h3>
               {song.author && <p className={`text-sm sm:text-base truncate ${subTextColorClass}`}>{song.author}</p>}
               {song.category && <p className={`text-xs sm:text-sm truncate ${subTextColorClass}`}>Categoría: {categoryDescription || song.category}</p>}
@@ -355,7 +364,7 @@ export function AudioPlayer({
         {/* Controls Middle Section (Absolutely centered on sm screens and up) */}
         {audioFileUrl && showPlaybackControls && (
           // On sm screens: absolute, centered. On xs: normal flow, order-first.
-          <div className="order-first sm:order-none sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 py-2 sm:py-0">
+          <div className="w-full xl:w-auto xl:absolute xl:left-1/2 xl:top-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2 py-2 xl:py-0">
             {/* Actual Playback Controls Buttons */}
             <div className="flex items-center justify-center space-x-1 sm:space-x-2 flex-shrink-0">
               {showNavigationControls && onPrevSong && (
@@ -396,7 +405,7 @@ export function AudioPlayer({
 
         {/* Volume, Shuffle, Repeat Controls (Volumen + new buttons) */}
         {audioFileUrl && showPlaybackControls && ( 
-          <div className="flex items-center justify-end space-x-2 flex-1 min-w-[150px] sm:min-w-[180px] py-2 sm:py-0">
+          <div className="flex items-center justify-center xl:justify-end space-x-2 w-full xl:w-auto xl:flex-1 xl:min-w-[180px] py-2 xl:py-0">
             {showShuffleButton && (
               <Button 
                 variant="ghost" 

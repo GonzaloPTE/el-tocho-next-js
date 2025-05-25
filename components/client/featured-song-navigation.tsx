@@ -93,9 +93,9 @@ export function FeaturedSongNavigation({ allSongs, categories }: FeaturedSongNav
 
       <div className="space-y-1">
         {favoriteSongs.map((song) => {
-          const isCurrentlyPlaying = playlist.currentSong?.id === song.id && playlist.isPlaying;
-          const itemClasses = `${itemBaseClasses} ${isCurrentlyPlaying ? itemPlayingClasses : itemHoverClasses}`;
-          const titleClasses = `font-semibold text-sm sm:text-lg truncate ${isCurrentlyPlaying ? textPlayingClass : 'text-stone-800 dark:text-stone-100 group-hover:text-sky-600 dark:group-hover:text-sky-400'} transition-colors`;
+          const isCurrentlySelected = playlist.currentSong?.id === song.id;
+          const itemClasses = `${itemBaseClasses} ${isCurrentlySelected ? itemPlayingClasses : itemHoverClasses}`;
+          const titleClasses = `font-semibold text-sm sm:text-lg truncate ${isCurrentlySelected ? textPlayingClass : 'text-stone-800 dark:text-stone-100 group-hover:text-sky-600 dark:group-hover:text-sky-400'} transition-colors`;
 
           return (
             <Link 

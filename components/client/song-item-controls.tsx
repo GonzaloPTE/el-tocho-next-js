@@ -26,8 +26,16 @@ export function SongItemControls({ song, onSelectSong }: SongItemControlsProps) 
   const [isFavorite, setIsFavorite] = useState(false);
   const audioPreviewRef = useRef<HTMLAudioElement | null>(null);
 
+  // Diagnostic log
+  console.log(
+    `[SongItemControls: ${song.code}] Render. ` +
+    `Is this current song? ${playlist.currentSong?.id === song.id}. ` +
+    `Playlist playing? ${playlist.isPlaying}. ` +
+    `Song ID: ${song.id}, Playlist Current Song ID: ${playlist.currentSong?.id}`
+  );
+
   const isThisSongPlayingInMainPlayer = playlist.currentSong?.id === song.id && playlist.isPlaying;
-  console.log(`[SongItemControls: ${song.code}] Render. Is this playing in main: ${isThisSongPlayingInMainPlayer}. Playlist current: ${playlist.currentSong?.id}`);
+  // console.log(`[SongItemControls: ${song.code}] Render. Is this playing in main: ${isThisSongPlayingInMainPlayer}. Playlist current: ${playlist.currentSong?.id}`);
 
   const isThisSongSelectedForPreview = song.id === activePreviewSongId;
 
@@ -78,12 +86,15 @@ export function SongItemControls({ song, onSelectSong }: SongItemControlsProps) 
     event.stopPropagation();
     if (!canPlayAudio) return;
 
-    if (isThisSongPlayingInMainPlayer) {
-      playlist.togglePlayPause();
+    // If this song is already the one in the main player and it's currently playing, then this click is a PAUSE action.
+    if (playlist.currentSong?.id === song.id && playlist.isPlaying) {
+      playlist.togglePlayPause(); // Just toggle the play state
     } else {
-      onSelectSong(song.id);
+      // Otherwise, it's a PLAY action (or selecting a new song to play).
+      // This will load the playlist starting with this song and set it to play.
+      onSelectSong(song.id); 
     }
-    toggleSongPreview(song.id);
+    // We still toggle the preview for consistency, though its audio is managed separately.
   };
 
   const toggleFavoriteHandler = (event: React.MouseEvent) => {

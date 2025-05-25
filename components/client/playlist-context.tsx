@@ -211,30 +211,34 @@ export function PlaylistProvider({ children }: PlaylistProviderProps) {
       if (!prev.currentSong || prev.songs.length === 0) return prev;
 
       const currentList = prev.isShuffled ? prev.shuffledSongs : prev.songs;
-      if (currentList.length === 0) return prev; // Should not happen if currentSong exists from songs
+      if (currentList.length === 0) return prev;
 
-      let nextIndex = prev.currentSongIndex;
-
-      if (prev.repeatMode === 'one' && prev.isPlaying) {
-        return { 
-          ...prev, 
+      if (prev.repeatMode === 'one') {
+        // For 'repeat one', always ensure it plays and trigger a replay of the same song.
+        return {
+          ...prev,
+          currentSong: prev.currentSong, 
+          currentSongIndex: prev.currentSongIndex, 
           isPlaying: true, 
-          playNonce: prev.playNonce + 1
-        }; 
+          playNonce: prev.playNonce + 1, 
+        };
       }
 
-      nextIndex = (prev.currentSongIndex + 1);
+      let nextIndex = prev.currentSongIndex + 1;
+      let newIsPlaying = prev.isPlaying; // Preserve current playing state by default
 
-      if (nextIndex >= currentList.length) {
+      if (nextIndex >= currentList.length) { 
         if (prev.repeatMode === 'all') {
-          nextIndex = 0; // Loop back to start
-        } else {
-          // Repeat mode 'none', end of playlist
+          nextIndex = 0; // Loop back to the start for 'repeat all'
+          // isPlaying remains as prev.isPlaying
+        } else { 
+          // Stop playback at the end of the list for 'repeat none'
+          newIsPlaying = false; // Force pause
           return {
             ...prev,
-            currentSong: currentList[currentList.length -1], // Keep last song highlighted
-            currentSongIndex: currentList.length -1,
-            isPlaying: false, // Stop playback
+            currentSong: currentList[currentList.length - 1],
+            currentSongIndex: currentList.length - 1,
+            isPlaying: newIsPlaying, 
           };
         }
       }
@@ -243,8 +247,8 @@ export function PlaylistProvider({ children }: PlaylistProviderProps) {
         ...prev,
         currentSong: currentList[nextIndex],
         currentSongIndex: nextIndex,
-        isPlaying: true,
-        playNonce: prev.playNonce + 1,
+        isPlaying: newIsPlaying, // Apply the determined playing state
+        playNonce: prev.playNonce + 1, // Increment nonce to signal change to AudioPlayer
       };
     });
   }, []);
@@ -256,17 +260,28 @@ export function PlaylistProvider({ children }: PlaylistProviderProps) {
       const currentList = prev.isShuffled ? prev.shuffledSongs : prev.songs;
       if (currentList.length === 0) return prev;
 
+      // For 'repeat one', clicking previous might conventionally restart the current song or go to actual previous.
+      // Let's assume standard previous logic for now, but if it were to restart, isPlaying should be true.
+      // If current behavior is desired (actual previous song), then isPlaying should be prev.isPlaying.
+      if (prev.repeatMode === 'one') {
+        // If choosing to make "prev" on "repeat one" restart the current song:
+        // return {
+        //   ...prev,
+        //   currentSong: prev.currentSong,
+        //   currentSongIndex: prev.currentSongIndex,
+        //   isPlaying: true, // Force play
+        //   playNonce: prev.playNonce + 1,
+        // };
+      }
+
       let prevIndex = (prev.currentSongIndex - 1 + currentList.length) % currentList.length;
-      
-      // If repeatMode is 'one' and playing, prev usually just restarts or goes to actual prev based on UX.
-      // For now, standard prev logic.
       
       return {
         ...prev,
         currentSong: currentList[prevIndex],
         currentSongIndex: prevIndex,
-        isPlaying: true,
-        playNonce: prev.playNonce + 1,
+        isPlaying: prev.isPlaying, // Preserve current playing state
+        playNonce: prev.playNonce + 1, // Increment nonce
       };
     });
   }, []);

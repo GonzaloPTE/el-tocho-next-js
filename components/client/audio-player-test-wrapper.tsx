@@ -18,9 +18,9 @@ function TestPlayerComponent({ song: initialSongFromProps, categories, allSongs 
     const playableSongs = allSongs.filter(s => s.audioUrl && s.audioUrl.length > 0);
     if (playableSongs.length > 0) {
       const initialIndex = playableSongs.findIndex(s => s.id === initialSongFromProps.id);
-      playlist.loadPlaylist(playableSongs, initialIndex >= 0 ? initialIndex : 0);
+      playlist.loadPlaylist(playableSongs, initialIndex >= 0 ? initialIndex : 0, playlist.isShuffled, false);
     }
-  }, [allSongs, initialSongFromProps, playlist.loadPlaylist]);
+  }, [allSongs, initialSongFromProps, playlist.loadPlaylist, playlist.isShuffled]);
 
   const categoryDescription = useMemo(() => {
     if (!playlist.currentSong) return '';
@@ -43,13 +43,13 @@ function TestPlayerComponent({ song: initialSongFromProps, categories, allSongs 
       isRepeatActive={playlist.repeatMode !== 'none'}
       autoplay={playlist.isPlaying}
       playNonce={playlist.playNonce}
-      onPlay={() => {
-        if (!playlist.isPlaying) {
+      onPlay={(songFromPlayer) => {
+        if (playlist.currentSong && songFromPlayer.id === playlist.currentSong.id && !playlist.isPlaying) {
           playlist.togglePlayPause();
         }
       }}
-      onPause={() => {
-        if (playlist.isPlaying) {
+      onPause={(songFromPlayer) => {
+        if (playlist.currentSong && songFromPlayer.id === playlist.currentSong.id && playlist.isPlaying) {
           playlist.togglePlayPause();
         }
       }}
