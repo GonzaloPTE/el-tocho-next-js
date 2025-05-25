@@ -31,8 +31,6 @@ export function FeaturedSongNavigation({ allSongs, categories }: FeaturedSongNav
   const router = useRouter();
   const playlist = usePlaylist();
 
-  console.log('[FeaturedSongNavigation] Render. Current playlist song:', playlist.currentSong?.id, 'Is playing:', playlist.isPlaying);
-
   const playableFavoriteSongs = useMemo(() => {
     return favoriteSongs.filter(song => song.audioUrl && song.audioUrl.length > 0);
   }, [favoriteSongs]);

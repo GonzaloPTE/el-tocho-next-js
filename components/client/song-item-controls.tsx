@@ -26,14 +26,6 @@ export function SongItemControls({ song, onSelectSong }: SongItemControlsProps) 
   const [isFavorite, setIsFavorite] = useState(false);
   const audioPreviewRef = useRef<HTMLAudioElement | null>(null);
 
-  // Diagnostic log
-  console.log(
-    `[SongItemControls: ${song.code}] Render. ` +
-    `Is this current song? ${playlist.currentSong?.id === song.id}. ` +
-    `Playlist playing? ${playlist.isPlaying}. ` +
-    `Song ID: ${song.id}, Playlist Current Song ID: ${playlist.currentSong?.id}`
-  );
-
   const isThisSongPlayingInMainPlayer = playlist.currentSong?.id === song.id && playlist.isPlaying;
   // console.log(`[SongItemControls: ${song.code}] Render. Is this playing in main: ${isThisSongPlayingInMainPlayer}. Playlist current: ${playlist.currentSong?.id}`);
 

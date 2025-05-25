@@ -214,12 +214,10 @@ export function AudioPlayer({
             // DO NOT call onPause prop. This keeps playlist.isPlaying true,
             // reflecting the playlist's original intention to play this song.
             // The AudioPlayer's own UI (setIsPlaying(false) above) will show "Play".
-            console.log("[AudioPlayer PauseEvt] Likely browser auto-pause. NOT calling onPause prop.");
         } else {
             // This is a "normal" pause (e.g., user clicked pause on this player, 
             // or useEffect paused it due to autoplay=false, or song ended and also fired pause).
             // Notify the playlist context that it's now effectively paused.
-            console.log("[AudioPlayer PauseEvt] Normal pause. Calling onPause prop.");
             if (song && onPause) {
                 onPause(song);
             }

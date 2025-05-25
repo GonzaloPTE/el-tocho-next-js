@@ -37,7 +37,7 @@ function TestPlayerComponent({ song: initialSongFromProps, categories, allSongs 
       song={playlist.currentSong}
       categoryDescription={categoryDescription}
       showNavigationControls={true}
-      showShuffleButton={true}
+      showShuffleButton={false}
       showRepeatButton={true}
       isShuffleActive={playlist.isShuffled}
       isRepeatActive={playlist.repeatMode !== 'none'}
